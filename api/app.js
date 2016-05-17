@@ -10,8 +10,9 @@ server.connection({
 });
 
 var routers = [
-    require('./routes/processor'),
     require('./routes/memory'),
+    require('./routes/processor'),
+    require('./routes/network'),
     require('./routes/system')
 ];
 
