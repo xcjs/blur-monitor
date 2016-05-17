@@ -10,7 +10,9 @@ server.connection({
 });
 
 var routers = [
-    require('./routes/processor')
+    require('./routes/processor'),
+    require('./routes/memory'),
+    require('./routes/system')
 ];
 
 routers.forEach(function (router) {
