@@ -51,5 +51,8 @@
   },
   "scripts": {
     "postinstall": "bower install"
+  },
+  "dependencies": {
+    "hapi": "^13.4.0"
   }
 }
