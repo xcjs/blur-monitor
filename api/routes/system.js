@@ -55,6 +55,12 @@ function getDistro() {
 
 function shell(command, callback) {
     exec(command, function (error, stdout, stderr) {
+        if (error) {
+            // If for some reason the command fails, fallback to os.type.
+            callback(os.type());
+            return;
+        }
+
         var eolLength = os.EOL.length;
         var finalNewLine = stdout.substr(
             stdout.length - eolLength,
