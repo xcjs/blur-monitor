@@ -11,7 +11,7 @@ var browserSyncSpa = require('browser-sync-spa');
 
 var util = require('util');
 
-// var proxyMiddleware = require('http-proxy-middleware');
+var proxyMiddleware = require('http-proxy-middleware');
 
 function browserSyncInit(baseDir, browser) {
     browser = browser === undefined ? 'default' : browser;
@@ -38,6 +38,8 @@ function browserSyncInit(baseDir, browser) {
      */
     // server.middleware = proxyMiddleware('/users', {target: 'http://jsonplaceholder.typicode.com', changeOrigin: true});
 
+    server.middleware = proxyMiddleware('/api', { target: 'http://localhost:3000/' });
+
     browserSync.instance = browserSync.init({
         startPath: '/',
         server: server,
@@ -51,7 +53,7 @@ browserSync.use(browserSyncSpa({
     selector: '[ng-app]' // Only needed for angular apps
 }));
 
-gulp.task('serve', ['watch'], function () {
+gulp.task('serve', ['watch', 'api'], function () {
     browserSyncInit([path.join(conf.paths.tmp, '/serve'), conf.paths.src]);
 });
 
