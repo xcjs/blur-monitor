@@ -4,16 +4,31 @@
 'use strict';
 
 var Hapi = require('hapi');
-var server = new Hapi.Server();
+var Inert = require('inert');
+var path = require('path');
+
+var server = new Hapi.Server({
+    connections: {
+        routes: {
+            files: {
+                relativeTo: path.join(__dirname, '../')
+            }
+        }
+    }
+});
+
 server.connection({
     port: 3000
 });
 
+server.register(Inert, () => {});
+
 var routers = [
-    require('./routes/memory'),
+    require('./routes/static'),
+    require('./routes/system'),
     require('./routes/processor'),
-    require('./routes/network'),
-    require('./routes/system')
+    require('./routes/memory'),
+    require('./routes/network')
 ];
 
 routers.forEach(function (router) {

@@ -57,7 +57,7 @@ gulp.task('serve', ['watch', 'api'], function () {
     browserSyncInit([path.join(conf.paths.tmp, '/serve'), conf.paths.src]);
 });
 
-gulp.task('serve:dist', ['build'], function () {
+gulp.task('serve:dist', ['build', 'api'], function () {
     browserSyncInit(conf.paths.dist);
 });
 
