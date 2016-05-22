@@ -54,6 +54,7 @@
     "postinstall": "bower install"
   },
   "dependencies": {
+    "array-includes": "^3.0.2",
     "hapi": "^13.4.0",
     "inert": "^4.0.0"
   }

@@ -11,3 +11,11 @@ gulp.task('api', function() {
         ext: 'js'
     });
 });
+
+gulp.task('api:dist', function() {
+    nodemon({
+        script: './api/server.js',
+        args: ['serve:dist'],
+        ext: 'js'
+    });
+});
