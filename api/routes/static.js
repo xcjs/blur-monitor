@@ -14,8 +14,6 @@ function getRoutes() {
 
     var dev = true;
 
-    console.log(process.argv);
-
     if(includes(process.argv, 'serve:dist')) {
         dev = false;
     }
