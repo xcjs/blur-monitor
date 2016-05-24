@@ -28,6 +28,7 @@ var routers = [
     require('./routes/system'),
     require('./routes/processor'),
     require('./routes/memory'),
+    require('./routes/disks'),
     require('./routes/network')
 ];
 
