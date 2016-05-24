@@ -5,7 +5,6 @@
 var process = require('process');
 var includes = require('array-includes');
 
-
 module.exports = getRoutes();
 
 function getRoutes() {
