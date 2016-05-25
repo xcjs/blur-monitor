@@ -2,40 +2,26 @@
 
 'use strict';
 
-var process = require('process');
-var includes = require('array-includes');
+var env = require('../util/environment');
 
 module.exports = getRoutes();
 
 function getRoutes() {
     var routes = [];
-    var directoryPath;
-
-    var dev = true;
-
-    if(includes(process.argv, 'serve:dist')) {
-        dev = false;
-    }
-
-    if(dev) {
-        directoryPath = ['./.tmp/serve/', './src/'];
-    } else {
-        directoryPath = './release/';
-    }
 
     routes.push({
         method: 'GET',
         path: '/{param*}',
         handler: {
             directory: {
-                path: directoryPath,
+                path: env.staticRoot,
                 redirectToSlash: true,
                 index: true
             }
         }
     });
 
-    if(dev) {
+    if(env.current === env.environments.development) {
         routes.push({
             method: 'GET',
             path: '/bower_components/{param*}',
