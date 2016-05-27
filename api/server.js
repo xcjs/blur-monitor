@@ -29,7 +29,8 @@ var routers = [
     require('./routes/processor'),
     require('./routes/memory'),
     require('./routes/disks'),
-    require('./routes/network')
+    require('./routes/network'),
+    require('./routes/processes')
 ];
 
 routers.forEach(function (router) {
