@@ -22,22 +22,10 @@
             vm.chartOptions = {
                 animation: false
             };
-
-            setLabels();
-
+            
             $interval(function() {
                 getProcessor();
             }, refreshInterval);
-
-            function setLabels() {
-                var snapshotCounter = 0;
-                while(snapshotCounter <= maxSnapshots) {
-                    var label = maxSnapshots - snapshotCounter + (refreshInterval / 1000) + ' s ago';
-
-                    vm.labels.push(label);
-                    snapshotCounter++;
-                }
-            }
 
             function getProcessor() {
                 ProcessorResource.query().$promise.then(function(processors) {
@@ -75,8 +63,14 @@
                         processorUtil.push(utilization);
                     });
 
-                    if(vm.labels.length >= maxSnapshots) {
+                    if(vm.labels.length > maxSnapshots) {
                         vm.labels.splice(0, 1);
+                    }
+
+                    if(vm.labels.length < maxSnapshots) {
+                        var label = vm.snapshots[0].length * (refreshInterval / 1000) + 's ago';
+
+                        vm.labels.unshift(label);
                     }
                 });
             }
