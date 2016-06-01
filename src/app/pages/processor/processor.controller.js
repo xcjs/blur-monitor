@@ -6,10 +6,10 @@
         'refreshInterval',
         'maxSnapshots',
         'ProcessorResource',
-        'processorStats',
+        'ProcessorStats',
         ProcessorController]);
 
-        function ProcessorController($interval, refreshInterval, maxSnapshots, ProcessorResource, processorStats) {
+        function ProcessorController($interval, refreshInterval, maxSnapshots, ProcessorResource, ProcessorStats) {
             var vm = this;
 
             vm.processorInfo = [];
@@ -59,7 +59,7 @@
                         processorHistory.push(processor);
 
                         if(processorUtil.length > 1) {
-                            utilization = processorStats.getUtilization(
+                            utilization = ProcessorStats.getUtilization(
                                 processorHistory[processorHistory.length - 2], processorHistory[processorHistory.length - 1]);
                         } else {
                             // With no historical information available, assume 0% utilization.

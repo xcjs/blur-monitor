@@ -1,16 +1,20 @@
 (function() {
     'use strict';
 
-    angular.module('BlurMonitor.pages.processor').factory('processorStats',
-        [processorStats]);
+    angular.module('BlurMonitor.pages.processor').service('ProcessorStats',
+        [ProcessorStats]);
 
-    function processorStats() {
-        return {
-            getUtilization: getUtilization
-        };
+    function ProcessorStats() {
+        this.getUtilization = getUtilization;
+
+        this.maxClock = 0;
 
         function getUtilization(previousSnapshot, currentSnapshot) {
             var utilization = 0;
+
+            if(this.maxClock < currentSnapshot.speed) {
+                this.maxClock = currentSnapshot.speed;
+            }
 
             if(previousSnapshot) {
                 var prevTicks = getTotalTicks(previousSnapshot);
@@ -19,7 +23,9 @@
                 var prevIdle = previousSnapshot.times.idle;
                 var currIdle = currentSnapshot.times.idle;
 
-                utilization = (currIdle - prevIdle) / (currTicks - prevTicks);
+                var clockRatio = currentSnapshot.speed / this.maxClock;
+
+                utilization = (currIdle - prevIdle) / (currTicks - prevTicks) * clockRatio;
             }
 
             return utilization * 100;
