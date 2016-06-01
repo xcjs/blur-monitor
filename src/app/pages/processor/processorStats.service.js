@@ -7,14 +7,8 @@
     function ProcessorStats() {
         this.getUtilization = getUtilization;
 
-        this.maxClock = 0;
-
         function getUtilization(previousSnapshot, currentSnapshot) {
             var utilization = 0;
-
-            if(this.maxClock < currentSnapshot.speed) {
-                this.maxClock = currentSnapshot.speed;
-            }
 
             if(previousSnapshot) {
                 var prevTicks = getTotalTicks(previousSnapshot);
@@ -23,12 +17,10 @@
                 var prevIdle = previousSnapshot.times.idle;
                 var currIdle = currentSnapshot.times.idle;
 
-                var clockRatio = currentSnapshot.speed / this.maxClock;
-
-                utilization = (currIdle - prevIdle) / (currTicks - prevTicks) * clockRatio;
+                utilization = (currIdle - prevIdle) / (currTicks - prevTicks);
             }
 
-            return utilization * 100;
+            return 100 - (utilization * 100);
         }
 
         function getTotalTicks(snapShot) {
