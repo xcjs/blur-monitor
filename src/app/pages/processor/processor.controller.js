@@ -12,17 +12,17 @@
         function ProcessorController($interval, refreshInterval, maxSnapshots, ProcessorResource, processorStats) {
             var vm = this;
 
+            vm.processorInfo = [];
+
             vm.chartData = [];
+            vm.labels = [];
+            vm.chartOptions = {
+                animation: false
+            };
 
             // Historic snapshots of the full processor data up to maxSnapshots.
             vm.snapshots = [];
 
-            vm.labels = [];
-
-            vm.chartOptions = {
-                animation: false
-            };
-            
             $interval(function() {
                 getProcessor();
             }, refreshInterval);
@@ -31,6 +31,12 @@
                 ProcessorResource.query().$promise.then(function(processors) {
                     angular.forEach(processors, function(processor, index) {
                         var utilization = 0;
+
+                        if(!vm.processorInfo[index]) {
+                            vm.processorInfo[index] = processor;
+                        } else {
+                            vm.processorInfo[index].speed = processor.speed;
+                        }
 
                         // The first time run through this call back, the child arrays will need to be initialized for
                         // each core/processor.

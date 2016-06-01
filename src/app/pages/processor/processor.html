@@ -1,3 +1,30 @@
+<div class="row">
+    <div ng-repeat="processor in vm.processorInfo" class="col-md-12 col-lg-4">
+        <div ba-panel ba-panel-title="Processor {{$index}}" ba-panel-class="with-scroll ">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>
+                            Model
+                        </th>
+                        <td>
+                            {{processor.model}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Speed
+                        </th>
+                        <td>
+                            {{processor.speed}} Mhz
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 <div ba-panel ba-panel-title="Processor Utilization" ba-panel-class="with-scroll ">
     <canvas id="line" class="chart chart-line" chart-data="vm.chartData" chart-labels="vm.labels"
             chart-legend="false" chart-series="vm.series" chart-options="vm.chartOptions"></canvas>
