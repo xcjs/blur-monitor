@@ -18,7 +18,7 @@
                 title: 'Processor',
                 sidebarMeta: {
                     icon: 'ion-speedometer',
-                    order: 0
+                    order: 1
                 }
             });
     }

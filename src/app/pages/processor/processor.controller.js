@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('BlurMonitor.pages.processor').controller('ProcessorController', [
+        '$scope',
         '$interval',
         'refreshInterval',
         'maxSnapshots',
@@ -9,7 +10,7 @@
         'ProcessorStats',
         ProcessorController]);
 
-        function ProcessorController($interval, refreshInterval, maxSnapshots, ProcessorResource, ProcessorStats) {
+        function ProcessorController($scope, $interval, refreshInterval, maxSnapshots, ProcessorResource, ProcessorStats) {
             var vm = this;
 
             vm.processorInfo = [];
@@ -24,9 +25,15 @@
             // Historic snapshots of the full processor data up to maxSnapshots.
             vm.snapshots = [];
 
-            $interval(function() {
+            vm.interval = null;
+
+            vm.interval = $interval(function() {
                 getProcessor();
             }, refreshInterval);
+
+            $scope.$on("$destroy", function() {
+                $interval.cancel(vm.interval);
+            });
 
             function getProcessor() {
                 ProcessorResource.query().$promise.then(function(processors) {
