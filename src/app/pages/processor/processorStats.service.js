@@ -20,7 +20,7 @@
                 utilization = (currIdle - prevIdle) / (currTicks - prevTicks);
             }
 
-            return 100 - (utilization * 100);
+            return (100 - (utilization * 100)).toFixed(2);
         }
 
         function getTotalTicks(snapShot) {
