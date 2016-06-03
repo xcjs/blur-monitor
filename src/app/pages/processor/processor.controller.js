@@ -15,7 +15,8 @@
             vm.processorInfo = [];
 
             vm.chartData = [];
-            vm.labels = [];
+            vm.chartLabels = [];
+            vm.chartSeries = [];
             vm.chartOptions = {
                 animation: false
             };
@@ -67,16 +68,19 @@
                         }
 
                         processorUtil.push(utilization);
+
+                        vm.chartSeries[index] = 'Core ' + index + ' - ' + utilization + '%';
+
                     });
 
-                    if(vm.labels.length > maxSnapshots) {
-                        vm.labels.splice(0, 1);
+                    if(vm.chartLabels.length > maxSnapshots) {
+                        vm.chartLabels.splice(0, 1);
                     }
 
-                    if(vm.labels.length < maxSnapshots) {
+                    if(vm.chartLabels.length < maxSnapshots) {
                         var label = vm.snapshots[0].length * (refreshInterval / 1000) + 's ago';
 
-                        vm.labels.unshift(label);
+                        vm.chartLabels.unshift(label);
                     }
                 });
             }
