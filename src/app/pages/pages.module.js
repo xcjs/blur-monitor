@@ -16,7 +16,8 @@
     'BlurAdmin.pages.charts',
     'BlurAdmin.pages.maps',
     'BlurAdmin.pages.profile',
-    'BlurMonitor.pages.processor'
+    'BlurMonitor.pages.processor',
+    'BlurMonitor.pages.memory'
   ])
       .config(routeConfig);
 
