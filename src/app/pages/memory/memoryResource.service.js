@@ -7,6 +7,6 @@
     function MemoryResource($resource) {
         var Memory = $resource('/api/memory');
 
-        this.query = Memory.query;
+        this.get = Memory.get;
     }
 })();

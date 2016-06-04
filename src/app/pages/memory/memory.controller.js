@@ -2,30 +2,59 @@
     'use strict';
 
     angular.module('BlurMonitor.pages.memory').controller('MemoryController', [
+        '$scope',
         '$interval',
         'refreshInterval',
         'maxSnapshots',
         'MemoryResource',
         MemoryController]);
 
-    function MemoryController($interval, refreshInterval, maxSnapshots, MemoryResource) {
+    function MemoryController($scope, $interval, refreshInterval, maxSnapshots, MemoryResource) {
         var vm = this;
 
-        vm.memoryInfo = [];
+        vm.memory = {};
 
         vm.chartData = [];
         vm.chartLabels = [];
         vm.chartSeries = [];
         vm.chartOptions = {
-            animation: true
+            animation: false
         };
 
-        $interval(function() {
+        vm.interval = $interval(function() {
             getMemory();
         }, refreshInterval);
 
-        function getMemory() {
+        $scope.$on('$destroy', function() {
+            $interval.cancel(vm.interval);
+        });
 
+        function getMemory() {
+            MemoryResource.get(function(memory) {
+                vm.memory = {
+                    total: convertToMb(memory.total),
+                    actualUsed: convertToMb(memory.actualUsed),
+                    actualFree: convertToMb(memory.actualFree),
+                    free: convertToMb(memory.free),
+                    used: convertToMb(memory.used),
+                    cached: convertToMb(memory.cached),
+                    buffers: convertToMb(memory.buffers),
+                    shared: convertToMb(memory.shared)
+                };
+
+                var used = convertToMb(memory.actualUsed);
+                var free = convertToMb(memory.actualFree);
+
+                vm.chartData[0] = used;
+                vm.chartLabels[0] = 'Used: ' + used + ' MB';
+
+                vm.chartData[1] = free;
+                vm.chartLabels[1] = free + ' MB';
+            });
+        }
+
+        function convertToMb(value) {
+            return (value / (1024)).toFixed(2);
         }
     }
 })();

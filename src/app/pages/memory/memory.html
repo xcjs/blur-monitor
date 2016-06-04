@@ -1,0 +1,47 @@
+<div ba-panel ba-panel-title="Memory Utilization" ba-panel-class="with-scroll ">
+    <table class="table table-hover">
+        <thead>
+            <th>Total</th>
+            <th>Actual Used</th>
+            <th>Actual Free</th>
+            <th>Used</th>
+            <th>Free</th>
+            <th>Cached</th>
+            <th>Buffers</th>
+            <th>Shared</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                {{vm.memory.total}} MB
+            </td>
+            <td>
+                {{vm.memory.actualUsed}} MB
+            </td>
+            <td>
+                {{vm.memory.actualFree}} MB
+            </td>
+            <td>
+                {{vm.memory.used}} MB
+            </td>
+            <td>
+                {{vm.memory.free}} MB
+            </td>
+            <td>
+                {{vm.memory.cached}} MB
+            </td>
+            <td>
+                {{vm.memory.buffers}} MB
+            </td>
+            <td>
+                {{vm.memory.shared}} MB
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div ba-panel ba-panel-title="Memory Utilization" ba-panel-class="with-scroll ">
+    <canvas id="line" class="chart chart-pie" chart-data="vm.chartData" chart-labels="vm.chartLabels"
+            chart-legend="true" chart-series="vm.chartSeries" chart-options="vm.chartOptions"></canvas>
+</div>
