@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('BlurMonitor.pages.memory', [
-        'BlurMonitor.constants',
+        'BlurMonitor.config',
         'ngResource'
     ])
         .config(routeConfig);

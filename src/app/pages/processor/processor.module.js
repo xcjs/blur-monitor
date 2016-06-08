@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('BlurMonitor.pages.processor', [
-        'BlurMonitor.constants',
+        'BlurMonitor.config',
         'ngResource',
         'chart.js'
     ])
