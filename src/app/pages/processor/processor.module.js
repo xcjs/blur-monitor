@@ -6,7 +6,6 @@
         'ngResource'
     ])
         .config(routeConfig);
-        // .config(chartJsConfig);
 
     /** @ngInject */
     function routeConfig($stateProvider) {
