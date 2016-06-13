@@ -76,7 +76,7 @@
 
                         processorUtil.push(utilization);
 
-                        vm.chartSeries[index] = 'Core ' + index + ' - ' + utilization + '%';
+                        vm.chartSeries[index] = 'Core ' + index;
 
                     });
 
