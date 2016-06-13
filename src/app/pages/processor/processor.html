@@ -1,10 +1,10 @@
 <div class="row">
     <div ng-repeat="processor in vm.processorInfo" class="col-sm-3">
         <div ba-panel ba-panel-title="Processor {{$index}}" ba-panel-class="with-scroll ">
-            <table class="table table-hover">
+            <table class="table table-hover table-bordered">
                 <tbody>
                     <tr>
-                        <th>
+                        <th scope="row">
                             Model
                         </th>
                         <td>
@@ -12,7 +12,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>
+                        <th scope="row">
                             Speed
                         </th>
                         <td>
