@@ -5,11 +5,10 @@
         '$scope',
         '$interval',
         'refreshInterval',
-        'maxSnapshots',
         'MemoryResource',
         MemoryController]);
 
-    function MemoryController($scope, $interval, refreshInterval, maxSnapshots, MemoryResource) {
+    function MemoryController($scope, $interval, refreshInterval, MemoryResource) {
         var vm = this;
 
         vm.memory = {};
@@ -49,7 +48,7 @@
                 vm.chartLabels[0] = 'Used: ' + used + ' MB';
 
                 vm.chartData[1] = free;
-                vm.chartLabels[1] = free + ' MB';
+                vm.chartLabels[1] = 'Free: ' + free + ' MB';
             });
         }
 
