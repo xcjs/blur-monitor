@@ -15,7 +15,6 @@
 
         vm.chartData = [];
         vm.chartLabels = [];
-        vm.chartSeries = [];
         vm.chartOptions = {
             animation: false
         };
