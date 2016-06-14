@@ -39,6 +39,10 @@
                     }
                 });
 
+                if(vm.disks.length === 0) {
+                    vm.disks = disks;
+                }
+
                 angular.forEach(disks, function(disk, index) {
                     if(!angular.isArray(vm.chartsData[index])) {
                         vm.chartsData[index] = [];
@@ -50,10 +54,6 @@
 
                     vm.chartsLabels[index][0] = 'Used: ' + disk.used;
                     vm.chartsLabels[index][1] = 'Free: ' + disk.available;
-
-                    if(!angular.isDefined(vm.disks[index])) {
-                        vm.disks[index] = disks;
-                    }
                 });
             });
         }
