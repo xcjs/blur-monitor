@@ -12,6 +12,7 @@
         var vm = this;
 
         vm.disks = [];
+        vm.diskColumns = [];
 
         vm.chartsData = [];
         vm.chartsLabels = [];
@@ -55,6 +56,28 @@
                     vm.chartsLabels[index][0] = 'Used: ' + disk.used;
                     vm.chartsLabels[index][1] = 'Free: ' + disk.available;
                 });
+
+                splitDisksForView(vm.disks);
+            });
+        }
+
+        function splitDisksForView(disks) {
+            var colSize = 2;
+            var curCol = 0;
+            var curRow = 0;
+
+            angular.forEach(disks, function(disk) {
+                if(!angular.isArray(vm.diskColumns[curRow])) {
+                    vm.diskColumns[curRow] = [];
+                }
+
+                if(curCol < colSize) {
+                    vm.diskColumns[curRow][curCol] = disk;
+                    curCol++;
+                } else {
+                    curCol = 0;
+                    curRow++;
+                }
             });
         }
     }
