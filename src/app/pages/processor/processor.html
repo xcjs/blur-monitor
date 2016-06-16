@@ -1,6 +1,6 @@
-<div class="row">
-    <div ng-repeat="processor in vm.processorInfo" class="col-sm-3">
-        <div ba-panel ba-panel-title="Processor {{$index}}" ba-panel-class="with-scroll ">
+<div ng-repeat="row in vm.processorInfoColumns" ng-init="outerIndex = $index" class="row">
+    <div ng-repeat="processor in row" ng-init="innerIndex = $index" class="col-sm-3">
+        <div ba-panel ba-panel-title="Processor {{outerIndex + innerIndex}}" ba-panel-class="with-scroll ">
             <table class="table table-hover table-bordered">
                 <tbody>
                     <tr>

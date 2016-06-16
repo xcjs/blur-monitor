@@ -8,16 +8,20 @@
         'maxSnapshots',
         'ProcessorResource',
         'ProcessorStats',
+        'bootstrapFactory',
         ProcessorController]);
 
-        function ProcessorController($scope, $interval, refreshInterval, maxSnapshots, ProcessorResource, ProcessorStats) {
+        function ProcessorController($scope, $interval, refreshInterval, maxSnapshots, ProcessorResource, ProcessorStats,
+        bootstrapFactory) {
             var vm = this;
 
             vm.processorInfo = [];
+            vm.processorInfoColumns = [];
 
             vm.chartData = [];
             vm.chartLabels = [];
             vm.chartSeries = [];
+
             vm.chartOptions = {
                 animation: false
             };
@@ -89,6 +93,8 @@
 
                         vm.chartLabels.unshift(label);
                     }
+
+                    bootstrapFactory.splitCollectionForColumns(vm.processorInfo, vm.processorInfoColumns, 4);
                 });
             }
         }
