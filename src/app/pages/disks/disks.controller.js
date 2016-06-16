@@ -6,9 +6,10 @@
         '$interval',
         'refreshInterval',
         'DisksResource',
+        'bootstrapFactory',
         DisksController]);
 
-    function DisksController($scope, $interval, refreshInterval, DisksResource) {
+    function DisksController($scope, $interval, refreshInterval, DisksResource, bootstrapFactory) {
         var vm = this;
 
         vm.diskColumns = [];
@@ -43,7 +44,7 @@
                     }
                 });
 
-                splitCollectionForView(disks, vm.diskColumns, 2);
+                bootstrapFactory.splitCollectionForColumns(disks, vm.diskColumns, 2);
 
                 angular.forEach(disks, function(disk, index) {
                     if(!angular.isArray(vm.chartsData[index])) {
@@ -58,32 +59,8 @@
                     vm.chartsLabels[index][1] = 'Free: ' + disk.available;
                 });
 
-                splitCollectionForView(vm.chartsData, vm.chartsDataColumns, 2);
-                splitCollectionForView(vm.chartsLabels, vm.chartsLabelsColumns, 2);
-            });
-        }
-
-        function splitCollectionForView(collection, columnCollection, rowSize) {
-            var curCol = 0;
-            var curRow = 0;
-
-            angular.forEach(collection, function(item) {
-                if(curCol === rowSize) {
-                    curCol = 0;
-                    curRow++;
-                }
-
-                if(!angular.isArray(columnCollection[curRow])) {
-                    columnCollection[curRow] = [];
-                }
-
-                if(!angular.isDefined(columnCollection[curRow][curCol])) {
-                    columnCollection[curRow][curCol] = item;
-                } else {
-                    angular.merge(columnCollection[curRow][curCol], item);
-                }
-
-                curCol++;
+                bootstrapFactory.splitCollectionForColumns(vm.chartsData, vm.chartsDataColumns, 2);
+                bootstrapFactory.splitCollectionForColumns(vm.chartsLabels, vm.chartsLabelsColumns, 2);
             });
         }
     }

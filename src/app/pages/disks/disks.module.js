@@ -3,6 +3,7 @@
 
     angular.module('BlurMonitor.pages.disks', [
         'BlurMonitor.config',
+        'BlurMonitor.utilities',
         'ngResource'
     ])
         .config(routeConfig);
