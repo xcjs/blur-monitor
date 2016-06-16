@@ -11,11 +11,14 @@
     function DisksController($scope, $interval, refreshInterval, DisksResource) {
         var vm = this;
 
-        vm.disks = [];
         vm.diskColumns = [];
 
         vm.chartsData = [];
+        vm.chartsDataColumns = [];
+
         vm.chartsLabels = [];
+        vm.chartsLabelsColumns = [];
+
         vm.chartOptions = {
             animation: false
         };
@@ -40,11 +43,7 @@
                     }
                 });
 
-                splitDisksForView(disks);
-
-                if(vm.disks.length === 0) {
-                    vm.disks = disks;
-                }
+                splitCollectionForView(disks, vm.diskColumns, 2);
 
                 angular.forEach(disks, function(disk, index) {
                     if(!angular.isArray(vm.chartsData[index])) {
@@ -58,28 +57,30 @@
                     vm.chartsLabels[index][0] = 'Used: ' + disk.used;
                     vm.chartsLabels[index][1] = 'Free: ' + disk.available;
                 });
+
+                splitCollectionForView(vm.chartsData, vm.chartsDataColumns, 2);
+                splitCollectionForView(vm.chartsLabels, vm.chartsLabelsColumns, 2);
             });
         }
 
-        function splitDisksForView(disks) {
-            var rowSize = 2;
+        function splitCollectionForView(collection, columnCollection, rowSize) {
             var curCol = 0;
             var curRow = 0;
 
-            angular.forEach(disks, function(disk) {
+            angular.forEach(collection, function(item) {
                 if(curCol === rowSize) {
                     curCol = 0;
                     curRow++;
                 }
 
-                if(!angular.isArray(vm.diskColumns[curRow])) {
-                    vm.diskColumns[curRow] = [];
+                if(!angular.isArray(columnCollection[curRow])) {
+                    columnCollection[curRow] = [];
                 }
 
-                if(!angular.isDefined(vm.diskColumns[curRow][curCol])) {
-                    vm.diskColumns[curRow][curCol] = disk;
+                if(!angular.isDefined(columnCollection[curRow][curCol])) {
+                    columnCollection[curRow][curCol] = item;
                 } else {
-                    angular.merge(vm.diskColumns[curRow][curCol], disk);
+                    angular.merge(columnCollection[curRow][curCol], item);
                 }
 
                 curCol++;

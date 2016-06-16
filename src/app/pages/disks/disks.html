@@ -1,8 +1,12 @@
-<div ng-repeat="row in vm.diskColumns" class="row">
-    <div ng-repeat="disk in row" class="col-md-6">
+<div ng-repeat="row in vm.diskColumns" class="row" ng-init="outerIndex = $index">
+    <div ng-repeat="disk in row" class="col-md-6" ng-init="innerIndex = $index">
         <div ba-panel ba-panel-title="{{disk.mountpoint}} ({{disk.drive}})" ba-panel-class="with-scroll ">
-            <canvas id="pie{{$index}}" class="chart chart-pie" chart-data="vm.chartsData[$index]" chart-labels="vm.chartsLabels[$index]"
-                    chart-legend="true" chart-series="vm.chartsSeries[$index]" chart-options="vm.chartOptions"></canvas>
+            <canvas id="pie{{outerIndex}}-{{innerIndex}}" class="chart chart-pie"
+                    chart-data="vm.chartsDataColumns[outerIndex][innerIndex]"
+                    chart-labels="vm.chartsLabelsColumns[outerIndex][innerIndex]"
+                    chart-legend="true"
+                    chart-options="vm.chartOptions">
+            </canvas>
         </div>
     </div>
 </div>
