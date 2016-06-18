@@ -23,7 +23,8 @@
             vm.chartSeries = [];
 
             vm.chartOptions = {
-                animation: false
+                animation: false,
+                showTooltips: false
             };
 
             // Historic snapshots of the full processor data up to maxSnapshots.
