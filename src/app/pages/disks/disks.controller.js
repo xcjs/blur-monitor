@@ -21,7 +21,8 @@
         vm.chartsLabelsColumns = [];
 
         vm.chartOptions = {
-            animation: false
+            animation: false,
+            showTooltips: false
         };
 
         vm.interval = $interval(function() {
