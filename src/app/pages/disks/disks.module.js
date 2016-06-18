@@ -18,7 +18,7 @@
                 controllerAs: 'vm',
                 title: 'Disks',
                 sidebarMeta: {
-                    icon: 'ion-filing',
+                    icon: 'ion-android-folder',
                     order: 3
                 }
             });
