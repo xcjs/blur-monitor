@@ -16,7 +16,8 @@
         vm.chartData = [];
         vm.chartLabels = [];
         vm.chartOptions = {
-            animation: false
+            animation: false,
+            showTooltips: false
         };
 
         vm.interval = $interval(function() {
@@ -40,14 +41,14 @@
                     shared: convertToMb(memory.shared)
                 };
 
-                var used = convertToMb(memory.actualUsed);
-                var free = convertToMb(memory.actualFree);
+                var perUsed = (vm.memory.actualUsed / vm.memory.total * 100).toFixed(2);
+                var perFree = (vm.memory.actualFree / vm.memory.total * 100).toFixed(2);
 
-                vm.chartData[0] = used;
-                vm.chartLabels[0] = 'Used: ' + used + ' MB';
+                vm.chartData[0] = vm.memory.actualUsed;
+                vm.chartLabels[0] = 'Used: ' + vm.memory.actualUsed + ' MB ' + '(' + perUsed + '%)';
 
-                vm.chartData[1] = free;
-                vm.chartLabels[1] = 'Free: ' + free + ' MB';
+                vm.chartData[1] = vm.memory.actualFree;
+                vm.chartLabels[1] = 'Free: ' + vm.memory.actualFree + ' MB ' + '(' + perFree + '%)';
             });
         }
 
