@@ -24,7 +24,11 @@
 
             vm.chartOptions = {
                 animation: false,
-                showTooltips: false
+                showTooltips: false,
+                scaleOverride : true,
+                scaleSteps : 10,
+                scaleStepWidth : 10,
+                scaleStartValue : 0
             };
 
             // Historic snapshots of the full processor data up to maxSnapshots.
