@@ -18,7 +18,8 @@
     // 'BlurAdmin.pages.profile',
     'BlurMonitor.pages.processor',
     'BlurMonitor.pages.memory',
-    'BlurMonitor.pages.disks'
+    'BlurMonitor.pages.disks',
+    'BlurMonitor.pages.bandwidth'
   ])
       .config(routeConfig);
 
