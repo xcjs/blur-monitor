@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "array-includes": "^3.0.2",
-    "hapi": "^13.4.0",
+    "hapi": "^13.4.1",
     "inert": "^4.0.0",
     "node-json-transform": "^1.0.6",
     "nodejs-disks": "^0.2.1",
