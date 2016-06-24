@@ -31,7 +31,7 @@
             vm.progress = 0;
             vm.startDisabled = true;
             BandwidthResource.addProgressCallback(progressCallback);
-            BandwidthResource.addCompleteCallback(completeCallback)
+            BandwidthResource.addCompleteCallback(completeCallback);
             BandwidthResource.get();
         }
 
