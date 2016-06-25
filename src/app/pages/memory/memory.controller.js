@@ -13,8 +13,15 @@
 
         vm.memory = {};
 
-        vm.chartData = [];
-        vm.chartLabels = [];
+        vm.activeChartData = [];
+        vm.activeChartLabels = [];
+
+        vm.detailedChartData = [];
+        vm.detailedChartLabels = [];
+
+        vm.sharedChartData = [];
+        vm.sharedChartLabels = [];
+
         vm.chartOptions = {
             animation: false,
             showTooltips: false
@@ -31,29 +38,66 @@
         function getMemory() {
             MemoryResource.get(function(memory) {
                 vm.memory = {
-                    total: convertToMb(memory.total),
-                    actualUsed: convertToMb(memory.actualUsed),
-                    actualFree: convertToMb(memory.actualFree),
-                    free: convertToMb(memory.free),
-                    used: convertToMb(memory.used),
-                    cached: convertToMb(memory.cached),
-                    buffers: convertToMb(memory.buffers),
-                    shared: convertToMb(memory.shared)
+                    total: convertToMB(memory.total),
+                    actualUsed: convertToMB(memory.actualUsed),
+                    actualFree: convertToMB(memory.actualFree),
+                    free: convertToMB(memory.free),
+                    used: convertToMB(memory.used),
+                    cached: convertToMB(memory.cached),
+                    buffers: convertToMB(memory.buffers),
+                    shared: convertToMB(memory.shared)
                 };
 
-                var perUsed = (vm.memory.actualUsed / vm.memory.total * 100).toFixed(2);
-                var perFree = (vm.memory.actualFree / vm.memory.total * 100).toFixed(2);
+                // Active Memory Utilization
 
-                vm.chartData[0] = vm.memory.actualUsed;
-                vm.chartLabels[0] = 'Used: ' + vm.memory.actualUsed + ' MB ' + '(' + perUsed + '%)';
+                vm.activeChartData[0] = vm.memory.actualUsed;
+                vm.activeChartLabels[0] = buildChartLabel('Used', vm.memory.actualUsed);
 
-                vm.chartData[1] = vm.memory.actualFree;
-                vm.chartLabels[1] = 'Free: ' + vm.memory.actualFree + ' MB ' + '(' + perFree + '%)';
+                vm.activeChartData[1] = vm.memory.actualFree;
+                vm.activeChartLabels[1] = buildChartLabel('Free', vm.memory.actualFree);
+
+                // Detailed Memory Utilization
+
+                vm.detailedChartData[0] = vm.activeChartData[0];
+                vm.detailedChartLabels[0] = 'Active ' + vm.activeChartLabels[0];
+
+                vm.detailedChartData[1] = vm.memory.cached;
+                vm.detailedChartLabels[1] = buildChartLabel('Cached', vm.memory.cached);
+
+                vm.detailedChartData[2] = vm.memory.buffers;
+                vm.detailedChartLabels[2] = buildChartLabel('Buffers', vm.memory.buffers);
+
+                vm.detailedChartData[3] = vm.memory.free;
+                vm.detailedChartLabels[3] = buildChartLabel('Free', vm.memory.free);
+
+                // Shared Memory
+
+                vm.sharedChartData[0] = vm.memory.shared;
+                vm.sharedChartLabels[0] = buildChartLabel('Shared', vm.memory.shared, calcUsedMemPercent);
+
+                vm.sharedChartData[1] = (vm.memory.used - vm.memory.shared).toFixed(2);
+                vm.sharedChartLabels[1] = buildChartLabel('Not Shared', (vm.memory.used - vm.memory.shared).toFixed(2), calcUsedMemPercent);
             });
         }
 
-        function convertToMb(value) {
-            return (value / (1024)).toFixed(2);
+        function buildChartLabel(label, value, percentageFunction) {
+            if(!percentageFunction) {
+                percentageFunction = calcTotalMemPercent;
+            }
+
+            return label + ': ' + value + ' MB (' + percentageFunction(value)  + ')%';
+        }
+
+        function calcTotalMemPercent(part) {
+            return (part / vm.memory.total * 100).toFixed(2);
+        }
+
+        function calcUsedMemPercent(part) {
+            return (part / vm.memory.used * 100).toFixed(2);
+        }
+
+        function convertToMB(kB) {
+            return (kB / 1024).toFixed(2);
         }
     }
 })();

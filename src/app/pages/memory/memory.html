@@ -1,49 +1,22 @@
-<div ba-panel ba-panel-title="Memory Utilization" ba-panel-class="with-scroll ">
-    <table class="table table-bordered">
-        <thead>
-            <th>Total</th>
-            <th>Actual Used</th>
-            <th>Actual Free</th>
-            <th>Used</th>
-            <th>Free</th>
-            <th>Cached</th>
-            <th>Buffers</th>
-            <th>Shared</th>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                {{vm.memory.total}} MB
-            </td>
-            <td>
-                {{vm.memory.actualUsed}} MB
-            </td>
-            <td>
-                {{vm.memory.actualFree}} MB
-            </td>
-            <td>
-                {{vm.memory.used}} MB
-            </td>
-            <td>
-                {{vm.memory.free}} MB
-            </td>
-            <td>
-                {{vm.memory.cached}} MB
-            </td>
-            <td>
-                {{vm.memory.buffers}} MB
-            </td>
-            <td>
-                {{vm.memory.shared}} MB
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div class="row">
+    <div ba-panel ba-panel-title="Active Memory Utilization" ba-panel-class="with-scroll ">
+        <h4>{{vm.memory.total}} MB</h4>
+        <canvas id="pie" class="chart chart-pie" chart-data="vm.activeChartData" chart-labels="vm.activeChartLabels"
+                chart-legend="true" chart-options="vm.chartOptions"></canvas>
+    </div>
 </div>
 
 <div class="row">
-    <div ba-panel ba-panel-title="Memory Utilization" ba-panel-class="with-scroll ">
-        <canvas id="pie" class="chart chart-pie" chart-data="vm.chartData" chart-labels="vm.chartLabels"
+    <div ba-panel ba-panel-title="Detailed Memory Utilization" ba-panel-class="with-scroll ">
+        <h4>{{vm.memory.total}} MB</h4>
+        <canvas id="pie" class="chart chart-pie" chart-data="vm.detailedChartData" chart-labels="vm.detailedChartLabels"
+                chart-legend="true" chart-options="vm.chartOptions"></canvas>
+    </div>
+</div>
+
+<div class="row">
+    <div ba-panel ba-panel-title="Shared Memory" ba-panel-class="with-scroll ">
+        <canvas id="pie" class="chart chart-pie" chart-data="vm.sharedChartData" chart-labels="vm.sharedChartLabels"
                 chart-legend="true" chart-options="vm.chartOptions"></canvas>
     </div>
 </div>
