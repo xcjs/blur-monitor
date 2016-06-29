@@ -20,7 +20,8 @@
 
 <div class="row">
     <div class="col-md-6">
-        <div ba-panel ba-panel-title="Shared Memory Compared to Total Used" ba-panel-class="with-scroll ">
+        <div ba-panel ba-panel-title="Shared Memory" ba-panel-class="with-scroll ">
+            <h4>{{vm.memory.total}} MB</h4>
             <canvas id="pie" class="chart chart-pie" chart-data="vm.sharedChartData" chart-labels="vm.sharedChartLabels"
                     chart-legend="true" chart-options="vm.chartOptions"></canvas>
         </div>

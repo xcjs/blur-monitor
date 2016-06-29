@@ -76,7 +76,10 @@
                 vm.sharedChartLabels[0] = buildChartLabel('Shared', vm.memory.shared, calcUsedMemPercent);
 
                 vm.sharedChartData[1] = (vm.memory.used - vm.memory.shared).toFixed(2);
-                vm.sharedChartLabels[1] = buildChartLabel('Not Shared', (vm.memory.used - vm.memory.shared).toFixed(2), calcUsedMemPercent);
+                vm.sharedChartLabels[1] = buildChartLabel('Isolated', (vm.memory.used - vm.memory.shared).toFixed(2), calcUsedMemPercent);
+
+                vm.sharedChartData[2] = vm.memory.free;
+                vm.sharedChartLabels[2] = buildChartLabel('Free', vm.memory.free);
             });
         }
 
