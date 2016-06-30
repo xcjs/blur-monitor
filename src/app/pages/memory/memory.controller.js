@@ -90,10 +90,10 @@
                 // Swap
 
                 vm.swapChartData[0] = vm.memory.swapUsed;
-                vm.swapChartLabels[0] = buildChartLabel('Used Swap', vm.memory.swapUsed, calcSwapPercent);
+                vm.swapChartLabels[0] = buildChartLabel('Used', vm.memory.swapUsed, calcSwapPercent);
 
                 vm.swapChartData[1] = vm.memory.swapFree;
-                vm.swapChartLabels[1] = buildChartLabel('Free Swap', vm.memory.swapFree, calcSwapPercent);
+                vm.swapChartLabels[1] = buildChartLabel('Free', vm.memory.swapFree, calcSwapPercent);
             });
         }
 
