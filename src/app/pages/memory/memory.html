@@ -26,4 +26,12 @@
                     chart-legend="true" chart-options="vm.chartOptions"></canvas>
         </div>
     </div>
+
+    <div class="col-md-6">
+        <div ba-panel ba-panel-title="Swap Utilization" ba-panel-class="with-scroll ">
+            <h4>{{vm.memory.swapTotal}} MB</h4>
+            <canvas id="pie" class="chart chart-pie" chart-data="vm.swapChartData" chart-labels="vm.swapChartLabels"
+                    chart-legend="true" chart-options="vm.chartOptions"></canvas>
+        </div>
+    </div>
 </div>

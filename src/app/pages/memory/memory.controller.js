@@ -21,6 +21,9 @@
 
         vm.sharedChartData = [];
         vm.sharedChartLabels = [];
+        
+        vm.swapChartData = [];
+        vm.swapChartLabels = [];
 
         vm.chartOptions = {
             animation: false,
@@ -45,7 +48,10 @@
                     used: convertToMB(memory.used),
                     cached: convertToMB(memory.cached),
                     buffers: convertToMB(memory.buffers),
-                    shared: convertToMB(memory.shared)
+                    shared: convertToMB(memory.shared),
+                    swapTotal: convertToMB(memory.swapTotal),
+                    swapUsed: convertToMB(memory.swapUsed),
+                    swapFree: convertToMB(memory.swapFree)
                 };
 
                 // Active Memory Utilization
@@ -80,6 +86,14 @@
 
                 vm.sharedChartData[2] = vm.memory.free;
                 vm.sharedChartLabels[2] = buildChartLabel('Free', vm.memory.free);
+
+                // Swap
+
+                vm.swapChartData[0] = vm.memory.swapUsed;
+                vm.swapChartLabels[0] = buildChartLabel('Used Swap', vm.memory.swapUsed, calcSwapPercent);
+
+                vm.swapChartData[1] = vm.memory.swapFree;
+                vm.swapChartLabels[1] = buildChartLabel('Free Swap', vm.memory.swapFree, calcSwapPercent);
             });
         }
 
@@ -97,6 +111,10 @@
 
         function calcUsedMemPercent(part) {
             return (part / vm.memory.used * 100).toFixed(2);
+        }
+
+        function calcSwapPercent(part) {
+            return (part / vm.memory.swapTotal * 100).toFixed(2);
         }
 
         function convertToMB(kB) {
