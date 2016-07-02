@@ -31,6 +31,8 @@
         vm.start = 0;
         vm.end = 0;
 
+        var lastLoaded = 0;
+
         function startTest() {
             vm.progress = 0;
             vm.startDisabled = true;
@@ -48,7 +50,9 @@
                 vm.progress = percentComplete.toFixed(2);
 
                 vm.end = moment();
-                vm.speed = ((event.loaded / 1000) / vm.end.seconds()).toFixed(2);
+                vm.speed = ((event.loaded - lastLoaded / 1000) / (vm.end.seconds() - vm.start.seconds())).toFixed(2);
+
+                lastLoaded = event.loaded;
 
                 $scope.$apply();
             }
