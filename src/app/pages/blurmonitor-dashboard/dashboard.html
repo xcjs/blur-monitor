@@ -1,28 +1,34 @@
 <div class="row">
     <div class="col-md-12">
         <div ba-panel ba-panel-title="System Info" ba-panel-class="with-scroll ">
-            <table class="table">
-                <thead>
-                    <tr class="black-muted-bg">
-                        <th>Host</th>
-                        <th>Platform</th>
-                        <th>Release</th>
-                        <th>Architecture</th>
-                        <th>Distro</th>
-                        <th>Uptime</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{vm.system.host}}</td>
-                        <td>{{vm.system.platform}}</td>
-                        <td>{{vm.system.release}}</td>
-                        <td>{{vm.system.architecture}}</td>
-                        <td>{{vm.system.distro}}</td>
-                        <td>{{vm.system.uptime | amDurationFormat : 'seconds' }}</td>
-                    </tr>
-                </tbody>
-            </table>
+                <table class="table table-reflow">
+                    <tbody>
+                        <tr>
+                            <th class="black-muted-bg">Host</th>
+                            <td>{{vm.system.host}}</td>
+                        </tr>
+                        <tr>
+                            <th class="black-muted-bg">Platform</th>
+                            <td>{{vm.system.platform}}</td>
+                        </tr>
+                        <tr>
+                            <th class="black-muted-bg">Release</th>
+                            <td>{{vm.system.release}}</td>
+                        </tr>
+                        <tr>
+                            <th class="black-muted-bg">Architecture</th>
+                            <td>{{vm.system.architecture}}</td>
+                        </tr>
+                        <tr>
+                            <th class="black-muted-bg">Distro</th>
+                            <td>{{vm.system.distro}}</td>
+                        </tr>
+                        <tr>
+                            <th class="black-muted-bg">Uptime</th>
+                            <td>{{vm.system.uptime | amDurationFormat : 'seconds' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
         </div>
     </div>
 </div>
