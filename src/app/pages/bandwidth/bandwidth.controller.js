@@ -4,10 +4,9 @@
     angular.module('BlurMonitor.pages.bandwidth').controller('BandwidthController', [
         '$scope',
         'BandwidthResource',
-        'moment',
         BandwidthController]);
 
-    function BandwidthController($scope, BandwidthResource, moment) {
+    function BandwidthController($scope, BandwidthResource) {
         var vm = this;
 
         vm.chartsData = [];
@@ -39,7 +38,7 @@
             vm.speed = 0;
             vm.payload = null;
             lastLoaded = 0;
-            lastEnd = moment();
+            lastEnd = performance.now();
 
             vm.startDisabled = true;
 
@@ -60,13 +59,13 @@
                 vm.progress = percentComplete.toFixed(2);
 
                 var loadDiff = event.loaded - lastLoaded;
-                var timeDiff = (moment().unix() / 1000) - (lastEnd.unix() / 1000);
+                var timeDiff = performance.now() - lastEnd;
 
-                var calcSpeed = (loadDiff * 8 / 1000) / timeDiff;
+                var calcSpeed = (loadDiff * 8 / 1000) / (timeDiff / 1000);
                 vm.speed = vm.speed === 0 ? calcSpeed.toFixed(2) : ((parseFloat(vm.speed) + calcSpeed) / 2).toFixed(2);
 
                 lastLoaded = event.loaded;
-                lastEnd = moment();
+                lastEnd = performance.now();
 
                 $scope.$apply();
             }
