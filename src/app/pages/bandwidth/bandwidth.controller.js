@@ -50,7 +50,7 @@
                 vm.progress = percentComplete.toFixed(2);
 
                 vm.end = moment();
-                vm.speed = ((event.loaded - lastLoaded / 1000) / (vm.end.seconds() - vm.start.seconds())).toFixed(2);
+                vm.speed = (((event.loaded - lastLoaded) / 1000) / (vm.end.seconds() - vm.start.seconds())).toFixed(2);
 
                 lastLoaded = event.loaded;
 
