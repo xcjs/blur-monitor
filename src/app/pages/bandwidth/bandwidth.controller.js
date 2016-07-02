@@ -25,6 +25,9 @@
         vm.speed = 0;
         vm.payload = null;
 
+        vm.loaded = 0;
+        vm.total = 0;
+
         vm.startDisabled = false;
         vm.startTest = startTest;
 
@@ -36,7 +39,7 @@
         function startTest() {
             vm.progress = 0;
             vm.speed = 0;
-            vm.payload - null;
+            vm.payload = null;
             lastLoaded = 0;
 
             vm.startDisabled = true;
@@ -50,12 +53,18 @@
 
         function progressCallback(event) {
             if (event.lengthComputable) {
+                if(!vm.total) {
+                    vm.total = event.total * 8 / 1000;
+                }
+
+                vm.loaded = event.loaded * 8 / 1000;
+
                 var percentComplete = event.loaded / event.total * 100;
                 vm.progress = percentComplete.toFixed(2);
 
                 vm.end = moment();
 
-                var calcSpeed = (((event.loaded - lastLoaded) / 1000) / (vm.end.unix() - vm.start.unix()));
+                var calcSpeed = (((event.loaded - lastLoaded) * 8 / 1000) / (vm.end.unix() - vm.start.unix()));
                 vm.speed = vm.speed === 0 ? calcSpeed.toFixed(2) : ((parseFloat(vm.speed) + calcSpeed) / 2).toFixed(2);
 
                 lastLoaded = event.loaded;
