@@ -1,10 +1,10 @@
 <div ng-repeat="row in vm.processorInfoColumns" ng-init="outerIndex = $index" class="row">
     <div ng-repeat="processor in row" ng-init="innerIndex = $index" class="col-sm-3">
         <div ba-panel ba-panel-title="Processor {{outerIndex + innerIndex}}" ba-panel-class="with-scroll ">
-            <table class="table table-hover table-bordered">
+            <table class="table table-bordered">
                 <tbody>
                     <tr>
-                        <th scope="row">
+                        <th class="black-muted-bg">
                             Model
                         </th>
                         <td>
@@ -12,7 +12,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">
+                        <th class="black-muted-bg">
                             Speed
                         </th>
                         <td>
