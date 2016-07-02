@@ -1,12 +1,12 @@
 (function() {
     'use strict';
 
-    angular.module('BlurMonitor.pages.bandwidth').controller('BandwidthController', [
+    angular.module('BlurMonitor.pages.network').controller('NetworkController', [
         '$scope',
         'BandwidthResource',
-        BandwidthController]);
+        NetworkController]);
 
-    function BandwidthController($scope, BandwidthResource) {
+    function NetworkController($scope, BandwidthResource) {
         var vm = this;
 
         vm.startDisabled = false;

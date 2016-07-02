@@ -1,8 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('BlurMonitor.pages.bandwidth', [
-        'angularMoment',
+    angular.module('BlurMonitor.pages.network', [
         'BlurMonitor.config',
         'ngResource'
     ])
@@ -13,10 +12,10 @@
         $stateProvider
             .state('bandwidth', {
                 url: '/bandwidth',
-                templateUrl: 'app/pages/bandwidth/bandwidth.html',
-                controller: 'BandwidthController',
+                templateUrl: 'app/pages/network/network.html',
+                controller: 'NetworkController',
                 controllerAs: 'vm',
-                title: 'Bandwidth',
+                title: 'Network',
                 sidebarMeta: {
                     icon: 'ion-arrow-swap',
                     order: 4

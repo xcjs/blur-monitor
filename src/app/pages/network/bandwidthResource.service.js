@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('BlurMonitor.pages.bandwidth').service('BandwidthResource',
+    angular.module('BlurMonitor.pages.network').service('BandwidthResource',
         ['$window', BandwidthResource]);
 
     function BandwidthResource($window) {

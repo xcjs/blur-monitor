@@ -20,7 +20,7 @@
     'BlurMonitor.pages.processor',
     'BlurMonitor.pages.memory',
     'BlurMonitor.pages.disks',
-    'BlurMonitor.pages.bandwidth'
+    'BlurMonitor.pages.network'
   ])
       .config(routeConfig);
 
