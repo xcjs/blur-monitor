@@ -1,10 +1,13 @@
-<div ba-panel ba-panel-title="Download Test" ba-panel-class="with-scroll ">
+<div ba-panel ba-panel-title="Bandwidth Test" ba-panel-class="with-scroll ">
     <div class="progress">
         <div class="progress-bar progress-bar-primary progress-bar active" role="progressbar"
              aria-valuenow="{{vm.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.progress}}%">
             {{vm.progress}}%
         </div>
     </div>
+    <p class="text-right">
+        {{vm.speed}} kbps
+    </p>
     <div class="button-wrapper">
         <button type="button" class="btn btn-primary btn-raised" ng-click="vm.startTest()" ng-disabled="vm.startDisabled">Start Test</button>
     </div>

@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('BlurMonitor.pages.bandwidth', [
+        'angularMoment',
         'BlurMonitor.config',
         'ngResource'
     ])
