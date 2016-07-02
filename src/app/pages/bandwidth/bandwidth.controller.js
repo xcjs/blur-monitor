@@ -91,12 +91,13 @@
         }
 
         function completeCallback(dataSet) {
-            vm.startDisabled = false;
             dataSet.response = BandwidthResource.response;
             $scope.$apply();
 
             if(dataSet.method === 'GET') {
                 startTest(vm.postStats);
+            } else if(dataSet.method === 'POST') {
+                vm.startDisabled = false;
             }
         }
     }
