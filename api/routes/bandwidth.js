@@ -33,5 +33,19 @@ function getRoutes() {
         }
     });
 
+    routes.push({
+        method: 'POST',
+        path: '/api/bandwidth',
+        config: {
+            payload: {
+                maxBytes: 11000000
+            }
+        },
+        handler: function(request, reply) {
+            // noop, do nothing but receive it.
+            return reply();
+        }
+    });
+
     return routes;
 }

@@ -2,18 +2,30 @@
     <h4>Download</h4>
     <div class="progress">
         <div class="progress-bar progress-bar-primary progress-bar active" role="progressbar"
-             aria-valuenow="{{vm.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.progress}}%">
-            {{vm.progress}}%
+             aria-valuenow="{{vm.getStats.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.getStats.progress}}%">
+            {{vm.getStats.progress}}%
         </div>
     </div>
     <p class="text-right">
-        {{vm.loaded}} kb / {{vm.total}} kb
+        {{vm.getStats.loaded}} kb / {{vm.getStats.total}} kb
     </p>
     <p class="text-right">
-        {{vm.speed}} kbps
+        {{vm.getStats.speed}} kbps
     </p>
     <h4>Upload</h4>
+    <div class="progress">
+        <div class="progress-bar progress-bar-secondary progress-bar active" role="progressbar"
+             aria-valuenow="{{vm.postStats.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.postStats.progress}}%">
+            {{vm.postStats.progress}}%
+        </div>
+    </div>
+    <p class="text-right">
+        {{vm.postStats.loaded}} kb / {{vm.postStats.total}} kb
+    </p>
+    <p class="text-right">
+        {{vm.postStats.speed}} kbps
+    </p>
     <div class="button-wrapper">
-        <button type="button" class="btn btn-primary btn-raised" ng-click="vm.startTest()" ng-disabled="vm.startDisabled">Start Test</button>
+        <button type="button" class="btn btn-primary btn-raised" ng-click="vm.startTest(vm.getStats)" ng-disabled="vm.startDisabled">Start Test</button>
     </div>
 </div>

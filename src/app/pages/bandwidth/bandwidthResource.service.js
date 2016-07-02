@@ -10,6 +10,7 @@
         this.addProgressCallback = addProgressCallback;
         this.addCompleteCallback = addCompleteCallback;
         this.get = get;
+        this.post = post;
 
         var request = new $window.XMLHttpRequest();
         var url = '/api/bandwidth';
@@ -24,15 +25,23 @@
 
         function addProgressCallback(callback) {
             request.addEventListener('progress', callback);
+            request.upload.addEventListener('progress', callback)
         }
 
         function addCompleteCallback(callback) {
             request.addEventListener('load', callback);
+            request.upload.addEventListener('load', callback);
         }
 
         function get() {
             request.open('GET', url);
             request.send();
+        }
+
+        function post(payload, contentType) {
+            request.open('POST', url);
+            request.setRequestHeader('Content-Type', contentType);
+            request.send(payload);
         }
     }
 })();
