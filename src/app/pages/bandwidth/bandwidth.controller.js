@@ -35,6 +35,10 @@
 
         function startTest() {
             vm.progress = 0;
+            vm.speed = 0;
+            vm.payload - null;
+            lastLoaded = 0;
+
             vm.startDisabled = true;
 
             vm.start = moment();
@@ -50,7 +54,9 @@
                 vm.progress = percentComplete.toFixed(2);
 
                 vm.end = moment();
-                vm.speed = (((event.loaded - lastLoaded) / 1000) / (vm.end.seconds() - vm.start.seconds())).toFixed(2);
+
+                var calcSpeed = (((event.loaded - lastLoaded) / 1000) / (vm.end.unix() - vm.start.unix()));
+                vm.speed = vm.speed === 0 ? calcSpeed.toFixed(2) : ((parseFloat(vm.speed) + calcSpeed) / 2).toFixed(2);
 
                 lastLoaded = event.loaded;
 
