@@ -55,6 +55,12 @@
 
             if(dataSet.method === 'GET') {
                 BandwidthResource.get();
+
+                vm.postStats.progress = 0;
+                vm.postStats.speed = 0;
+                vm.postStats.payload = null;
+                vm.postStats.lastLoaded = 0;
+                vm.postStats.lastEnd = null;
             } else if(dataSet.method === 'POST') {
                 BandwidthResource.post(vm.getStats.response, 'text/plain');
             }
