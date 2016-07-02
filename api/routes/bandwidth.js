@@ -38,7 +38,11 @@ function getRoutes() {
         path: '/api/bandwidth',
         config: {
             payload: {
-                maxBytes: 11000000
+                maxBytes: 11000000,
+                timeout: 1000 * 60 * 10 // Ten minutes.
+            },
+            timeout: {
+                socket: 1000 * 60 * 11 // Eleven minutes, since the socket timeout must be greater than route timeout.
             }
         },
         handler: function(request, reply) {
