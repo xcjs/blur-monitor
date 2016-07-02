@@ -65,7 +65,7 @@
                 // Detailed Memory Utilization
 
                 vm.detailedChartData[0] = vm.activeChartData[0];
-                vm.detailedChartLabels[0] = 'Active ' + vm.activeChartLabels[0];
+                vm.detailedChartLabels[0] = vm.activeChartLabels[0];
 
                 vm.detailedChartData[1] = vm.memory.cached;
                 vm.detailedChartLabels[1] = buildChartLabel('Cached', vm.memory.cached);
