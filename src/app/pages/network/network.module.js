@@ -11,7 +11,7 @@
     function routeConfig($stateProvider) {
         $stateProvider
             .state('bandwidth', {
-                url: '/bandwidth',
+                url: '/network',
                 templateUrl: 'app/pages/network/network.html',
                 controller: 'NetworkController',
                 controllerAs: 'vm',
