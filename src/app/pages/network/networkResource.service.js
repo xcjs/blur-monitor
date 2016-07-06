@@ -6,7 +6,11 @@
 
     function NetworkResource() {
         var Network = $resource('/api/network');
+        var External = $resource('/api/external');
+        var Traceroute = $resource('/api/traceroute');
 
-        this.query = Network.query;
+        this.get = Network.get;
+        this.getExternal = External.get;
+        this.getTraceroute = Traceroute.get;
     }
 })();
