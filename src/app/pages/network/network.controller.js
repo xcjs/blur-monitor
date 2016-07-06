@@ -3,11 +3,12 @@
 
     angular.module('BlurMonitor.pages.network').controller('NetworkController', [
         '$scope',
+        '$timeout',
         'NetworkResource',
         'BandwidthResource',
         NetworkController]);
 
-    function NetworkController($scope, NetworkResource, BandwidthResource) {
+    function NetworkController($scope, $timeout, NetworkResource, BandwidthResource) {
         var vm = this;
 
         vm.bindings = [];
@@ -38,6 +39,8 @@
             angular.forEach(response.traceroute, function(hop) {
                vm.traceroute.push(hop);
             });
+
+            $timeout();
         });
 
         vm.startDisabled = false;
