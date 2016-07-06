@@ -12,12 +12,14 @@
 
         vm.external = null;
         vm.traceroute = null;
+        vm.tracerouteLoading = true;
 
         NetworkResource.getExternal(function(response) {
            vm.external = response.ipAddress;
         });
 
         NetworkResource.getTraceroute(function(response) {
+            vm.tracerouteLoading = false;
             vm.traceroute = response.traceroute;
         });
 
