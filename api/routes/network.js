@@ -65,8 +65,6 @@ function getExternalIp() {
 }
 
 function getTraceRoute(origin) {
-    origin = 'google.com';
-
     var traceroute = spawn('traceroute', [origin]);
     traceroute.stdout.setEncoding('utf8');
 
