@@ -10,9 +10,23 @@
     function NetworkController($scope, NetworkResource, BandwidthResource) {
         var vm = this;
 
+        vm.bindings = [];
         vm.external = null;
         vm.traceroute = [];
         vm.tracerouteLoading = true;
+
+        NetworkResource.get(function(response) {
+            angular.forEach(response, function(bindings, networkInterface) {
+                if(!networkInterface.includes('$')) {
+                    angular.forEach(bindings, function(binding) {
+                        vm.bindings.push({
+                            interface: networkInterface,
+                            data: binding
+                        });
+                    });
+                }
+            });
+        });
 
         NetworkResource.getExternal(function(response) {
            vm.external = response.ipAddress;

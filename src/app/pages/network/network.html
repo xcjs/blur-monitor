@@ -1,9 +1,62 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div ba-panel ba-panel-title="External IP" ba-panel-class="with-scroll ">
             <p>
                 {{vm.external}}
             </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div ba-panel ba-panel-title="Interfaces" ba-panel-class="with-scroll ">
+            <table class="table table-bordered">
+                <thead>
+                <tr class="black-muted-bg">
+                    <th class="text-left">
+                        Interface
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Netmask
+                    </th>
+                    <th>
+                        Family
+                    </th>
+                    <th>
+                        MAC
+                    </th>
+                    <th>
+                        Internal
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="binding in vm.bindings">
+                    <td class="text-left">
+                        {{binding.interface}}
+                    </td>
+                    <td>
+                        {{binding.data.address}}
+                    </td>
+                    <td>
+                        {{binding.data.netmask}}
+                    </td>
+                    <td>
+                        {{binding.data.family}}
+                    </td>
+                    <td>
+                        {{binding.data.mac}}
+                    </td>
+                    <td>
+                        {{binding.data.internal ? 'Yes' : 'No'}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -52,30 +105,30 @@
             </div>
             <table ng-show="!vm.tracerouteLoading" class="table table-bordered">
                 <thead>
-                <tr class="black-muted-bg">
-                    <th class="text-left">
-                        Host
-                    </th>
-                    <th>
-                        Address
-                    </th>
-                    <th>
-                        Avg. Response
-                    </th>
-                </tr>
+                    <tr class="black-muted-bg">
+                        <th class="text-left">
+                            Host
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Avg. Response
+                        </th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="hop in vm.traceroute">
-                    <td class="text-left">
-                        {{hop.host || '*'}}
-                    </td>
-                    <td>
-                        {{hop.address || '*'}}
-                    </td>
-                    <td>
-                        {{hop.averageResponse ? hop.averageResponse.toFixed(2) + ' ms' : '*'}}
-                    </td>
-                </tr>
+                    <tr ng-repeat="hop in vm.traceroute">
+                        <td class="text-left">
+                            {{hop.host || '*'}}
+                        </td>
+                        <td>
+                            {{hop.address || '*'}}
+                        </td>
+                        <td>
+                            {{hop.averageResponse ? hop.averageResponse.toFixed(2) + ' ms' : '*'}}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
