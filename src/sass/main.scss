@@ -58,8 +58,12 @@
 }
 
 .spinner {
-  -webkit-animation:spin 4s linear infinite;
-  -moz-animation:spin 4s linear infinite;
-  animation:spin 4s linear infinite;
-  font-size: 3rem;
+  -webkit-animation: spin 3s linear infinite;
+  -moz-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
+  display: block;
+  font-size: 5rem;
+  height: 5rem;
+  margin: auto;
+  width: 5rem;
 }
