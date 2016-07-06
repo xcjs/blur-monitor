@@ -6,39 +6,6 @@
             </p>
         </div>
     </div>
-
-    <div class="col-md-6">
-        <div ba-panel ba-panel-title="Reverse Traceroute" ba-panel-class="with-scroll ">
-            <table class="table table-bordered">
-                <thead>
-                    <tr class="black-muted-bg">
-                        <th>
-                            Host
-                        </th>
-                        <th>
-                           Address
-                        </th>
-                        <th>
-                            Avg. Response
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="hop in vm.traceroute">
-                        <td>
-                            {{hop.host || '*'}}
-                        </td>
-                        <td>
-                            {{hop.address || '*'}}
-                        </td>
-                        <td>
-                            {{hop.averageResponse.toFixed(2) + ' ms' || '*'}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 </div>
 
 <div class="row">
@@ -73,6 +40,41 @@
             <div class="button-wrapper">
                 <button type="button" class="btn btn-primary btn-raised" ng-click="vm.startTest(vm.getStats)" ng-disabled="vm.startDisabled">Start Test</button>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div ba-panel ba-panel-title="Reverse Traceroute" ba-panel-class="with-scroll ">
+            <table class="table table-bordered">
+                <thead>
+                <tr class="black-muted-bg">
+                    <th>
+                        Host
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Avg. Response
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="hop in vm.traceroute">
+                    <td>
+                        {{hop.host || '*'}}
+                    </td>
+                    <td>
+                        {{hop.address || '*'}}
+                    </td>
+                    <td>
+                        {{hop.averageResponse ? hop.averageResponse.toFixed(2) + ' ms' : '*'}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
