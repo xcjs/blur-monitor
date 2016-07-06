@@ -3,11 +3,23 @@
 
     angular.module('BlurMonitor.pages.network').controller('NetworkController', [
         '$scope',
+        'NetworkResource',
         'BandwidthResource',
         NetworkController]);
 
-    function NetworkController($scope, BandwidthResource) {
+    function NetworkController($scope, NetworkResource, BandwidthResource) {
         var vm = this;
+
+        vm.external = null;
+        vm.traceroute = null;
+
+        NetworkResource.getExternal(function(response) {
+           vm.external = response.ipAddress;
+        });
+
+        NetworkResource.getTraceroute(function(response) {
+            vm.traceroute = response.traceroute;
+        });
 
         vm.startDisabled = false;
         vm.startTest = startTest;

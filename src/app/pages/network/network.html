@@ -1,31 +1,78 @@
-<div ba-panel ba-panel-title="Bandwidth Test" ba-panel-class="with-scroll ">
-    <h4>Download</h4>
-    <div class="progress">
-        <div class="progress-bar progress-bar-primary progress-bar active" role="progressbar"
-             aria-valuenow="{{vm.getStats.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.getStats.progress}}%">
-            {{vm.getStats.progress}}%
+<div class="row">
+    <div class="col-md-6">
+        <div ba-panel ba-panel-title="External IP" ba-panel-class="with-scroll ">
+            <p>
+                {{vm.external}}
+            </p>
         </div>
     </div>
-    <p class="text-right">
-        {{vm.getStats.loaded}} kb / {{vm.getStats.total}} kb
-    </p>
-    <p class="text-right">
-        {{vm.getStats.speed}} kbps
-    </p>
-    <h4>Upload</h4>
-    <div class="progress">
-        <div class="progress-bar progress-bar-secondary progress-bar active" role="progressbar"
-             aria-valuenow="{{vm.postStats.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.postStats.progress}}%">
-            {{vm.postStats.progress}}%
+
+    <div class="col-md-6">
+        <div ba-panel ba-panel-title="Reverse Traceroute" ba-panel-class="with-scroll ">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="black-muted-bg">
+                        <th>
+                            Host
+                        </th>
+                        <th>
+                           Address
+                        </th>
+                        <th>
+                            Avg. Response
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="hop in vm.traceroute">
+                        <td>
+                            {{hop.host || '*'}}
+                        </td>
+                        <td>
+                            {{hop.address || '*'}}
+                        </td>
+                        <td>
+                            {{hop.averageResponse.toFixed(2) + ' ms' || '*'}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <p class="text-right">
-        {{vm.postStats.loaded}} kb / {{vm.postStats.total}} kb
-    </p>
-    <p class="text-right">
-        {{vm.postStats.speed}} kbps
-    </p>
-    <div class="button-wrapper">
-        <button type="button" class="btn btn-primary btn-raised" ng-click="vm.startTest(vm.getStats)" ng-disabled="vm.startDisabled">Start Test</button>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div ba-panel ba-panel-title="Bandwidth Test" ba-panel-class="with-scroll ">
+            <h4>Download</h4>
+            <div class="progress">
+                <div class="progress-bar progress-bar-primary progress-bar active" role="progressbar"
+                     aria-valuenow="{{vm.getStats.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.getStats.progress}}%">
+                    {{vm.getStats.progress}}%
+                </div>
+            </div>
+            <p class="text-right">
+                {{vm.getStats.loaded}} kb / {{vm.getStats.total}} kb
+            </p>
+            <p class="text-right">
+                {{vm.getStats.speed}} kbps
+            </p>
+            <h4>Upload</h4>
+            <div class="progress">
+                <div class="progress-bar progress-bar-secondary progress-bar active" role="progressbar"
+                     aria-valuenow="{{vm.postStats.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.postStats.progress}}%">
+                    {{vm.postStats.progress}}%
+                </div>
+            </div>
+            <p class="text-right">
+                {{vm.postStats.loaded}} kb / {{vm.postStats.total}} kb
+            </p>
+            <p class="text-right">
+                {{vm.postStats.speed}} kbps
+            </p>
+            <div class="button-wrapper">
+                <button type="button" class="btn btn-primary btn-raised" ng-click="vm.startTest(vm.getStats)" ng-disabled="vm.startDisabled">Start Test</button>
+            </div>
+        </div>
     </div>
 </div>
