@@ -11,6 +11,11 @@
   color: $primary-light;
 }
 
+.table > thead:first-child > tr:first-child > th.text-left,
+.table > tbody > tr > td:first-child.text-left {
+  text-align: left;
+}
+
 @-webkit-keyframes spin {
   from {
     -webkit-transform: rotate(0deg);

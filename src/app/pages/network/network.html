@@ -53,7 +53,7 @@
             <table ng-show="!vm.tracerouteLoading" class="table table-bordered">
                 <thead>
                 <tr class="black-muted-bg">
-                    <th>
+                    <th class="text-left">
                         Host
                     </th>
                     <th>
@@ -66,7 +66,7 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="hop in vm.traceroute">
-                    <td>
+                    <td class="text-left">
                         {{hop.host || '*'}}
                     </td>
                     <td>
