@@ -34,12 +34,22 @@ function getRoutes() {
         }
     });
 
+    routes.push({
+        method: 'GET',
+        path: '/api/network/traceroute',
+        handler: function(request, reply) {
+            var origin = request.headers['x-forwarded-for'] || request.info.remoteAddress;
+
+            return reply(getTraceRoute(origin));
+        }
+    });
+
     return routes;
 }
 
 function getExternalIp() {
     var dig = spawn('dig', ['+short', 'myip.opendns.com', '@resolver1.opendns.com']);
-    dig.stdout.setEncoding("utf8");
+    dig.stdout.setEncoding('utf8');
 
     var promise = new Promise(function(resolve) {
         dig.stdout.on('data', function(data) {
@@ -52,4 +62,80 @@ function getExternalIp() {
     });
 
     return promise;
+}
+
+function getTraceRoute(origin) {
+    origin = 'google.com';
+
+    var traceroute = spawn('traceroute', [origin]);
+    traceroute.stdout.setEncoding('utf8');
+
+    var tracerouteOut = '';
+
+    var promise = new Promise(function(resolve) {
+        traceroute.stdout.on('data', function(data) {
+           tracerouteOut += data;
+        });
+
+        traceroute.on('close', function() {
+            tracerouteOut = tracerouteOut.trim();   // Remove last newline to blank line.
+
+            var hops = tracerouteOut.split("\n");
+            hops = hops.splice(1, hops.length - 1); // Remove starting traceroute header with the hostname.
+
+            hops = formatHops(hops);
+
+            resolve({ traceroute: hops });
+        });
+    });
+
+    return promise;
+}
+
+function formatHops(hops) {
+    hops = stripNonHops(hops);
+
+    hops = hops.map(function(hop) {
+        if(hop) {
+            var line = hop.trim().split(' ');
+
+            hop = {
+                host: line[2],
+                address: line[3].replace('(', '').replace(')', ''),
+                averageResponse: (parseFloat(line[5]) + parseFloat(line[8]) + parseFloat(line[11])) / 3
+            };
+        }
+
+        return hop;
+    });
+
+    return hops;
+}
+
+function stripNonHops(hops) {
+    hops = hops.map(function(hop) {
+        if(hop.includes('* * *')) {
+            hop = null;
+        }
+
+        return hop;
+    });
+
+    hops.reverse();
+
+    // Leave null hops in between responding hops.
+    var nonNullReached = false;
+
+    var strippedHops = [];
+
+    hops.forEach(function(hop) {
+        if(hop || nonNullReached) {
+            nonNullReached = true;
+            strippedHops.push(hop);
+        }
+    });
+
+    strippedHops.reverse();
+
+    return strippedHops;
 }
