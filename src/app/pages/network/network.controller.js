@@ -11,7 +11,7 @@
         var vm = this;
 
         vm.external = null;
-        vm.traceroute = null;
+        vm.traceroute = [];
         vm.tracerouteLoading = true;
 
         NetworkResource.getExternal(function(response) {
@@ -20,7 +20,10 @@
 
         NetworkResource.getTraceroute(function(response) {
             vm.tracerouteLoading = false;
-            vm.traceroute = response.traceroute;
+
+            angular.forEach(response.traceroute, function(hop) {
+               vm.traceroute.push(hop);
+            });
         });
 
         vm.startDisabled = false;
