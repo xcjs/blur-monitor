@@ -40,7 +40,7 @@ function getRoutes() {
         handler: function(request, reply) {
             var origin = request.headers['x-forwarded-for'] || request.info.remoteAddress;
 
-            return reply(getTraceRoute(origin));
+            return reply(getTraceRoute(origin.trim()));
         }
     });
 
