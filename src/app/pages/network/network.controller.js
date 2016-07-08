@@ -43,6 +43,7 @@
         vm.getStats = {
             method: 'GET',
             progress: 0,
+            total: 0,
             speed: 0,
             response: null,
             loaded: 0,
@@ -53,6 +54,7 @@
         vm.postStats = {
             method: 'POST',
             progress: 0,
+            total: 0,
             speed: 0,
             response: null,
             loaded: 0,
@@ -72,8 +74,10 @@
             vm.currentDataSet = dataSet;
 
             dataSet.progress = 0;
+            dataSet.total = 0;
             dataSet.speed = 0;
             dataSet.payload = null;
+            dataSet.loaded = 0;
             dataSet.lastLoaded = 0;
             dataSet.lastEnd = performance.now();
 
@@ -83,8 +87,10 @@
                 BandwidthResource.get();
 
                 vm.postStats.progress = 0;
+                vm.postStats.total = 0;
                 vm.postStats.speed = 0;
                 vm.postStats.payload = null;
+                vm.postStats.loaded = 0;
                 vm.postStats.lastLoaded = 0;
                 vm.postStats.lastEnd = null;
             } else if(dataSet.method === 'POST') {
