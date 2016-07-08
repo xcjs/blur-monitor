@@ -15,18 +15,10 @@
         vm.external = null;
         vm.traceroute = [];
         vm.tracerouteLoading = true;
+        vm.interfaces = null;
 
         NetworkResource.get(function(response) {
-            angular.forEach(response, function(bindings, networkInterface) {
-                if(!networkInterface.includes('$')) {
-                    angular.forEach(bindings, function(binding) {
-                        vm.bindings.push({
-                            interface: networkInterface,
-                            data: binding
-                        });
-                    });
-                }
-            });
+            vm.interfaces = response;
         });
 
         NetworkResource.getExternal(function(response) {
