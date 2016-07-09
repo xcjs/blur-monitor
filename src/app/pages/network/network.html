@@ -98,34 +98,46 @@
             <div ng-show="vm.tracerouteLoading" class="text-center">
                 <i class="ion-load-c animated spinner"></i>
             </div>
-            <table ng-show="!vm.tracerouteLoading" class="table table-bordered">
-                <thead>
-                    <tr class="black-muted-bg">
-                        <th class="text-left">
-                            Host
-                        </th>
-                        <th>
-                            Address
-                        </th>
-                        <th>
-                            Avg. Response
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="hop in vm.traceroute">
-                        <td class="text-left">
-                            {{hop.host || '*'}}
-                        </td>
-                        <td>
-                            {{hop.address || '*'}}
-                        </td>
-                        <td>
-                            {{hop.averageResponse ? hop.averageResponse.toFixed(2) + ' ms' : '*'}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <ol>
+                <li ng-repeat="hop in vm.traceroute">
+                    <h5>
+                        {{hop.host || '*'}}
+                    </h5>
+                    <p>
+                        {{hop.address || '*'}}
+                        in
+                        {{hop.averageResponse ? hop.averageResponse.toFixed(2) + ' ms' : '*'}}
+                    </p>
+                </li>
+            </ol>
+            <!--<table ng-show="!vm.tracerouteLoading" class="table table-bordered">-->
+                <!--<thead>-->
+                    <!--<tr class="black-muted-bg">-->
+                        <!--<th class="text-left">-->
+                            <!--Host-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--Address-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--Avg. Response-->
+                        <!--</th>-->
+                    <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                    <!--<tr ng-repeat="hop in vm.traceroute">-->
+                        <!--<td class="text-left">-->
+                            <!--{{hop.host || '*'}}-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--{{hop.address || '*'}}-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--{{hop.averageResponse ? hop.averageResponse.toFixed(2) + ' ms' : '*'}}-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
         </div>
     </div>
 </div>
