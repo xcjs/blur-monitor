@@ -17,24 +17,6 @@
         vm.tracerouteLoading = true;
         vm.interfaces = null;
 
-        NetworkResource.get(function(response) {
-            vm.interfaces = response;
-        });
-
-        NetworkResource.getExternal(function(response) {
-           vm.external = response.ipAddress;
-        });
-
-        NetworkResource.getTraceroute(function(response) {
-            vm.tracerouteLoading = false;
-
-            angular.forEach(response.traceroute, function(hop) {
-               vm.traceroute.push(hop);
-            });
-
-            $timeout();
-        });
-
         vm.startDisabled = false;
         vm.startTest = startTest;
 
@@ -62,6 +44,16 @@
             lastEnd: null
         };
 
+        vm.getTraceroute = getTraceroute;
+
+        NetworkResource.get(function(response) {
+            vm.interfaces = response;
+        });
+
+        NetworkResource.getExternal(function(response) {
+            vm.external = response.ipAddress;
+        });
+
         BandwidthResource.addProgressCallback(function(event) {
             progressCallback(vm.currentDataSet, event);
         });
@@ -69,6 +61,8 @@
         BandwidthResource.addCompleteCallback(function(event) {
             completeCallback(vm.currentDataSet, event);
         });
+
+        getTraceroute();
 
         function startTest(dataSet) {
             vm.currentDataSet = dataSet;
@@ -131,6 +125,18 @@
             } else if(dataSet.method === 'POST') {
                 vm.startDisabled = false;
             }
+        }
+
+        function getTraceroute() {
+            NetworkResource.getTraceroute(function(response) {
+                vm.traceroute.length = 0;
+
+                angular.forEach(response.traceroute, function(hop) {
+                    vm.traceroute.push(hop);
+                });
+
+                vm.tracerouteLoading = false;
+            });
         }
     }
 })();
