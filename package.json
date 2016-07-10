@@ -1,5 +1,5 @@
 {
-  "name": "blur_admin",
+  "name": "blur_monitor",
   "version": "1.2.0",
   "devDependencies": {
     "browser-sync": "~2.9.11",
