@@ -65,6 +65,10 @@
             });
 
             vm.topCpuProcesses = processes.slice(0, 10);
+
+            angular.forEach(vm.topCpuProcesses, function(process) {
+                process.displayName = process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'
+            });
         }
 
         function getTopMemoryProcesses() {
@@ -75,6 +79,10 @@
             });
 
             vm.topMemoryProcesses = processes.slice(0, 10);
+
+            angular.forEach(vm.topMemoryProcesses, function(process) {
+                process.displayName = process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'
+            });
         }
 
         function mapProcessesToTree(processes) {

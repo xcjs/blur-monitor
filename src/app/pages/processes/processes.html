@@ -3,7 +3,7 @@
         <ol>
             <li ng-repeat="process in vm.topCpuProcesses" title="{{process.command}}">
                 <i class="ion-gear-a"></i>
-                {{process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'}}
+                {{process.displayName}}
                 ({{process.processorUtilization}}%)
             </li>
         </ol>
@@ -15,7 +15,7 @@
         <ol>
             <li ng-repeat="process in vm.topMemoryProcesses" title="{{process.command}}">
                 <i class="ion-gear-a"></i>
-                {{process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'}}
+                {{process.displayName}}
                 ({{process.memoryUtilization}})%
             </li>
         </ol>
