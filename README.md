@@ -54,25 +54,25 @@ Currently the tool can be used to monitor the following information:
 	sudo npm install -g npm
 	```
 4. Install bower and gulp:
-```bash
-sudo npm install -g bower gulp
-```
+	```bash
+	sudo npm install -g bower gulp
+	```
 5. Install NPM dependencies:
-```bash
-npm install
-```
+	```bash
+	npm install
+	```
 6. Install Bower dependencies:
-```bash
-bower install
-```
+	```bash
+	bower install
+	```
 7. Perform a build:
-```bash
-gulp build
-```
+	```bash
+	gulp build
+	```
 8. Serve the fully assembled project:
-```bash
-node api/server.js serve:dist
-```
+	```bash
+	node api/server.js serve:dist
+	```
 
 The server will launch on port 3000. A proxy server through Apache or NGINX is recommended for production environments.
 
