@@ -33,6 +33,8 @@
 
         vm.getProcesses = getProcesses;
 
+        var topSize = 20;
+
         getProcesses(true);
 
         vm.interval = $interval(function() {
@@ -64,7 +66,7 @@
                 return b.processorUtilization - a.processorUtilization;
             });
 
-            vm.topCpuProcesses = processes.slice(0, 10);
+            vm.topCpuProcesses = processes.slice(0, topSize);
 
             angular.forEach(vm.topCpuProcesses, function(process) {
                 process.displayName = process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'
@@ -78,7 +80,7 @@
                 return b.memoryUtilization - a.memoryUtilization;
             });
 
-            vm.topMemoryProcesses = processes.slice(0, 10);
+            vm.topMemoryProcesses = processes.slice(0, topSize);
 
             angular.forEach(vm.topMemoryProcesses, function(process) {
                 process.displayName = process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'
