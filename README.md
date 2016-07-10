@@ -45,9 +45,9 @@ Currently the tool can be used to monitor the following information:
 ## Installation
 
 1. Ensure all necessary commands are installed through your distro's package manager:
-```bash
-sudo apt-get install -y dig free traceroute
-``` 
+	```bash
+	sudo apt-get install -y dig free traceroute
+	``` 
 2. Install the latest version of Node.js for your operating system.
 3. Ensure that NPM is up to date:
 	```bash
