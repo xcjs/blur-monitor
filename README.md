@@ -1,25 +1,26 @@
-# BlurAdmin Angular admin panel front-end framework
+# BlurMonitor
+## Web Based Remote Performance Monitoring
+BlurMonitor is a web based performance monitoring tool for Linux systems based on the [BlurAdmin Template](https://github.com/akveo/blur-admin)
 
-Customizable admin panel framework made with :heart: by [Akveo team](http://akveo.com/). Follow us on [Twitter](https://twitter.com/akveo_inc) to get latest news about this template first!
+It may work on other POSIX systems, but this is untested.
 
-### Demo
-**[Mint version demo](http://akveo.com/blur-admin-mint/)**             |  **[Blur version demo](http://akveo.com/blur-admin/)**
-:-------------------------:|:-------------------------:
-![Mint version demo](http://i.imgur.com/A3TMviJ.png)  |  ![Blur version demo](http://i.imgur.com/EAoiK2O.jpg)
+Currently the tool can be used to monitor the following information:
 
-### Documentation
-Installation, customization and other useful articles: https://akveo.github.io/blur-admin/
+* Processor model
+* Processor clock speed on variable clock speed models
+* Processor Utilization
+* Memory utilization
+* Swap utilization
+* Mount points and disk utilization
+* External IP address
+* Network interfaces and bindings
+* Client-resolvable bandwidth
+* Reverse traceroute to client
+* The top processor hungry tasks
+* The top memory hungry tasks
+* All running tasks and their relationships
 
-## How can I support developers?
-- Star our GitHub repo
-- Create pull requests, submit bugs, suggest new features or documentation updates
-- Follow us on [Twitter](https://twitter.com/akveo_inc)
-- Like our page on [Facebook](https://www.facebook.com/akveo/)
-
-## Can I hire you guys?
-Yes! We are available for hire. Visit [our homepage](http://akveo.com/) or simply leave us a note to contact@akveo.com. We will be happy to work with you!
-
-## Features
+## Features from BlurAdmin
 * Responsive layout
 * High resolution
 * Bootstrap CSS Framework
@@ -27,15 +28,12 @@ Yes! We are available for hire. Visit [our homepage](http://akveo.com/) or simpl
 * Gulp build
 * AngularJS
 * Jquery
-* Charts (amChart, Chartist, Chart.js, Morris)
-* Maps (Google, Leaflet, amMap)
+* Charts (Chart.js)
 * etc
+
+## Issues
+Please report issues and enhancements. This is a project seeking to change and grow!
 
 License
 -------------
 <a href=/LICENSE.txt target="_blank">MIT</a> license.
-
-### From akveo
-
-Enjoy!
-We're always happy to hear your feedback.
