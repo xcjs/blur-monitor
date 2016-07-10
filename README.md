@@ -80,7 +80,7 @@ Sample Apache configuration:
 
 ### /etc/apache2/sites-enabled/001-blur.conf
 ```
-&lt;VirtualHost *:80&gt;
+<VirtualHost *:80>
 	ServerName blur.mydomain.com
 	
 	# Disable compression for the bandwidth test. All other requests are already compress.
@@ -88,7 +88,7 @@ Sample Apache configuration:
 	
 	ProxyRequests On
 	ProxyPass / http://127.0.0.1:3000/
-&lt;/VirtualHost&gt;
+</VirtualHost>
 ```
 
 ## Issues
