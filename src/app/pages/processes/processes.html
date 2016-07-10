@@ -1,5 +1,35 @@
 <div class="row">
+    <div ba-panel ba-panel-title="Top Processor Intensive Tasks" ba-panel-class="with-scroll">
+        <ol>
+            <li ng-repeat="process in vm.topCpuProcesses" title="{{process.command}}">
+                <i class="ion-gear-a"></i>
+                {{process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'}}
+                ({{process.processorUtilization}}%)
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div ba-panel ba-panel-title="Top Memory Intensive Tasks" ba-panel-class="with-scroll">
+        <ol>
+            <li ng-repeat="process in vm.topMemoryProcesses" title="{{process.command}}">
+                <i class="ion-gear-a"></i>
+                {{process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'}}
+                ({{process.memoryUtilization}})%
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
     <div ba-panel ba-panel-title="Process Tree" ba-panel-class="with-scroll tree-panel">
+        <div class="button-wrapper">
+            <button type="button" class="btn btn-primary btn-raised btn-with-icon" ng-click="vm.getProcesses(true)">
+                <i class="ion-loop"></i>
+                Refresh Tree
+            </button>
+        </div>
         <div js-tree="vm.treeConfig" ng-model="vm.treeProcesses"></div>
     </div>
 </div>

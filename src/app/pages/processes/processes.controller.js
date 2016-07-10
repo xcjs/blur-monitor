@@ -15,7 +15,7 @@
         vm.treeConfig = {
             core: {
                 multiple: false,
-                worker: false
+                worker: true
             },
             types: {
                 process: {
@@ -28,22 +28,56 @@
 
         vm.treeProcesses = [];
 
-        vm.interval = $interval(function() {
-            getProcesses();
-        }, refreshInterval * 10);
+        vm.topCpuProcesses = [];
+        vm.topMemoryProcesses = [];
 
-        $scope.$on('$destroy', function() {
+        vm.getProcesses = getProcesses;
+
+        getProcesses(true);
+
+        vm.interval = $interval(function() {
+            getProcesses(false);
+        }, refreshInterval);
+
+        $scope.$on("$destroy", function() {
             $interval.cancel(vm.interval);
         });
 
-        function getProcesses() {
+        function getProcesses(updateTree) {
             ProcessesResource.query().$promise.then(function(response) {
                 vm.processes = response;
-                mapProcesses(vm.processes);
+
+                if(updateTree) {
+                    mapProcessesToTree(vm.processes);
+                } else {
+                    // Update top lists instead.
+                    getTopCpuProcesses();
+                    getTopMemoryProcesses();
+                }
             });
         }
 
-        function mapProcesses(processes) {
+        function getTopCpuProcesses() {
+            var processes = angular.copy(vm.processes);
+
+            processes.sort(function(a, b) {
+                return b.processorUtilization - a.processorUtilization;
+            });
+
+            vm.topCpuProcesses = processes.slice(0, 10);
+        }
+
+        function getTopMemoryProcesses() {
+            var processes = angular.copy(vm.processes);
+
+            processes.sort(function(a, b) {
+                return b.memoryUtilization - a.memoryUtilization;
+            });
+
+            vm.topMemoryProcesses = processes.slice(0, 10);
+        }
+
+        function mapProcessesToTree(processes) {
             vm.treeProcesses.length = 0;
 
             angular.forEach(processes, function(process) {
@@ -53,12 +87,14 @@
                     type: 'process',
                     text: process.command + ' (' + process.processorUtilization + '%), (' + process.memoryUtilization + '%)',
                     state: {
-                        opened: true
+                        opened: process.parentId === '0'
                     }
                 };
 
                 vm.treeProcesses.push(node);
             });
+
+            vm.treeConfig.version++;
         }
     }
 })();
