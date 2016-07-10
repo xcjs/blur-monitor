@@ -83,7 +83,7 @@ Sample Apache configuration:
 <VirtualHost *:80>
 	ServerName blur.mydomain.com
 	
-	# Disable compression for the bandwidth test. All other requests are already compress.
+	# Disable compression for the bandwidth test. All other requests are already compressed	.
 	SetEnv no-gzip 1
 	
 	ProxyRequests On
