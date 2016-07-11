@@ -38,8 +38,10 @@ Currently the tool can be used to monitor the following information:
 * Node.js with NPM
 * Gulp
 * Bower
+* cat command
 * dig command through dnsutils (Not always installed by default.)
 * free command
+* ps command
 * traceroute command (Not always installed by default.)
 
 ## Installation
@@ -47,7 +49,7 @@ Currently the tool can be used to monitor the following information:
 1. Ensure all necessary commands are installed through your distro's package manager:
 	```bash
 	sudo apt-get install -y dnsutils traceroute
-	``` 
+	```
 2. Install the latest version of Node.js for your operating system.
 3. Ensure that NPM is up to date:
 	```bash
@@ -82,10 +84,10 @@ Sample Apache configuration:
 ```
 <VirtualHost *:80>
 	ServerName blur.mydomain.com
-	
-	# Disable compression for the bandwidth test. All other requests are already compressed	.
+
+	# Disable compression for the bandwidth test. All other requests are already compressed.
 	SetEnv no-gzip 1
-	
+
 	ProxyRequests On
 	ProxyPass / http://127.0.0.1:3000/
 </VirtualHost>
