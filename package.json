@@ -61,6 +61,7 @@
     "nodejs-disks": "^0.2.1",
     "ps-node": "^0.1.1",
     "psjson": "^0.1.0",
-    "randomstring": "^1.1.5"
+    "randomstring": "^1.1.5",
+    "yargs": "^4.8.0"
   }
 }

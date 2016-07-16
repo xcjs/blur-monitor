@@ -73,10 +73,12 @@ Currently the tool can be used to monitor the following information:
 	```
 8. Serve the fully assembled project:
 	```bash
-	node api/server.js serve:dist
+	node ./blurmonitor serve:dist
 	```
 
-The server will launch on port 3000. A proxy server through Apache or NGINX is recommended for production environments.
+The server will launch on port 3000 by default, or you can reference the command line flags.
+
+A proxy server through Apache or NGINX is recommended for production environments.
 
 Sample Apache configuration:
 
@@ -91,6 +93,25 @@ Sample Apache configuration:
 	ProxyRequests On
 	ProxyPass / http://127.0.0.1:3000/
 </VirtualHost>
+```
+
+## Command Line Flags
+
+### Port (-p)
+```bash
+	node ./blurmonitor -p 3000
+```
+
+### Environment (-e)
+
+The environment can be either prod (default) or dev.
+
+```bash
+	node ./blurmonitor -e dev
+```
+
+```bash
+	node ./blurmonitor -e prod
 ```
 
 ## Issues
