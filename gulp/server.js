@@ -15,12 +15,12 @@ var util = require('util');
 
 var proxyMiddleware = require('http-proxy-middleware');
 
-function browserSyncInit(baseDir, browser, taskName) {
+function browserSyncInit(environment, browser) {
     browser = browser === undefined ? 'default' : browser;
 
     nodemon({
         script: './api/server.js',
-        args: [taskName],
+        args: ['-e', environment],
         ext: 'js'
     }).on('start', function() {
         browserSync.instance = browserSync.init({
@@ -36,17 +36,17 @@ function browserSyncInit(baseDir, browser, taskName) {
 }
 
 gulp.task('serve', ['watch'], function () {
-    browserSyncInit([path.join(conf.paths.tmp, '/serve'), conf.paths.src], undefined, 'serve');
+    browserSyncInit('dev');
 });
 
 gulp.task('serve:dist', ['build'], function () {
-    browserSyncInit(conf.paths.dist, undefined, 'serve:dist');
+    browserSyncInit('prod');
 });
 
 gulp.task('serve:e2e', ['inject'], function () {
-    browserSyncInit([conf.paths.tmp + '/serve', conf.paths.src], []);
+    browserSyncInit('dev');
 });
 
 gulp.task('serve:e2e-dist', ['build'], function () {
-    browserSyncInit(conf.paths.dist, []);
+    browserSyncInit('prod');
 });

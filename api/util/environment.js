@@ -2,12 +2,11 @@
 
 'use strict';
 
-var process = require('process');
-var includes = require('array-includes');
+var argv = require('yargs').argv;
 
 var environments = {
-    development: 'serve',
-    production: 'serve:dist'
+    dev: 'dev',
+    prod: 'prod'
 };
 
 var currentEnvironment = getCurrentEnvironment();
@@ -18,6 +17,7 @@ function getEnvironment() {
     var env = {
         environments: environments,
         current: getCurrentEnvironment(),
+        port: getPort(),
         staticRoot: getStaticRoot()
     };
 
@@ -25,21 +25,21 @@ function getEnvironment() {
 }
 
 function getCurrentEnvironment() {
-    var env = null;
-
-    if(includes(process.argv, environments.production)) {
-        env = environments.production;
+    if(argv.e === environments.prod) {
+        return environments.prod;
     } else {
-        env = environments.development;
+        return environments.dev;
     }
+}
 
-    return env;
+function getPort() {
+    return argv.p || 3000;
 }
 
 function getStaticRoot() {
     var staticRoot = null;
 
-    if(currentEnvironment === environments.production) {
+    if(currentEnvironment === environments.prod) {
         staticRoot = './release/';
     } else {
         staticRoot = ['./.tmp/serve/', './src/'];
