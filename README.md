@@ -73,7 +73,7 @@ Currently the tool can be used to monitor the following information:
 	```
 8. Serve the fully assembled project:
 	```bash
-	node ./blurmonitor serve:dist
+	node ./blurmonitor
 	```
 
 The server will launch on port 3000 by default, or you can reference the command line flags.
