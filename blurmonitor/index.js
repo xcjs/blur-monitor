@@ -5,7 +5,10 @@
 
 var Hapi = require('hapi');
 var Inert = require('inert');
+var argv = require('yargs').argv;
 var path = require('path');
+
+var env = require('./util/environment');
 
 var server = new Hapi.Server({
     connections: {
@@ -18,7 +21,7 @@ var server = new Hapi.Server({
 });
 
 server.connection({
-    port: 3000
+    port: env.port
 });
 
 server.register(Inert, () => {});
