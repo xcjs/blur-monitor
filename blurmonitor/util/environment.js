@@ -25,10 +25,10 @@ function getEnvironment() {
 }
 
 function getCurrentEnvironment() {
-    if(argv.e === environments.prod) {
-        return environments.prod;
-    } else {
+    if(argv.e === environments.dev) {
         return environments.dev;
+    } else {
+        return environments.prod;
     }
 }
 

@@ -73,7 +73,7 @@ Currently the tool can be used to monitor the following information:
 	```
 8. Serve the fully assembled project:
 	```bash
-	node api/server.js serve:dist
+	node ./blurmonitor serve:dist
 	```
 
 The server will launch on port 3000 by default, or you can reference the command line flags.
@@ -99,19 +99,19 @@ Sample Apache configuration:
 
 ### Port (-p)
 ```bash
-	node api/server.js -p 3000
+	node ./blurmonitor -p 3000
 ```
 
 ### Environment (-e)
 
-The environment can be either prod or dev (default).
+The environment can be either prod (default) or dev.
 
 ```bash
-	node api/server.js -e dev
+	node ./blurmonitor -e dev
 ```
 
 ```bash
-	node api/server.js -e prod
+	node ./blurmonitor -e prod
 ```
 
 ## Issues
