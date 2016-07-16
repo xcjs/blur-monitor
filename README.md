@@ -76,11 +76,7 @@ Currently the tool can be used to monitor the following information:
 	node api/server.js serve:dist
 	```
 
-The server will launch on port 3000 by default, or you can specify the port using the -p flag: 
-
-```bash
-	node api/server.js -p 3000 serve:dist
-```
+The server will launch on port 3000 by default, or you can reference the command line flags.
 
 A proxy server through Apache or NGINX is recommended for production environments.
 
@@ -97,6 +93,25 @@ Sample Apache configuration:
 	ProxyRequests On
 	ProxyPass / http://127.0.0.1:3000/
 </VirtualHost>
+```
+
+## Command Line Flags
+
+### Port (-p)
+```bash
+	node api/server.js -p 3000
+```
+
+### Environment (-e)
+
+The environment can be either prod or dev.
+
+```bash
+	node api/server.js -e dev
+```
+
+```bash
+	node api/server.js -e prod
 ```
 
 ## Issues
