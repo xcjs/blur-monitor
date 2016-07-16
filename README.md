@@ -104,7 +104,7 @@ Sample Apache configuration:
 
 ### Environment (-e)
 
-The environment can be either prod or dev.
+The environment can be either prod or dev (default).
 
 ```bash
 	node api/server.js -e dev
