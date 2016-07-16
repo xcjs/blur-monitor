@@ -76,7 +76,13 @@ Currently the tool can be used to monitor the following information:
 	node api/server.js serve:dist
 	```
 
-The server will launch on port 3000. A proxy server through Apache or NGINX is recommended for production environments.
+The server will launch on port 3000 by default, or you can specify the port using the -p flag: 
+
+```bash
+	node api/server.js -p 3000 serve:dist
+```
+
+A proxy server through Apache or NGINX is recommended for production environments.
 
 Sample Apache configuration:
 
