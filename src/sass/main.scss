@@ -25,14 +25,14 @@ body.mobile .body-bg {
 }
 
 @-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
+   from {
+     -webkit-transform: rotate(0deg);
+   }
 
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
+   to {
+     -webkit-transform: rotate(360deg);
+   }
+ }
 
 @-moz-keyframes spin {
   from {
@@ -44,8 +44,7 @@ body.mobile .body-bg {
   }
 }
 
-@-ms-keyframes spin
-{
+@-ms-keyframes spin {
   from {
     -ms-transform: rotate(0deg);
   }
@@ -74,4 +73,60 @@ body.mobile .body-bg {
   height: 5rem;
   margin: auto;
   width: 5rem;
+}
+
+@-webkit-keyframes horizontal-fill {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@-moz-keyframes horizontal-fill {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@-ms-keyframes horizontal-fill {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes horizontal-fill {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.horizontal-filler {
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: horizontal-fill;
+  -moz-animation-name: horizontal-fill;
+  animation-name: horizontal-fill;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  animation-timing-function: linear;
+  background-color: $default-text;
+  display: block;
+  margin: 1rem 0;
+  height: 1px;
 }

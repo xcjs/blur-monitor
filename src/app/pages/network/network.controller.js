@@ -44,6 +44,7 @@
             lastEnd: null
         };
 
+
         NetworkResource.get(function(response) {
             vm.interfaces = response;
         });
