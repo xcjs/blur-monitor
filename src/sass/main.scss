@@ -20,6 +20,10 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
+body.mobile .body-bg {
+  background-color: transparent;
+}
+
 @-webkit-keyframes spin {
   from {
     -webkit-transform: rotate(0deg);
