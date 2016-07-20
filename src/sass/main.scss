@@ -115,6 +115,14 @@ body.mobile .body-bg {
   }
 }
 
+.horizontal-filler-wrapper {
+  border-left: $default-text 1px solid;
+  border-right: $default-text 1px solid;
+  height: 1rem;
+  margin: 1rem 0;
+  max-width: 15rem;
+}
+
 .horizontal-filler {
   -webkit-animation-iteration-count: infinite;
   -moz-animation-iteration-count: infinite;
@@ -127,6 +135,5 @@ body.mobile .body-bg {
   animation-timing-function: linear;
   background-color: $default-text;
   display: block;
-  margin: 1rem 0;
-  height: 1px;
+  height: 1rem;
 }

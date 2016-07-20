@@ -102,7 +102,9 @@
                     <h5>
                         {{hop.host || '*'}}
                     </h5>
-                    <div class="horizontal-filler" style="animation-duration: {{(hop.averageResponse * 10).toFixed(2)}}s;"></div>
+                    <div class="horizontal-filler-wrapper" ng-show="hop.averageResponse">
+                        <div class="horizontal-filler" style="animation-duration: {{(hop.averageResponse * 10).toFixed(2)}}s;"></div>
+                    </div>
                     <p>
                         {{hop.address || '*'}}
                         in
