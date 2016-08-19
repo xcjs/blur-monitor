@@ -43,7 +43,7 @@ routers.forEach(function (router) {
     });
 });
 
-server.start((err) => {
+server.start(function(err) {
     if (err) {
         throw err;
     }
