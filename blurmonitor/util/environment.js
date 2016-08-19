@@ -3,6 +3,8 @@
 'use strict';
 
 var argv = require('yargs').argv;
+var conf = require('../../gulp/conf');
+var path = require('path');
 
 var environments = {
     dev: 'dev',
@@ -40,9 +42,9 @@ function getStaticRoot() {
     var staticRoot = null;
 
     if(currentEnvironment === environments.prod) {
-        staticRoot = './release/';
+        staticRoot = conf.paths.dist;
     } else {
-        staticRoot = ['./.tmp/serve/', './src/'];
+        staticRoot = [path.join(conf.paths.tmp, 'serve'), conf.paths.src];
     }
 
     return staticRoot;
