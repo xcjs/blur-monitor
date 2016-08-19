@@ -5,7 +5,6 @@
 
 var Hapi = require('hapi');
 var Inert = require('inert');
-var argv = require('yargs').argv;
 var path = require('path');
 
 var env = require('./util/environment');
