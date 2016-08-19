@@ -24,7 +24,7 @@ server.connection({
     port: env.port
 });
 
-server.register(Inert, () => {});
+server.register(Inert);
 
 var routers = [
     require('./routes/static'),
