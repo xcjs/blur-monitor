@@ -9,6 +9,8 @@
         'SystemResource',
         'ProcessorResource',
         'processorPercentageThreshold',
+        'MemoryResource',
+        'memoryPercentageThreshold',
         'moment',
         DashboardController]);
 
@@ -43,11 +45,7 @@
         }
 
         function alertDisplayed(key) {
-            if(_.find(vm.alerts, {key: key})) {
-                return true;
-            } else {
-                return false;
-            }
+            return _.find(vm.alerts, {key: key});
         }
 
         function removeAlert(key) {
