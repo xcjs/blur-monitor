@@ -42,10 +42,52 @@
             checkDisks();
         }
 
+        function alertDisplayed(key) {
+            if(_.find(vm.alerts, {key: key})) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function removeAlert(key) {
+            _.remove(vm.alerts, {
+                key: key
+            });
+        }
+
         function checkProcessor() {
             ProcessorResource.getLoadAvg().$promise.then(function(loadAverages) {
+                removeAlert('processorDown');
+
+                if(loadAverages[0] > processorPercentageThreshold) {
+                    if(!alertDisplayed('load1')) {
+                        vm.alerts.push({
+                            key: 'load1',
+                            class: 'bg-warning',
+                            icon: 'ion-arrow-graph-up-right',
+                            message: 'The 1 minute load average of the processor is greater than ' + processorPercentageThreshold + '%.'
+                        });
+                    }
+                } else {
+                    removeAlert('load1');
+                }
+
+                if(loadAverages[1] > processorPercentageThreshold) {
+                    if(!alertDisplayed('load5')) {
+                        vm.alerts.push({
+                            key: 'load5',
+                            class: 'bg-warning',
+                            icon: 'ion-arrow-graph-up-right',
+                            message: 'The 5 minute load average of the processor is greater than ' + processorPercentageThreshold + '%.'
+                        });
+                    }
+                }else {
+                    removeAlert('load5');
+                }
+
                 if(loadAverages[2] > processorPercentageThreshold) {
-                    if(!_.find(vm.alerts, {key: 'load15'})) {
+                    if(!alertDisplayed('load15')) {
                         vm.alerts.push({
                             key: 'load15',
                             class: 'bg-warning',
@@ -54,13 +96,12 @@
                         });
                     }
                 } else {
-                    _.remove(vm.alerts, {
-                        key: 'load15'
-                    });
+                    removeAlert('load15');
                 }
             }, function() {
                 vm.alerts.push({
-                    class: 'bg-error',
+                    key: 'processorDown',
+                    class: 'bg-danger',
                     icon: 'ion-alert',
                     message: 'The processor service isn\'t responding.'
                 });
