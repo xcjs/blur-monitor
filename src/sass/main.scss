@@ -6,6 +6,12 @@
 h1 > img {
   height: 1em;
   vertical-align: bottom;
+  width: auto;
+}
+
+td > img {
+  height: 1.5em;
+  width: auto;
 }
 
 .navbar-right {
