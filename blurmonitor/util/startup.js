@@ -12,23 +12,20 @@ module.exports = {
     run: run
 };
 
-function run() {
-    loadDistributorLogo();
+function run(cb) {
+    loadDistributorLogo(cb);
 }
 
-function loadDistributorLogo() {
-    var systemDistributorLogo = '/usr/share/icons/hicolor/48x48/apps/distributor-logo.png';
+function loadDistributorLogo(cb) {
+    var logoName = 'distributor-logo.png';
+    var systemDistributorLogo = path.join('/usr/share/icons/hicolor/48x48/apps', logoName);
+
+    var debugPath = path.join(env.conf.paths.tmp, 'serve', 'assets/img', logoName);
+    var releasePath = path.join(env.conf.paths.dist, 'assets/img', logoName);
 
     try {
-        var localPath = 'distributor-logo.png';
-
-        if(env.current === env.environments.prod) {
-            localPath = path.join(env.conf.paths.tmp, 'serve', 'assets/img', localPath);
-        } else {
-            localPath = path.join(env.conf.paths.dist, 'assets/img', localPath);
-        }
-
-        fsExtra.copy(systemDistributorLogo, localPath, { replace: true });
+        fsExtra.copy(systemDistributorLogo, debugPath, { replace: true }, cb);
+        fsExtra.copy(systemDistributorLogo, releasePath, { replace: true }, cb);
     } catch(e) {
         console.error(e);
     }
