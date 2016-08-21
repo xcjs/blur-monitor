@@ -17,6 +17,7 @@ module.exports = getEnvironment();
 
 function getEnvironment() {
     var env = {
+        conf: conf,
         environments: environments,
         current: getCurrentEnvironment(),
         port: getPort(),

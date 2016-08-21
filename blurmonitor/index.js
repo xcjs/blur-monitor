@@ -8,6 +8,7 @@ var Inert = require('inert');
 var path = require('path');
 
 var env = require('./util/environment');
+var startup = require('./util/startup');
 
 var server = new Hapi.Server({
     connections: {
@@ -41,6 +42,8 @@ routers.forEach(function (router) {
         server.route(route);
     });
 });
+
+startup.run();
 
 server.start(function(err) {
     if (err) {
