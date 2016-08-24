@@ -15,7 +15,8 @@
         DashboardController]);
 
     function DashboardController($scope, $interval, _, refreshInterval, SystemResource,
-                                 ProcessorResource, processorPercentageThreshold, moment) {
+                                 ProcessorResource, processorPercentageThreshold,
+                                 MemoryResource, memoryPercentageThreshold, moment) {
         var vm = this;
 
         vm.system = null;
@@ -55,7 +56,7 @@
         }
 
         function checkProcessor() {
-            ProcessorResource.getLoadAvg().$promise.then(function(loadAverages) {
+            ProcessorResource.getUtilization().$promise.then(function(loadAverages) {
                 removeAlert('processorDown');
 
                 if(loadAverages[0] > processorPercentageThreshold) {
@@ -107,7 +108,43 @@
         }
 
         function checkMemory() {
+            MemoryResource.get().$promise.then(function(memory) {
+                removeAlert('memoryDown');
 
+                if(memory.actualUsed / memory.actualTotal * 100 > memoryPercentageThreshold) {
+                    if(!alertDisplayed('memoryHigh')) {
+                        vm.alerts.push({
+                            key: 'memoryHigh',
+                            class: 'bg-warning',
+                            icon: 'ion-arrow-graph-up-right',
+                            message: 'The memory utilization is greater than ' + memoryPercentageThreshold + '%.'
+                        });
+                    }
+                } else {
+                    removeAlert('memoryHigh');
+                }
+
+                if(memory.swapUsed / memory.swapTotal * 100 > memoryPercentageThreshold) {
+                    if(!alertDisplayed('swapHigh')) {
+                        vm.alerts.push({
+                            key: 'swapHigh',
+                            class: 'bg-warning',
+                            icon: 'ion-arrow-graph-up-right',
+                            message: 'The swap utilization is greater than ' + memoryPercentageThreshold + '%.'
+                        });
+                    }
+                } else {
+                    removeAlert('swapHigh');
+                }
+
+            }, function() {
+                vm.alerts.push({
+                    key: 'memoryDown',
+                    class: 'bg-danger',
+                    icon: 'ion-alert',
+                    message: 'The memory service isn\'t responding.'
+                });
+            });
         }
 
         function checkDisks() {
