@@ -89,9 +89,7 @@ function parseNewFree(stdout) {
     var used = parseInt(line1[2], 10);
 
     var free = parseInt(line1[3], 10);
-
-    // buffers + cache
-    var cache = parseInt(line1[5], 10) + parseInt(line1[6], 10);
+    var cache = parseInt(line1[5], 10);
 
     var available = parseInt(line1[6], 10);
 
