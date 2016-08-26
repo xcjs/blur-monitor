@@ -27,6 +27,10 @@ td > img {
   text-align: left;
 }
 
+.panel > .panel-heading {
+  height: auto;
+}
+
 .panel.panel-blur {
   background: rgba(0, 0, 0, 0.5);
 }

@@ -12,6 +12,8 @@
     function DisksController($scope, $interval, refreshInterval, DisksResource, bootstrapFactory) {
         var vm = this;
 
+        var columns = 3;
+
         vm.diskColumns = [];
 
         vm.chartsData = [];
@@ -46,7 +48,7 @@
                     }
                 });
 
-                bootstrapFactory.splitCollectionForColumns(disks, vm.diskColumns, 2);
+                bootstrapFactory.splitCollectionForColumns(disks, vm.diskColumns, columns);
 
                 angular.forEach(disks, function(disk, index) {
                     if(!angular.isArray(vm.chartsData[index])) {
@@ -61,8 +63,8 @@
                     vm.chartsLabels[index][1] = 'Free: ' + disk.available;
                 });
 
-                bootstrapFactory.splitCollectionForColumns(vm.chartsData, vm.chartsDataColumns, 2);
-                bootstrapFactory.splitCollectionForColumns(vm.chartsLabels, vm.chartsLabelsColumns, 2);
+                bootstrapFactory.splitCollectionForColumns(vm.chartsData, vm.chartsDataColumns, columns);
+                bootstrapFactory.splitCollectionForColumns(vm.chartsLabels, vm.chartsLabelsColumns, columns);
             });
         }
     }
