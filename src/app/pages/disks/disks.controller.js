@@ -25,6 +25,7 @@
             showTooltips: false
         };
 
+        getDisks();
         vm.interval = $interval(function() {
             getDisks();
         }, refreshInterval);
