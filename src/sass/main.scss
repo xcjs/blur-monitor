@@ -148,3 +148,29 @@ body.mobile .body-bg {
   display: block;
   height: 1rem;
 }
+
+ul.pie-legend {
+  align-content: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+ul.pie-legend > li {
+  flex-basis: 50%;
+  flex-shrink: 1;
+  padding-left: 0;
+  text-align: right;
+}
+
+ul.pie-legend > li:nth-child(even) {
+  text-align: left;
+}
+
+ul.pie-legend > li > span {
+  display: inline-block;
+  margin: auto 1rem;
+  position: static;
+  vertical-align: middle;
+}
