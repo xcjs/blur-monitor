@@ -98,12 +98,16 @@
                     removeAlert('load15');
                 }
             }, function() {
-                vm.alerts.push({
-                    key: 'processorDown',
-                    class: 'bg-danger',
-                    icon: 'ion-alert',
-                    message: 'The processor service isn\'t responding.'
-                });
+                if(!alertDisplayed('processorDown')) {
+                    vm.alerts.push({
+                        key: 'processorDown',
+                        class: 'bg-danger',
+                        icon: 'ion-alert',
+                        message: 'The processor service isn\'t responding.'
+                    });
+                } else {
+                    removeAlert('processorDown');
+                }
             });
         }
 
