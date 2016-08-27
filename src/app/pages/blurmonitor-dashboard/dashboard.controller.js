@@ -138,12 +138,16 @@
                 }
 
             }, function() {
-                vm.alerts.push({
-                    key: 'memoryDown',
-                    class: 'bg-danger',
-                    icon: 'ion-alert',
-                    message: 'The memory service isn\'t responding.'
-                });
+                if(!alertDisplayed('memoryDown')) {
+                    vm.alerts.push({
+                        key: 'memoryDown',
+                        class: 'bg-danger',
+                        icon: 'ion-alert',
+                        message: 'The memory service isn\'t responding.'
+                    });
+                } else {
+                    removeAlert('memoryDown');
+                }
             });
         }
 
