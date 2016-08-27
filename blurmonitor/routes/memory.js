@@ -60,6 +60,8 @@ function parseOldFree(stdout) {
     var available = free + cache;
     var used = total - available;
 
+    var shared = parseInt(line1[4], 10);
+
     var swapTotal = parseInt(line3[1], 10);
     var swapUsed = parseInt(line3[2], 10);
     var swapFree = parseInt(line3[3], 10);
