@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div ba-panel ba-panel-title="Active Memory Utilization" ba-panel-class="with-scroll ">
            <h4>{{vm.memory.total}} MB</h4>
             <canvas id="pie" class="chart chart-pie" chart-data="vm.activeChartData" chart-labels="vm.activeChartLabels"
@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div ba-panel ba-panel-title="Detailed Memory Utilization" ba-panel-class="with-scroll ">
             <h4>{{vm.memory.total}} MB</h4>
             <canvas id="pie" class="chart chart-pie" chart-data="vm.detailedChartData" chart-labels="vm.detailedChartLabels"
@@ -16,20 +16,9 @@
         </div>
     </div>
 
-</div>
-
-<div class="row">
-    <div class="col-md-6">
-        <div ba-panel ba-panel-title="Shared Memory" ba-panel-class="with-scroll ">
-            <h4>{{vm.memory.total}} MB</h4>
-            <canvas id="pie" class="chart chart-pie" chart-data="vm.sharedChartData" chart-labels="vm.sharedChartLabels"
-                    chart-legend="true" chart-options="vm.chartOptions"></canvas>
-        </div>
-    </div>
-
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div ba-panel ba-panel-title="Swap Utilization" ba-panel-class="with-scroll ">
-            <h4>{{vm.memory.swapTotal}} MB</h4>
+            <h4>{{vm.memory.swap.total}} MB</h4>
             <canvas id="pie" class="chart chart-pie" chart-data="vm.swapChartData" chart-labels="vm.swapChartLabels"
                     chart-legend="true" chart-options="vm.chartOptions"></canvas>
         </div>

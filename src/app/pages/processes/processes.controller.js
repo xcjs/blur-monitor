@@ -35,7 +35,7 @@
 
         var topSize = 20;
 
-        getProcesses(true);
+        getProcesses(false);
 
         vm.interval = $interval(function() {
             getProcesses(false);

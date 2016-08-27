@@ -5,10 +5,10 @@
 
 var Hapi = require('hapi');
 var Inert = require('inert');
-var argv = require('yargs').argv;
 var path = require('path');
 
 var env = require('./util/environment');
+var startup = require('./util/startup');
 
 var server = new Hapi.Server({
     connections: {
@@ -24,7 +24,7 @@ server.connection({
     port: env.port
 });
 
-server.register(Inert, () => {});
+server.register(Inert);
 
 var routers = [
     require('./routes/static'),
@@ -43,10 +43,12 @@ routers.forEach(function (router) {
     });
 });
 
-server.start((err) => {
-    if (err) {
-        throw err;
-    }
+startup.run(function() {
+    server.start(function(err) {
+        if (err) {
+            throw err;
+        }
 
-    console.log('Server running at:', server.info.uri);
+        console.log('Server running at:', server.info.uri);
+    });
 });

@@ -55,7 +55,8 @@
     "angular-xeditable": "~0.1.9",
     "ng-js-tree": "~0.0.7",
     "angular-resource": "1.4.8",
-    "angular-moment": "^0.10.3"
+    "angular-moment": "^0.10.3",
+    "lodash": "^4.15.0"
   },
   "overrides": {
     "amcharts": {

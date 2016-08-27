@@ -3,6 +3,7 @@
 'use strict';
 
 var diskInfo = require('nodejs-disks');
+var _ = require('lodash/array');
 
 module.exports = getRoutes();
 
@@ -36,12 +37,14 @@ function getDisks() {
                     function (err, data) {
                         var i = 0;
 
-                        data.forEach(function(item) {
+                        var uniqueDrives = _.uniq(data, 'mountpoint');
+
+                        uniqueDrives.forEach(function(item) {
                             item.id = i;
                             i++;
                         });
 
-                        resolve(data);
+                        resolve(uniqueDrives);
                     }
                 )
             }
@@ -57,8 +60,10 @@ function getDisk(id) {
             function (err, drives) {
                 diskInfo.drivesDetail(drives,
                     function (err, data) {
-                        data[id].id = id;
-                        resolve(data[id]);
+                        var uniqueDrives = _.uniq(data, 'mountpoint');
+
+                        uniqueDrives[id].id = id;
+                        resolve(uniqueDrives[id]);
                     }
                 )
             }

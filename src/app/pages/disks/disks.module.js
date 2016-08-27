@@ -18,7 +18,7 @@
                 controllerAs: 'vm',
                 title: 'Disks',
                 sidebarMeta: {
-                    icon: 'ion-android-folder',
+                    icon: 'fa fa-hdd-o',
                     order: 3
                 }
             });

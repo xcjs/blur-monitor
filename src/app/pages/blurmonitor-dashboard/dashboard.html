@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div ba-panel ba-panel-title="System Info" ba-panel-class="with-scroll ">
                 <table class="table table-bordered">
                     <tbody>
@@ -21,7 +21,10 @@
                         </tr>
                         <tr>
                             <th class="black-muted-bg">Distro</th>
-                            <td>{{vm.system.distro}}</td>
+                            <td>
+                                <img src="/assets/img/distributor-logo.png" img-load-error alt="Distributor Logo">
+                                {{vm.system.distro}}
+                            </td>
                         </tr>
                         <tr>
                             <th class="black-muted-bg">Uptime</th>
@@ -29,6 +32,19 @@
                         </tr>
                     </tbody>
                 </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div ba-panel="" ba-panel-title="Alerts" ba-panel-class="with-scroll ">
+            <p ng-if="vm.alerts.length === 0">
+                There are no alerts to display.
+            </p>
+            <div ng-if="vm.alerts.length > 0" ng-repeat="alert in vm.alerts track by $index" class="alert {{alert.class}} animated pulse">
+                <p>
+                    <i class="{{alert.icon}}"></i>
+                    {{alert.message}}
+                </p>
+            </div>
         </div>
     </div>
 </div>
