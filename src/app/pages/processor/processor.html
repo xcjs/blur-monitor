@@ -25,7 +25,7 @@
     </div>
 </div>
 
-<div class="row">
+<div ng-if="vm.chartData.length > 0" class="row">
     <div class="col-md-12">
         <div ba-panel ba-panel-title="Processor Utilization" ba-panel-class="with-scroll ">
             <canvas id="line" class="chart chart-line" chart-data="vm.chartData" chart-labels="vm.chartLabels"
