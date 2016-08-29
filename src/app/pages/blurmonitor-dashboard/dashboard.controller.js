@@ -21,6 +21,9 @@
 
         vm.system = null;
 
+        getSystemInfo();
+        determineAlerts();
+
         vm.interval = $interval(function() {
             getSystemInfo();
             determineAlerts();
