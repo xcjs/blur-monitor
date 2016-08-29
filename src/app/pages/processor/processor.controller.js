@@ -36,6 +36,7 @@
 
             vm.interval = null;
 
+            getProcessor();
             vm.interval = $interval(function() {
                 getProcessor();
             }, refreshInterval);
