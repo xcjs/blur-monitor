@@ -6,15 +6,19 @@
         '$interval',
         'refreshInterval',
         'MemoryResource',
+        'memoryPercentageThreshold',
         MemoryController]);
 
-    function MemoryController($scope, $interval, refreshInterval, MemoryResource) {
+    function MemoryController($scope, $interval, refreshInterval, MemoryResource, memoryPercentageThreshold) {
         var vm = this;
 
         vm.memory = {};
+        vm.memoryPercentageThreshold = memoryPercentageThreshold;
 
         vm.activeChartData = [];
         vm.activeChartLabels = [];
+
+        vm.usedMemoryPercent = 0;
 
         vm.detailedChartData = [];
         vm.detailedChartLabels = [];
@@ -24,6 +28,8 @@
         
         vm.swapChartData = [];
         vm.swapChartLabels = [];
+
+        vm.usedSwapPercent = 0;
 
         vm.chartOptions = {
             animation: false,
@@ -47,6 +53,8 @@
                 vm.activeChartData[0] = vm.memory.used;
                 vm.activeChartLabels[0] = buildChartLabel('Used', vm.memory.used);
 
+                vm.usedMemoryPercent = calcTotalMemPercent(vm.memory.used);
+
                 vm.activeChartData[1] = (vm.memory.total - vm.memory.used).toFixed(0);
                 vm.activeChartLabels[1] = buildChartLabel('Available', vm.activeChartData[1]);
 
@@ -68,6 +76,8 @@
 
                 vm.swapChartData[0] = vm.memory.swap.used;
                 vm.swapChartLabels[0] = buildChartLabel('Used', vm.memory.swap.used, calcSwapPercent);
+
+                vm.usedSwapPercent = calcSwapPercent(vm.swapChartData[0]);
 
                 vm.swapChartData[1] = (vm.memory.swap.total - vm.memory.swap.used).toFixed(2);
                 vm.swapChartLabels[1] = buildChartLabel('Free', vm.swapChartData[1], calcSwapPercent);
