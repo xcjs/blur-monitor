@@ -31,6 +31,10 @@ td > img {
   height: auto;
 }
 
+.panel-danger .panel-heading {
+  background: rgba(237, 120, 120, .5);
+}
+
 .panel.panel-blur {
   background: rgba(0, 0, 0, 0.5);
 }
