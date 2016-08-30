@@ -1,26 +1,15 @@
 <div ng-repeat="row in vm.processorInfoColumns" ng-init="outerIndex = $index" class="row">
     <div ng-repeat="processor in row" ng-init="innerIndex = $index" class="col-sm-3">
-        <div ba-panel ba-panel-title="Processor {{outerIndex + innerIndex}}" ba-panel-class="with-scroll ">
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <th class="black-muted-bg">
-                            Model
-                        </th>
-                        <td>
-                            {{processor.model}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="black-muted-bg">
-                            Speed
-                        </th>
-                        <td>
-                            {{processor.speed}} MHz
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div ba-panel
+             ba-panel-title="Processor {{outerIndex + innerIndex}} - {{vm.chartData[$index][vm.chartData[$index].length - 1]}}%"
+             ba-panel-class="with-scroll"
+             ng-class="{'panel-danger': vm.chartData[$index][vm.chartData[$index].length - 1] >= vm.processorPercentageThreshold}">
+            <p>
+                {{processor.model}}
+            </p>
+            <p>
+                {{processor.speed}} MHz
+            </p>
         </div>
     </div>
 </div>

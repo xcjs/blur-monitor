@@ -9,14 +9,17 @@
         'ProcessorResource',
         'ProcessorStats',
         'bootstrapFactory',
+        'processorPercentageThreshold',
         ProcessorController]);
 
         function ProcessorController($scope, $interval, refreshInterval, maxSnapshots, ProcessorResource, ProcessorStats,
-        bootstrapFactory) {
+        bootstrapFactory, processorPercentageThreshold) {
             var vm = this;
 
             vm.processorInfo = [];
             vm.processorInfoColumns = [];
+
+            vm.processorPercentageThreshold = processorPercentageThreshold;
 
             vm.chartData = [];
             vm.chartLabels = [];
