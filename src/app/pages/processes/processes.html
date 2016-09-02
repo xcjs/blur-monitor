@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-6">
-        <div ba-panel ba-panel-title="Top Processor Intensive Tasks" ba-panel-class="with-scroll">
-            <ol>
+        <div ng-if="vm.topCpuProcesses.length > 0" ba-panel ba-panel-title="Top Processor Intensive Tasks" ba-panel-class="with-scroll">
+            <ol class="half-height">
                 <li ng-repeat="process in vm.topCpuProcesses" title="{{process.command}}">
                     <i class="ion-gear-a"></i>
                     {{process.displayName}}
@@ -12,8 +12,8 @@
     </div>
 
     <div class="col-md-6">
-        <div ba-panel ba-panel-title="Top Memory Intensive Tasks" ba-panel-class="with-scroll">
-            <ol>
+        <div ng-if="vm.topMemoryProcesses.length > 0" ba-panel ba-panel-title="Top Memory Intensive Tasks" ba-panel-class="with-scroll">
+            <ol class="half-height">
                 <li ng-repeat="process in vm.topMemoryProcesses" title="{{process.command}}">
                     <i class="ion-gear-a"></i>
                     {{process.displayName}}
