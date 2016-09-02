@@ -8,7 +8,7 @@
         'BandwidthResource',
         NetworkController]);
 
-    function NetworkController($scope, $timeout, NetworkResource, BandwidthResource) {
+    function NetworkController($scope, NetworkResource, BandwidthResource) {
         var vm = this;
 
         vm.bindings = [];
