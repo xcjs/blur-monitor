@@ -3,7 +3,6 @@
 
     angular.module('BlurMonitor.pages.network').controller('NetworkController', [
         '$scope',
-        '$timeout',
         'NetworkResource',
         'BandwidthResource',
         NetworkController]);
