@@ -33,8 +33,6 @@
 
         vm.getProcesses = getProcesses;
 
-        var topSize = 20;
-
         getProcesses(false);
 
         vm.interval = $interval(function() {
@@ -60,13 +58,15 @@
         }
 
         function getTopCpuProcesses() {
-            var processes = angular.copy(vm.processes);
-
-            processes.sort(function(a, b) {
-                return b.processorUtilization - a.processorUtilization;
+            vm.topCpuProcesses = vm.processes.filter(function(process) {
+                if(parseFloat(process.processorUtilization) > 0) {
+                    return process;
+                }
             });
 
-            vm.topCpuProcesses = processes.slice(0, topSize);
+            vm.topCpuProcesses.sort(function(a, b) {
+                return b.processorUtilization - a.processorUtilization;
+            });
 
             angular.forEach(vm.topCpuProcesses, function(process) {
                 process.displayName = process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'
@@ -74,13 +74,15 @@
         }
 
         function getTopMemoryProcesses() {
-            var processes = angular.copy(vm.processes);
-
-            processes.sort(function(a, b) {
-                return b.memoryUtilization - a.memoryUtilization;
+            vm.topMemoryProcesses = vm.processes.filter(function(process) {
+                if(parseFloat(process.memoryUtilization) > 0) {
+                    return process;
+                }
             });
 
-            vm.topMemoryProcesses = processes.slice(0, topSize);
+            vm.topMemoryProcesses.sort(function(a, b) {
+                return b.memoryUtilization - a.memoryUtilization;
+            });
 
             angular.forEach(vm.topMemoryProcesses, function(process) {
                 process.displayName = process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'
