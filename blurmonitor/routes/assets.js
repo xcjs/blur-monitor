@@ -11,6 +11,14 @@ function getRoutes() {
 
     routes.push({
         method: 'GET',
+        path: '/api/assets/apps',
+        handler: function (request, reply) {
+            return reply(assets.getAssets('apps'));
+        }
+    });
+
+    routes.push({
+        method: 'GET',
         path: '/api/assets/distros',
         handler: function (request, reply) {
             return reply(assets.getAssets('distros'));
