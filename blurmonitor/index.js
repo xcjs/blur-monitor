@@ -8,7 +8,6 @@ var Inert = require('inert');
 var path = require('path');
 
 var env = require('./util/environment');
-var startup = require('./util/startup');
 
 var server = new Hapi.Server({
     connections: {
@@ -44,12 +43,10 @@ routers.forEach(function (router) {
     });
 });
 
-startup.run(function() {
-    server.start(function(err) {
-        if (err) {
-            throw err;
-        }
+server.start(function(err) {
+    if (err) {
+        throw err;
+    }
 
-        console.log('Server running at:', server.info.uri);
-    });
+    console.log('Server running at:', server.info.uri);
 });

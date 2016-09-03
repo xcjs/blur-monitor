@@ -12,7 +12,7 @@ module.exports = {
 
 function getAssets(type) {
     var assetPath = Array.isArray(env.staticRoot) ?
-        path.join('./', env.staticRoot[0], 'assets/img/app') :
+        path.join('./', env.staticRoot[1], 'assets/img/app') :
         path.join('./', env.staticRoot, 'assets/img/app');
 
     switch(type) {
@@ -31,13 +31,14 @@ function getAssets(type) {
 function listDirectory(path) {
     var promise = new Promise(function (resolve, reject) {
         fs.readdir(path, function(err, assets) {
-            var assets = assets.map(function(asset) {
-                return(asset.substr(0, asset.lastIndexOf('.')));
-            });
-
             if(!err) {
+                var assets = assets.map(function(asset) {
+                    return(asset.substr(0, asset.lastIndexOf('.')));
+                });
+
                 resolve(assets);
             } else {
+                console.error(err);
                 reject(err);
             }
         });
