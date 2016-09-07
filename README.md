@@ -121,3 +121,9 @@ Please report issues and enhancements. This is a project seeking to change and g
 ## License
 
 <a href=/LICENSE.txt target="_blank">MIT</a> license.
+
+## Art Licenses
+
+Included icons are courtesy of the former Flattr icon project: https://github.com/NitruxSA/luv-icon-theme
+
+Additional icons courtesy of KDA Web Technologies: http://icons.kdaweb.com/
