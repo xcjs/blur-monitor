@@ -22,8 +22,8 @@
                     <tr>
                         <th class="black-muted-bg">Distro</th>
                         <td>
-                            <img src="/assets/img/distributor-logo.png" img-load-error alt="Distributor Logo">
-                            {{vm.system.distro}}
+                            <img ng-src="/assets/img/app/distros/{{vm.system.distro.id}}.svg" img-load-error alt="Distributor Logo">
+                            {{vm.system.distro.description}}
                         </td>
                     </tr>
                     <tr>

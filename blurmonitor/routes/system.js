@@ -4,7 +4,7 @@
 'use strict';
 
 var os = require('os');
-var exec = require('child_process').exec;
+var lsbRelease = require('../services/lsb-release');
 
 module.exports = getRoutes();
 
@@ -24,8 +24,15 @@ function getRoutes() {
             };
 
             var promise = new Promise(function (resolve) {
-                getDistro().then(function (result) {
-                    response.distro = result;
+                lsbRelease.getRelease.then(function (release) {
+                    release = lsbRelease.parse(release);
+
+                    response.distro = {};
+                    response.distro.id = release.DISTRIB_ID;
+                    response.distro.release = release.DISTRIB_RELEASE;
+                    response.distro.codeName = release.DISTRIB_CODENAME;
+                    response.distro.description = release.DISTRIB_DESCRIPTION;
+
                     resolve(response);
                 });
             });
@@ -35,41 +42,4 @@ function getRoutes() {
     });
 
     return routes;
-}
-
-function getDistro() {
-    var promise = new Promise(function (resolve) {
-        // Unescaped command: cat /etc/lsb-release | grep "DISTRIB_DESCRIPTION" | sed -e 's/[^"]*"\([^"]*\)".*/\1/'
-        var command =
-            "cat /etc/lsb-release | grep \"DISTRIB_DESCRIPTION\" | sed -e 's/[^\"]*\"\\([^\"]*\\)\".*/\\1/'";
-
-        var cb = function (out) {
-            resolve(out);
-        };
-
-        shell(command, cb);
-    });
-
-    return promise;
-}
-
-function shell(command, callback) {
-    exec(command, function (error, stdout, stderr) {
-        if (error) {
-            // If for some reason the command fails, fallback to os.type.
-            callback(os.type());
-            return;
-        }
-
-        var eolLength = os.EOL.length;
-        var finalNewLine = stdout.substr(
-            stdout.length - eolLength,
-            stdout.length);
-
-        if (finalNewLine === os.EOL) {
-            stdout = stdout.substr(0, stdout.length - eolLength);
-        }
-
-        callback(stdout, stderr, error);
-    });
 }

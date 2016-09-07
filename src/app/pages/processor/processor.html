@@ -1,5 +1,5 @@
 <div ng-repeat="row in vm.processorInfoColumns" ng-init="outerIndex = $index" class="row">
-    <div ng-repeat="processor in row" ng-init="innerIndex = $index" class="col-sm-3">
+    <div ng-repeat="processor in row" ng-init="innerIndex = $index" class="col-md-3">
         <div ba-panel
              ba-panel-title="Processor {{outerIndex + innerIndex}} - {{vm.chartData[$index][vm.chartData[$index].length - 1]}}%"
              ba-panel-class="with-scroll"

@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('BlurMonitor.pages.processes', [
+        'BlurMonitor.assets',
         'BlurMonitor.config',
         'ngResource'
     ])

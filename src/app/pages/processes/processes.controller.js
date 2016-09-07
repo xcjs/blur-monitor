@@ -6,9 +6,10 @@
         '$interval',
         'refreshInterval',
         'ProcessesResource',
+        'AssetsResource',
         ProcessesController]);
 
-    function ProcessesController($scope, $interval, refreshInterval, ProcessesResource) {
+    function ProcessesController($scope, $interval, refreshInterval, ProcessesResource, AssetsResource) {
         var vm = this;
         vm.processes = [];
 
@@ -31,13 +32,24 @@
         vm.topCpuProcesses = [];
         vm.topMemoryProcesses = [];
 
+        vm.processAssets = [];
+
         vm.getProcesses = getProcesses;
 
-        getProcesses(false);
+        AssetsResource.getApps(function(appAssets) {
+            vm.processAssets = appAssets;
 
-        vm.interval = $interval(function() {
+            angular.forEach(appAssets, function(appAsset) {
+                vm.treeConfig.types[appAsset] = {};
+                vm.treeConfig.types[appAsset].icon = '/assets/img/app/apps/' + appAsset + '.svg';
+            });
+
             getProcesses(false);
-        }, refreshInterval);
+
+            vm.interval = $interval(function() {
+                getProcesses(false);
+            }, refreshInterval);
+        });
 
         $scope.$on("$destroy", function() {
             $interval.cancel(vm.interval);
@@ -96,7 +108,7 @@
                 var node = {
                     id: process.id,
                     parent: process.parentId !== '0' ? process.parentId : '#',
-                    type: 'process',
+                    type: getTreeTypeFromCommand(process.command),
                     text: process.command + ' (' + process.processorUtilization + '%), (' + process.memoryUtilization + '%)',
                     state: {
                         opened: process.parentId === '0'
@@ -107,6 +119,24 @@
             });
 
             vm.treeConfig.version++;
+        }
+
+        function getTreeTypeFromCommand(command) {
+            var process = command;
+
+            if(process.indexOf(' ') > -1) {
+                process = command.substr(0, command.indexOf(' '));
+            }
+
+            if(process.indexOf('/') > -1 && process.indexOf('[') === -1) {
+                process = process.substr(process.lastIndexOf('/') + 1, process.length - process.lastIndexOf('/'));
+            }
+
+            if(!vm.processAssets.includes(process)) {
+                process = 'process';
+            }
+
+            return process;
         }
     }
 })();
