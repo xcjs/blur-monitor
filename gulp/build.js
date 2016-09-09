@@ -101,7 +101,7 @@ gulp.task('fonts', function () {
 
 gulp.task('other', ['copyVendorImages'], function () {
     var fileFilter = $.filter(function (file) {
-        return file.stat.isFile();
+        return file.stat.isFile() || file.stat.isSymbolicLink();
     });
 
     return gulp.src([
