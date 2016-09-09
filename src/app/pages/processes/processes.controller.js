@@ -16,7 +16,7 @@
         vm.treeConfig = {
             core: {
                 multiple: false,
-                worker: true
+                worker: false
             },
             types: {
                 process: {
@@ -44,7 +44,7 @@
                 vm.treeConfig.types[appAsset].icon = '/assets/img/app/apps/' + appAsset + '.svg';
             });
 
-            getProcesses(false);
+            getProcesses(true);
 
             vm.interval = $interval(function() {
                 getProcesses(false);
@@ -60,7 +60,7 @@
                 vm.processes = response;
 
                 if(updateTree) {
-                    mapProcessesToTree(vm.processes);
+                        mapProcessesToTree(vm.processes);
                 } else {
                     // Update top lists instead.
                     getTopCpuProcesses();
