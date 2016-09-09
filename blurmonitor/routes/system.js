@@ -25,14 +25,7 @@ function getRoutes() {
 
             var promise = new Promise(function (resolve) {
                 lsbRelease.getRelease.then(function (release) {
-                    release = lsbRelease.parse(release);
-
-                    response.distro = {};
-                    response.distro.id = release.DISTRIB_ID;
-                    response.distro.release = release.DISTRIB_RELEASE;
-                    response.distro.codeName = release.DISTRIB_CODENAME;
-                    response.distro.description = release.DISTRIB_DESCRIPTION;
-
+                    response.distro = lsbRelease.parse(release);
                     resolve(response);
                 });
             });

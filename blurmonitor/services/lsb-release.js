@@ -31,5 +31,12 @@ function parseRelease(stdout) {
         }
     });
 
+    lsbRelease = {
+        id: release.DISTRIB_ID,
+        release: release.DISTRIB_RELEASE,
+        codeName: release.DISTRIB_CODENAME,
+        description: release.DISTRIB_DESCRIPTION
+    };
+
     return lsbRelease;
 }
