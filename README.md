@@ -9,7 +9,7 @@ Currently the tool can be used to monitor the following information:
 
 * Processor model
 * Processor clock speed on variable clock speed models
-* Processor Utilization
+* Processor utilization
 * Memory utilization
 * Swap utilization
 * Mount points and disk utilization
