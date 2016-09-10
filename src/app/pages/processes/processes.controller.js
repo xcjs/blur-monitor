@@ -81,7 +81,11 @@
             });
 
             angular.forEach(vm.topCpuProcesses, function(process) {
-                process.displayName = process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'
+                var iconName = getTreeTypeFromCommand(process.command);
+
+                process.displayName = process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...';
+                process.icon = '/assets/img/app/apps/' + iconName + '.svg';
+                process.iconFont = iconName === 'process';
             });
         }
 
@@ -97,7 +101,11 @@
             });
 
             angular.forEach(vm.topMemoryProcesses, function(process) {
-                process.displayName = process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'
+                var iconName = getTreeTypeFromCommand(process.command);
+
+                process.displayName = process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...';
+                process.icon = '/assets/img/app/apps/' + iconName + '.svg';
+                process.iconFont = iconName === 'process';
             });
         }
 
