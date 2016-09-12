@@ -28,11 +28,11 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div ba-panel ba-panel-title="Process Tree" ba-panel-class="with-scroll tree-panel">
+        <div ng-if="vm.treeProcesses.length > 0" ba-panel ba-panel-title="Process Tree" ba-panel-class="with-scroll tree-panel">
             <div class="button-wrapper">
                 <button type="button" class="btn btn-primary btn-raised btn-with-icon" ng-click="vm.getProcesses(true)">
                     <i class="ion-loop"></i>
-                    <span ng-if="vm.treeProcesses.length > 0">Refresh Tree</span>
+                    <span>Refresh Tree</span>
                 </button>
             </div>
             <div js-tree="vm.treeConfig" ng-model="vm.treeProcesses"></div>
