@@ -16,7 +16,7 @@
         vm.treeConfig = {
             core: {
                 multiple: false,
-                worker: true
+                worker: false
             },
             types: {
                 process: {
@@ -45,10 +45,11 @@
             });
 
             getProcesses(false);
+            getProcesses(true);
 
             vm.interval = $interval(function() {
                 getProcesses(false);
-            }, refreshInterval);
+            }, refreshInterval * 999999);
         });
 
         $scope.$on("$destroy", function() {
@@ -60,7 +61,7 @@
                 vm.processes = response;
 
                 if(updateTree) {
-                    mapProcessesToTree(vm.processes);
+                        mapProcessesToTree(vm.processes);
                 } else {
                     // Update top lists instead.
                     getTopCpuProcesses();
@@ -81,7 +82,11 @@
             });
 
             angular.forEach(vm.topCpuProcesses, function(process) {
-                process.displayName = process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'
+                var iconName = getTreeTypeFromCommand(process.command);
+
+                process.displayName = process.command;
+                process.icon = '/assets/img/app/apps/' + iconName + '.svg';
+                process.iconFont = iconName === 'process';
             });
         }
 
@@ -97,7 +102,11 @@
             });
 
             angular.forEach(vm.topMemoryProcesses, function(process) {
-                process.displayName = process.command.length <= 50 ? process.command : process.command.substring(0, 50) + '...'
+                var iconName = getTreeTypeFromCommand(process.command);
+
+                process.displayName = process.command;
+                process.icon = '/assets/img/app/apps/' + iconName + '.svg';
+                process.iconFont = iconName === 'process';
             });
         }
 
