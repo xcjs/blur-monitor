@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-md-6">
         <div ng-if="vm.topCpuProcesses.length > 0" ba-panel ba-panel-title="Top Processor Intensive Tasks" ba-panel-class="with-scroll">
-            <ol class="half-height">
+            <ol class="ordered-process-list half-height">
                 <li ng-repeat="process in vm.topCpuProcesses" title="{{process.command}}">
-                    <i ng-if="process.iconFont" class="ordered-process-list-icon ion-gear-a"></i>
-                    <i ng-if="!process.iconFont" class="ordered-process-list-icon" style="background-image: url({{process.icon}});"></i>
-                    {{process.displayName}}
-                    ({{process.processorUtilization}}%)
+                    <i ng-if="process.iconFont" class="list-icon ion-gear-a"></i>
+                    <i ng-if="!process.iconFont" class="list-icon" style="background-image: url({{process.icon}});"></i>
+                    <span class="process-name">{{process.displayName}}</span>
+                    <span class="process-util">({{process.processorUtilization}}%)</span>
                 </li>
             </ol>
         </div>
@@ -14,10 +14,10 @@
 
     <div class="col-md-6">
         <div ng-if="vm.topMemoryProcesses.length > 0" ba-panel ba-panel-title="Top Memory Intensive Tasks" ba-panel-class="with-scroll">
-            <ol class="half-height">
+            <ol class="ordered-process-list half-height">
                 <li ng-repeat="process in vm.topMemoryProcesses" title="{{process.command}}">
-                    <i ng-if="process.iconFont" class="ordered-process-list-icon ion-gear-a"></i>
-                    <i ng-if="!process.iconFont" class="ordered-process-list-icon" style="background-image: url({{process.icon}});"></i>
+                    <i ng-if="process.iconFont" class="list-icon ion-gear-a"></i>
+                    <i ng-if="!process.iconFont" class="list-icon" style="background-image: url({{process.icon}});"></i>
                     {{process.displayName}}
                     ({{process.memoryUtilization}})%
                 </li>

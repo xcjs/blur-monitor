@@ -171,18 +171,36 @@ ul.pie-legend > li {
   text-align: left;
 }
 
-.ordered-process-list-icon {
-  background-position: center center;
-  background-size: auto 12px;
-  background-repeat: no-repeat;
-  display: inline-block;
-  height: 12px;
-  line-height: 12px;
-  text-align: center;
-  vertical-align: middle;
-  width: 12px;
-}
-
 .jstree-default .jstree-themeicon-custom {
   background-size: auto 16px !important;
+}
+.ordered-process-list {
+  padding-left: 22px;
+
+  /* I wanted to use flexbox for this, but a bug involving Chrome and
+   text-overflow: ellipsis; interfered. */
+  .list-icon {
+    background-position: center center;
+    background-size: auto 12px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 12px;
+    line-height: 12px;
+    text-align: center;
+    vertical-align: middle;
+    width: 12px;
+  }
+
+  .process-name {
+    display: inline-block;
+    max-width: 66%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  .process-util {
+    float: right;
+  }
 }
