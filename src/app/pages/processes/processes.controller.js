@@ -4,12 +4,13 @@
     angular.module('BlurMonitor.pages.processes').controller('ProcessesController', [
         '$scope',
         '$interval',
+        '_',
         'refreshInterval',
         'ProcessesResource',
         'AssetsResource',
         ProcessesController]);
 
-    function ProcessesController($scope, $interval, refreshInterval, ProcessesResource, AssetsResource) {
+    function ProcessesController($scope, $interval, _, refreshInterval, ProcessesResource, AssetsResource) {
         var vm = this;
         vm.processes = [];
 
@@ -34,7 +35,10 @@
 
         vm.processAssets = [];
 
+        vm.searchTerm = null;
+
         vm.getProcesses = getProcesses;
+        vm.filterProcesses = filterProcesses;
 
         AssetsResource.getApps(function(appAssets) {
             vm.processAssets = appAssets;
@@ -49,7 +53,7 @@
 
             vm.interval = $interval(function() {
                 getProcesses(false);
-            }, refreshInterval * 999999);
+            }, refreshInterval);
         });
 
         $scope.$on("$destroy", function() {
@@ -61,7 +65,8 @@
                 vm.processes = response;
 
                 if(updateTree) {
-                        mapProcessesToTree(vm.processes);
+                    vm.searchTerm = null;
+                    mapProcessesToTree(vm.processes);
                 } else {
                     // Update top lists instead.
                     getTopCpuProcesses();
@@ -114,9 +119,15 @@
             vm.treeProcesses.length = 0;
 
             angular.forEach(processes, function(process) {
+                var parentId = '#';
+
+                if(_.find(processes, {id: process.parentId})) {
+                    parentId = process.parentId;
+                }
+
                 var node = {
                     id: process.id,
-                    parent: process.parentId !== '0' ? process.parentId : '#',
+                    parent: parentId, // process.parentId !== '0' ? process.parentId : '#',
                     type: getTreeTypeFromCommand(process.command),
                     text: process.command + ' (' + process.processorUtilization + '%), (' + process.memoryUtilization + '%)',
                     state: {
@@ -133,19 +144,31 @@
         function getTreeTypeFromCommand(command) {
             var process = command;
 
-            if(process.indexOf(' ') > -1) {
+            if (process.indexOf(' ') > -1) {
                 process = command.substr(0, command.indexOf(' '));
             }
 
-            if(process.indexOf('/') > -1 && process.indexOf('[') === -1) {
+            if (process.indexOf('/') > -1 && process.indexOf('[') === -1) {
                 process = process.substr(process.lastIndexOf('/') + 1, process.length - process.lastIndexOf('/'));
             }
 
-            if(!vm.processAssets.includes(process)) {
+            if (!vm.processAssets.includes(process)) {
                 process = 'process';
             }
 
             return process;
+        }
+
+        function filterProcesses() {
+            if(vm.searchTerm !== null && vm.searchTerm.length > 0) {
+                var filteredProcesses = vm.processes.filter(function (process) {
+                    return process.command.indexOf(vm.searchTerm) > -1;
+                });
+
+                mapProcessesToTree(filteredProcesses);
+            } else {
+                mapProcessesToTree(vm.processes);
+            }
         }
     }
 })();

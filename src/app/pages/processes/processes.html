@@ -28,12 +28,14 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div ng-if="vm.treeProcesses.length > 0" ba-panel ba-panel-title="Process Tree" ba-panel-class="with-scroll tree-panel">
-            <div class="button-wrapper">
-                <button type="button" class="btn btn-primary btn-raised btn-with-icon" ng-click="vm.getProcesses(true)">
-                    <i class="ion-loop"></i>
-                    Refresh Tree
-                </button>
+        <div ng-if="vm.treeConfig.version > 0" ba-panel ba-panel-title="Process Tree" ba-panel-class="with-scroll tree-panel">
+            <div class="row">
+                <div class="col-xs-1">
+                    <button type="button" class="btn btn-primary btn-icon" ng-click="vm.getProcesses(true)"><i class="ion-loop"></i></button>
+                </div>
+                <div class="form-group col-xs-11">
+                    <input type="text" class="form-control col-xs-9" id="process-search" placeholder="Filter Processes..." ng-change="vm.filterProcesses()" ng-model="vm.searchTerm">
+                </div>
             </div>
             <div js-tree="vm.treeConfig" ng-model="vm.treeProcesses"></div>
         </div>
