@@ -5,7 +5,8 @@
 
 h1 > img {
   height: 1em;
-  vertical-align: bottom;
+  padding: 0 .25em 0 0;
+  vertical-align: middle;
   width: auto;
 }
 
@@ -20,10 +21,17 @@ td > img {
 
 .navbar-right {
   float: right;
+  height: 100%;
+  max-width: 40%;
 }
 
-.navbar-text {
-  color: $primary-light;
+.hostname {
+  color: rgb(255, 255, 255);
+  font-size: 24px;
+  line-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .table > thead:first-child > tr:first-child > th.text-left,
