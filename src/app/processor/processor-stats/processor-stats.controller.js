@@ -3,8 +3,10 @@
 
     angular.module('BlurMonitor.processor').controller('ProcessorStatsController', ProcessorStatsController);
 
-    function ProcessorStatsController(ProcessorUtilizationCalculator) {
+    function ProcessorStatsController(ProcessorUtilizationCalculator, processorPercentageThreshold) {
         var vm = this;
+
+        vm.processorPercentageThreshold = processorPercentageThreshold;
 
         var previousSnapshot;
 
