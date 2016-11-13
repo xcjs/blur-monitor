@@ -4,7 +4,7 @@
     angular.module('BlurMonitor.processor').service('ProcessorResource', ProcessorResource);
 
     function ProcessorResource($resource) {
-        var Processor = $resource('/api/processor/:id', { id: '@id' }, {
+        var processor = $resource('/api/processor/:id', { id: '@id' }, {
             utilization: {
                 method: 'GET',
                 isArray: true,
@@ -12,8 +12,8 @@
             }
         });
 
-        this.query = Processor.query;
-        this.get = Processor.get;
-        this.utilization = Processor.utilization;
+        this.query = processor.query;
+        this.get = processor.get;
+        this.utilization = processor.utilization;
     }
 })();
