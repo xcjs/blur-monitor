@@ -1,10 +1,9 @@
 (function() {
     'use strict';
 
-    angular.module('BlurMonitor.pages.processor').service('ProcessorStats',
-        [ProcessorStats]);
+    angular.module('BlurMonitor.processor').service('ProcessorUtilizationCalculator', ProcessorUtilizationCalculator);
 
-    function ProcessorStats() {
+    function ProcessorUtilizationCalculator() {
         this.getUtilization = getUtilization;
 
         function getUtilization(previousSnapshot, currentSnapshot) {

@@ -1,18 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('BlurMonitor.pages.dashboard').controller('DashboardController', [
-        '$scope',
-        '$interval',
-        '_',
-        'refreshInterval',
-        'SystemResource',
-        'ProcessorResource',
-        'processorPercentageThreshold',
-        'MemoryResource',
-        'memoryPercentageThreshold',
-        'moment',
-        DashboardController]);
+    angular.module('BlurMonitor.pages.dashboard').controller('DashboardController', DashboardController);
 
     function DashboardController($scope, $interval, _, refreshInterval, SystemResource,
                                  ProcessorResource, processorPercentageThreshold,
@@ -59,7 +48,7 @@
         }
 
         function checkProcessor() {
-            ProcessorResource.getUtilization().$promise.then(function(loadAverages) {
+            ProcessorResource.utilization().$promise.then(function(loadAverages) {
                 removeAlert('processorDown');
 
                 if(loadAverages[0] > processorPercentageThreshold) {

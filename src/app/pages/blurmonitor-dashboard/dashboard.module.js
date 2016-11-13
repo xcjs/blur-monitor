@@ -4,7 +4,8 @@
     angular.module('BlurMonitor.pages.dashboard', [
         'angularMoment',
         'BlurMonitor.config',
-        'BlurMonitor.pages.system'
+        'BlurMonitor.pages.system',
+        'BlurMonitor.processor'
     ])
         .config(routeConfig);
 

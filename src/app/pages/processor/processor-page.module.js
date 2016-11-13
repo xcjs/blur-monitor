@@ -3,8 +3,8 @@
 
     angular.module('BlurMonitor.pages.processor', [
         'BlurMonitor.config',
-        'BlurMonitor.utilities',
-        'ngResource'
+        'BlurMonitor.processor',
+        'BlurMonitor.utilities'
     ])
         .config(routeConfig);
 

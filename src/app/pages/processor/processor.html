@@ -1,24 +1,11 @@
-<div ng-repeat="row in vm.processorInfoColumns" ng-init="outerIndex = $index" class="row">
-    <div ng-repeat="processor in row" ng-init="innerIndex = $index" class="col-md-3">
-        <div ba-panel
-             ba-panel-title="Processor {{outerIndex + innerIndex}} - {{vm.chartData[$index][vm.chartData[$index].length - 1]}}%"
-             ba-panel-class="with-scroll"
-             ng-class="{'panel-danger': vm.chartData[$index][vm.chartData[$index].length - 1] >= vm.processorPercentageThreshold}">
-            <p>
-                {{processor.model}}
-            </p>
-            <p>
-                {{processor.speed}} MHz
-            </p>
-        </div>
+<div ng-repeat="row in vm.processorStatsColumns" class="row">
+    <div ng-repeat="processor in row" class="col-md-3">
+        <processor-stats processor="processor"></processor-stats>
     </div>
 </div>
 
-<div ng-if="vm.chartData.length > 0" class="row">
-    <div class="col-md-12">
-        <div ba-panel ba-panel-title="Processor Utilization" ba-panel-class="with-scroll ">
-            <canvas id="line" class="chart chart-line" chart-data="vm.chartData" chart-labels="vm.chartLabels"
-                    chart-legend="true" chart-series="vm.chartSeries" chart-options="vm.chartOptions"></canvas>
-        </div>
+<div class="row">
+    <div class="col-xs-12">
+        <processor-line-chart processors="vm.processors"></processor-line-chart>
     </div>
 </div>
