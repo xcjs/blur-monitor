@@ -3,6 +3,7 @@
 
     angular.module('BlurMonitor.pages.memory', [
         'BlurMonitor.config',
+        'BlurMonitor.memory',
         'ngResource'
     ])
         .config(routeConfig);

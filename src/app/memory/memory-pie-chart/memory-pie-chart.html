@@ -1,0 +1,12 @@
+<div ba-panel ba-panel-title="{{vm.title}}" ba-panel-class="with-scroll"
+    ng-class="{'panel-danger': vm.usedPercent >= vm.memoryPercentageThreshold}"
+    ng-if="vm.memory">
+    <h4>{{vm.memory.total}} MB</h4>
+    <canvas
+            class="chart chart-pie"
+            chart-legend="true"
+            chart-options="vm.chartOptions"
+            chart-data="vm.chartData"
+            chart-labels="vm.chartLabels"
+    ></canvas>
+</div>
