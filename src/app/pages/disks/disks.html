@@ -1,13 +1,5 @@
-<div ng-repeat="row in vm.diskColumns" class="row" ng-init="outerIndex = $index">
-    <div ng-repeat="disk in row" class="col-md-4" ng-init="innerIndex = $index">
-        <div ba-panel ba-panel-title="{{disk.mountpoint}} ({{disk.drive}})" ba-panel-class="with-scroll ">
-            <h4>{{disk.total}}</h4>
-            <canvas id="pie{{outerIndex}}-{{innerIndex}}" class="chart chart-pie"
-                    chart-data="vm.chartsDataColumns[outerIndex][innerIndex]"
-                    chart-labels="vm.chartsLabelsColumns[outerIndex][innerIndex]"
-                    chart-legend="true"
-                    chart-options="vm.chartOptions">
-            </canvas>
-        </div>
+<div ng-repeat="row in vm.diskColumns" class="row">
+    <div ng-repeat="disk in row" class="col-md-4">
+        <disk-pie-chart disk="disk"></disk-pie-chart>
     </div>
 </div>

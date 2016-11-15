@@ -1,0 +1,9 @@
+<div ba-panel ba-panel-title="{{vm.disk.mountpoint}} ({{vm.disk.drive}})" ba-panel-class="with-scroll">
+    <h4>{{disk.total}}</h4>
+    <canvas class="chart chart-pie"
+        chart-options="vm.chartOptions"
+        chart-legend="true"
+        chart-data="vm.chartData"
+        chart-labels="vm.chartLabels"
+    ></canvas>
+</div>

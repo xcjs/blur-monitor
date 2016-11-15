@@ -1,43 +1,30 @@
 (function() {
     'use strict';
 
-    angular.module('BlurMonitor.pages.disks').controller('DisksController', [
-        '$scope',
-        '$interval',
-        'refreshInterval',
-        'DisksResource',
-        'bootstrapFactory',
-        DisksController]);
+    angular.module('BlurMonitor.pages.disks').controller('DisksController', DisksController);
 
-    function DisksController($scope, $interval, refreshInterval, DisksResource, bootstrapFactory) {
+    function DisksController($scope, $interval, refreshInterval, DiskResource, bootstrapFactory) {
         var vm = this;
 
         var columns = 3;
 
         vm.diskColumns = [];
 
-        vm.chartsData = [];
-        vm.chartsDataColumns = [];
+        registerInterval();
 
-        vm.chartsLabels = [];
-        vm.chartsLabelsColumns = [];
+        function registerInterval() {
+            loadDisks();
+            vm.interval = $interval(function() {
+                loadDisks();
+            }, refreshInterval);
 
-        vm.chartOptions = {
-            animation: false,
-            showTooltips: false
-        };
+            $scope.$on('$destroy', function() {
+                $interval.cancel(vm.interval);
+            });
+        }
 
-        getDisks();
-        vm.interval = $interval(function() {
-            getDisks();
-        }, refreshInterval);
-
-        $scope.$on('$destroy', function() {
-            $interval.cancel(vm.interval);
-        });
-
-        function getDisks() {
-            DisksResource.query(function(disks) {
+        function loadDisks() {
+            DiskResource.query(function(disks) {
                 disks.sort(function(diskA, diskB) {
                     if(diskA.mountpoint < diskB.mountpoint) {
                         return -1;
@@ -49,22 +36,6 @@
                 });
 
                 bootstrapFactory.splitCollectionForColumns(disks, vm.diskColumns, columns);
-
-                angular.forEach(disks, function(disk, index) {
-                    if(!angular.isArray(vm.chartsData[index])) {
-                        vm.chartsData[index] = [];
-                        vm.chartsLabels[index] = [];
-                    }
-
-                    vm.chartsData[index][0] = disk.usedPer;
-                    vm.chartsData[index][1] = disk.freePer;
-
-                    vm.chartsLabels[index][0] = 'Used: ' + disk.used;
-                    vm.chartsLabels[index][1] = 'Free: ' + disk.available;
-                });
-
-                bootstrapFactory.splitCollectionForColumns(vm.chartsData, vm.chartsDataColumns, columns);
-                bootstrapFactory.splitCollectionForColumns(vm.chartsLabels, vm.chartsLabelsColumns, columns);
             });
         }
     }
