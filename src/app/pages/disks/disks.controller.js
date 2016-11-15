@@ -6,8 +6,6 @@
     function DisksController($scope, $interval, refreshInterval, DiskResource, bootstrapFactory) {
         var vm = this;
 
-        var columns = 3;
-
         vm.diskColumns = [];
 
         registerInterval();
@@ -35,7 +33,7 @@
                     }
                 });
 
-                bootstrapFactory.splitCollectionForColumns(disks, vm.diskColumns, columns);
+                bootstrapFactory.splitCollectionForColumns(disks, vm.diskColumns, 3);
             });
         }
     }
