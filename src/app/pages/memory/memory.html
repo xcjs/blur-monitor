@@ -18,14 +18,3 @@
         <memory-detailed-pie-chart memory="vm.memory"></memory-detailed-pie-chart>
     </div>
 </div>
-
-<div class="row">
-    <div ng-if="vm.swapChartData.length > 0" class="col-md-4">
-        <div ba-panel ba-panel-title="Swap Utilization" ba-panel-class="with-scroll "
-             ng-class="{'panel-danger': vm.usedSwapPrecent >= vm.memoryPercentageThreshold}">
-            <h4>{{vm.memory.swap.total}} MB</h4>
-            <canvas id="pie" class="chart chart-pie" chart-data="vm.swapChartData" chart-labels="vm.swapChartLabels"
-                    chart-legend="true" chart-options="vm.chartOptions"></canvas>
-        </div>
-    </div>
-</div>
