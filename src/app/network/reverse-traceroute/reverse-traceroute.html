@@ -1,0 +1,23 @@
+<div ba-panel ba-panel-title="Reverse Traceroute" ba-panel-class="with-scroll" ng-class="{'panel-danger': vm.traceroute === null}">
+    <div ng-show="!vm.tracerouteDefined" class="text-center">
+        <i class="ion-load-c animated spinner"></i>
+    </div>
+    <ol ng-if="vm.traceroute !== null">
+        <li ng-repeat="hop in vm.traceroute track by $index">
+            <h5>
+                {{hop.host || '*'}}
+            </h5>
+            <div class="horizontal-filler-wrapper" ng-show="hop.averageResponse">
+                <div class="horizontal-filler" style="animation-duration: {{(hop.averageResponse * 100).toFixed(2)}}ms;"></div>
+            </div>
+            <p>
+                {{hop.address || '*'}}
+                in
+                {{hop.averageResponse ? hop.averageResponse.toFixed(2) + ' ms' : '*'}}
+            </p>
+        </li>
+    </ol>
+    <p ng-if="vm.traceroute === null">
+        The traceroute is not available. Is the traceroute package installed?
+    </p>
+</div>

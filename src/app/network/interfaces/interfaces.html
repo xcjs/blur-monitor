@@ -1,0 +1,42 @@
+<div ng-if="vm.interfaces" ba-panel ba-panel-title="Interfaces" ba-panel-class="with-scroll" ng-class="{'panel-danger': vm.interfaces === null}">
+    <div class="row container-fluid" ng-repeat="(interface, bindings) in vm.interfaces">
+        <h4>{{interface}}</h4>
+        <div class="col-md-6" ng-repeat="binding in bindings">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Address</h5>
+                </div>
+                <div class="col-md-6">
+                    <p>{{binding.address}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Netmask</h5>
+                </div>
+                <div class="col-md-6">
+                    <p>{{binding.netmask}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Family</h5>
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        {{binding.family}}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>MAC</h5>
+                </div>
+                <div class="col-md-6">
+                    <p>{{binding.mac}}</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

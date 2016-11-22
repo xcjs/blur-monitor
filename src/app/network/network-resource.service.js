@@ -1,8 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('BlurMonitor.pages.network').service('NetworkResource',
-        ['$resource', NetworkResource]);
+    angular.module('BlurMonitor.network').service('NetworkResource', NetworkResource);
 
     function NetworkResource($resource) {
         var Network = $resource('/api/network');

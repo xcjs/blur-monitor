@@ -1,111 +1,17 @@
 <div class="row">
     <div class="col-md-6">
-        <div ng-if="vm.external" ba-panel ba-panel-title="External IP" ba-panel-class="with-scroll ">
-            <p>
-                {{vm.external}}
-            </p>
-        </div>
+        <external-ip external-ip="vm.externalIp"></external-ip>
 
-        <div ba-panel ba-panel-title="Bandwidth Test" ba-panel-class="with-scroll ">
-            <h4>Download</h4>
-            <div class="progress">
-                <div class="progress-bar progress-bar-primary progress-bar active" role="progressbar"
-                     aria-valuenow="{{vm.getStats.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.getStats.progress}}%">
-                    {{vm.getStats.progress}}%
-                </div>
-            </div>
-            <p class="text-right">
-                {{vm.getStats.loaded}} kb / {{vm.getStats.total}} kb
-            </p>
-            <p class="text-right">
-                {{vm.getStats.speed}} kbps
-            </p>
-            <h4>Upload</h4>
-            <div class="progress">
-                <div class="progress-bar progress-bar-secondary progress-bar active" role="progressbar"
-                     aria-valuenow="{{vm.postStats.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.postStats.progress}}%">
-                    {{vm.postStats.progress}}%
-                </div>
-            </div>
-            <p class="text-right">
-                {{vm.postStats.loaded}} kb / {{vm.postStats.total}} kb
-            </p>
-            <p class="text-right">
-                {{vm.postStats.speed}} kbps
-            </p>
-            <div class="button-wrapper">
-                <button type="button" class="btn btn-primary btn-raised" ng-click="vm.startTest(vm.getStats)" ng-disabled="vm.startDisabled">Start Test</button>
-            </div>
-        </div>
+        <bandwidth-test></bandwidth-test>
     </div>
 
     <div class="col-md-6">
-        <div ba-panel ba-panel-title="Reverse Traceroute" ba-panel-class="with-scroll ">
-            <div ng-show="vm.tracerouteLoading" class="text-center">
-                <i class="ion-load-c animated spinner"></i>
-            </div>
-            <ol>
-                <li ng-repeat="hop in vm.traceroute track by $index">
-                    <h5>
-                        {{hop.host || '*'}}
-                    </h5>
-                    <div class="horizontal-filler-wrapper" ng-show="hop.averageResponse">
-                        <div class="horizontal-filler" style="animation-duration: {{(hop.averageResponse * 100).toFixed(2)}}ms;"></div>
-                    </div>
-                    <p>
-                        {{hop.address || '*'}}
-                        in
-                        {{hop.averageResponse ? hop.averageResponse.toFixed(2) + ' ms' : '*'}}
-                    </p>
-                </li>
-            </ol>
-        </div>
+        <reverse-traceroute traceroute="vm.traceroute"></reverse-traceroute>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12">
-        <div ng-if="vm.interfaces" ba-panel ba-panel-title="Interfaces" ba-panel-class="with-scroll ">
-            <div class="row container-fluid" ng-repeat="(interface, bindings) in vm.interfaces">
-                <h4>{{interface}}</h4>
-                <div class="col-md-6" ng-repeat="binding in bindings">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h5>Address</h5>
-                        </div>
-                        <div class="col-md-6">
-                            <p>{{binding.address}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h5>Netmask</h5>
-                        </div>
-                        <div class="col-md-6">
-                            <p>{{binding.netmask}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h5>Family</h5>
-                        </div>
-                        <div class="col-md-6">
-                            <p>
-                                {{binding.family}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h5>MAC</h5>
-                        </div>
-                        <div class="col-md-6">
-                            <p>{{binding.mac}}</p>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-            </div>
-        </div>
+        <interfaces interfaces="vm.interfaces"></interfaces>
     </div>
 </div>

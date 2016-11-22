@@ -3,7 +3,7 @@
 
     angular.module('BlurMonitor.pages.network', [
         'BlurMonitor.config',
-        'ngResource'
+        'BlurMonitor.network'
     ])
         .config(routeConfig);
 

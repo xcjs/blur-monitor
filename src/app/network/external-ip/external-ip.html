@@ -1,0 +1,9 @@
+<div ng-if="vm.externalIpDefined" ba-panel ba-panel-title="External IP" ba-panel-class="with-scroll" ng-class="{'panel-danger': vm.externalIp === null}">
+    <p ng-if="vm.externalIp">
+        {{vm.externalIp}}
+    </p>
+    <p ng-if="vm.externalIp === null">
+        The external IP address is not available. Is the dnsutils package
+        installed?
+    </p>
+</div>
