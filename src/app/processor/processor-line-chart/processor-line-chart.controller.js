@@ -6,6 +6,8 @@
     function ProcessorLineChartController(refreshInterval, maxSnapshots, ProcessorUtilizationCalculator) {
         var vm = this;
 
+        vm.processors = [];
+
         // Historic snapshots of the full processor data up to maxSnapshots.
         vm.snapshots = [];
 
