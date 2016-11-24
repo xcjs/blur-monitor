@@ -5,7 +5,7 @@
 
     function DashboardController($scope, $interval, _, refreshInterval,
                                  SystemResource, ProcessorResource, MemoryResource,
-                                NetworkResource) {
+                                NetworkResource, DiskResource) {
         var vm = this;
 
         registerInterval();
@@ -33,6 +33,10 @@
 
             MemoryResource.get(function (memory) {
                 vm.memory = memory;
+            });
+
+            DiskResource.query(function(disks) {
+                vm.disks = disks;
             });
 
             NetworkResource.getExternal(function(response) {

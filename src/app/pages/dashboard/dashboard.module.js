@@ -4,6 +4,7 @@
     angular.module('BlurMonitor.pages.dashboard', [
         'angularMoment',
         'BlurMonitor.config',
+        'BlurMonitor.disks',
         'BlurMonitor.processor',
         'BlurMonitor.network',
         'BlurMonitor.system'
