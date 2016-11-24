@@ -1,38 +1,6 @@
 <div class="row">
     <div class="col-md-6">
-        <div ng-if="vm.system" ba-panel ba-panel-title="System Info" ba-panel-class="with-scroll ">
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <th class="black-muted-bg">Host</th>
-                        <td>{{vm.system.host}}</td>
-                    </tr>
-                    <tr>
-                        <th class="black-muted-bg">Platform</th>
-                        <td>{{vm.system.platform}}</td>
-                    </tr>
-                    <tr>
-                        <th class="black-muted-bg">Release</th>
-                        <td>{{vm.system.release}}</td>
-                    </tr>
-                    <tr>
-                        <th class="black-muted-bg">Architecture</th>
-                        <td>{{vm.system.architecture}}</td>
-                    </tr>
-                    <tr>
-                        <th class="black-muted-bg">Distro</th>
-                        <td>
-                            <img ng-src="/assets/img/app/distros/{{vm.system.distro.id}}.svg" img-load-error alt="Distributor Logo">
-                            {{vm.system.distro.description}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="black-muted-bg">Uptime</th>
-                        <td>{{vm.system.uptime | amDurationFormat : 'seconds' }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <system-status system="vm.system"></system-status>
     </div>
     <div class="col-md-6">
         <div ba-panel="" ba-panel-title="Alerts" ba-panel-class="with-scroll ">
