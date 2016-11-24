@@ -5,11 +5,6 @@
 
     function ReverseTracerouteController() {
         var vm = this;
-
-        vm.$doCheck = checkTracerouteDefined;
-
-        function checkTracerouteDefined() {
-            vm.tracerouteDefined = angular.isDefined(vm.traceroute);
-        }
+        vm.isDefined = angular.isDefined;
     }
 })();

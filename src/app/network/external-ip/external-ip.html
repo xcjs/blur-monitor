@@ -1,4 +1,4 @@
-<div ng-if="vm.externalIpDefined" ba-panel ba-panel-title="External IP" ba-panel-class="with-scroll" ng-class="{'panel-danger': vm.externalIp === null}">
+<div ng-if="vm.isDefined(vm.externalIp)" ba-panel ba-panel-title="External IP" ba-panel-class="with-scroll" ng-class="{'panel-danger': vm.externalIp === null}">
     <p ng-if="vm.externalIp">
         {{vm.externalIp}}
     </p>

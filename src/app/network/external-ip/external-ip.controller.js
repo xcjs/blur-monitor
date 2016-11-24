@@ -5,11 +5,5 @@
 
     function ExternalIpController() {
         var vm = this;
-
-        vm.$doCheck = checkExternalIpDefined;
-
-        function checkExternalIpDefined() {
-            vm.externalIpDefined = angular.isDefined(vm.externalIp);
-        }
     }
 })();

@@ -1,5 +1,5 @@
 <div ba-panel ba-panel-title="Reverse Traceroute" ba-panel-class="with-scroll" ng-class="{'panel-danger': vm.traceroute === null}">
-    <div ng-show="!vm.tracerouteDefined" class="text-center">
+    <div ng-show="!vm.isDefined(vm.traceroute)" class="text-center">
         <i class="ion-load-c animated spinner"></i>
     </div>
     <ol ng-if="vm.traceroute !== null">

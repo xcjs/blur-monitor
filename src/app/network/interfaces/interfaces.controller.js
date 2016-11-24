@@ -5,11 +5,6 @@
 
     function InterfacesController() {
         var vm = this;
-
-        vm.$doCheck = checkInterfacesDefined();
-
-        function checkInterfacesDefined() {
-            vm.interfacesDefined = angular.isDefined(vm.interfaces);
-        }
+        vm.isDefined = angular.isDefined;
     }
 })();
