@@ -1,5 +1,12 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
         <system-status system="vm.system"></system-status>
+        <external-ip external-ip="vm.externalIp"></external-ip>
+    </div>
+    <div class="col-md-6">
+        <processor-line-chart processors="vm.processors"></processor-line-chart>
+    </div>
+    <div class="col-md-3">
+        <memory-active-pie-chart memory="vm.memory"></memory-active-pie-chart>
     </div>
 </div>

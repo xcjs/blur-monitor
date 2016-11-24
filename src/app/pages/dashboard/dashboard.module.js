@@ -5,6 +5,7 @@
         'angularMoment',
         'BlurMonitor.config',
         'BlurMonitor.processor',
+        'BlurMonitor.network',
         'BlurMonitor.system'
     ])
         .config(routeConfig);
