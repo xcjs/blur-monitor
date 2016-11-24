@@ -170,6 +170,15 @@ body.mobile .body-bg {
   height: 1rem;
 }
 
+.panel-default .horizontal-filler-wrapper {
+  border-left: $bootstrap-panel-text 1px solid;
+  border-right: $bootstrap-panel-text 1px solid;
+}
+
+.panel-default .horizontal-filler {
+  background-color: $bootstrap-panel-text;
+}
+
 ul.pie-legend {
   display: table;
   margin: 1rem auto;

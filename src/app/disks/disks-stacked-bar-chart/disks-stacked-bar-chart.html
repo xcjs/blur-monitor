@@ -2,15 +2,22 @@
     <p ng-if="!vm.disks.length">
         No disks loaded.
     </p>
-    <ul>
-        <li ng-repeat="disk in vm.disks">
-            <small title="{{disk.drive}}">{{disk.mountpoint}}</small>
-            <div class="horizontal-filler-wrapper">
-                <div class="horizontal-filler" style="width: {{(disk.usedPer * 1.5).toFixed(0)}}px;"></div>
+    <div class="row">
+        <div class="col-md-3" ng-repeat="disk in vm.disks" >
+            <div class="panel panel-default bootstrap-panel">
+                <div class="panel-body">
+                    <small style="display: block; overflow-x: scroll; white-space: nowrap;" title="{{disk.drive}}">
+                        <i class="fa fa-hdd-o"></i>
+                        {{disk.mountpoint}}
+                    </small>
+                    <div class="horizontal-filler-wrapper">
+                        <div class="horizontal-filler" style="width: {{(disk.usedPer * 1.5).toFixed(0)}}px;"></div>
+                    </div>
+                    <small>
+                        {{disk.usedPer}}% | {{disk.used}} / {{disk.available}}
+                    </small>
+                </div>
             </div>
-            <p>
-                {{disk.usedPer}}% | {{disk.used}} / {{disk.available}}
-            </p>
-        </li>
-    </ul>
+        </div>
+    </div>
 </div>
