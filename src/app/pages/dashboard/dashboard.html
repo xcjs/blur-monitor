@@ -1,63 +1,50 @@
-<dashboard-pie-chart></dashboard-pie-chart>
-
 <div class="row">
-  <div class="col-lg-6 col-md-12 col-sm-12"
-       ba-panel
-       ba-panel-title="Acquisition Channels"
-       ba-panel-class="medium-panel traffic-panel">
-    <traffic-chart></traffic-chart>
-  </div>
-  <div class="col-lg-6 col-md-12 col-sm-12"
-       ba-panel
-       ba-panel-title="Users by Country"
-       ba-panel-class="medium-panel">
-    <dashboard-map></dashboard-map>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xlg-9 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-    <div class="row">
-      <div class="col-xlg-8 col-lg-12 col-md-12 col-sm-7 col-xs-12"
-           ba-panel
-           ba-panel-title="Revenue"
-           ba-panel-class="medium-panel">
-        <dashboard-line-chart></dashboard-line-chart>
-      </div>
-      <div class="col-xlg-4 col-lg-12 col-md-12 col-sm-5 col-xs-12"
-           ba-panel
-           ba-panel-class="popular-app medium-panel">
-        <popular-app></popular-app>
-      </div>
+    <div class="col-md-6">
+        <div ng-if="vm.system" ba-panel ba-panel-title="System Info" ba-panel-class="with-scroll ">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th class="black-muted-bg">Host</th>
+                        <td>{{vm.system.host}}</td>
+                    </tr>
+                    <tr>
+                        <th class="black-muted-bg">Platform</th>
+                        <td>{{vm.system.platform}}</td>
+                    </tr>
+                    <tr>
+                        <th class="black-muted-bg">Release</th>
+                        <td>{{vm.system.release}}</td>
+                    </tr>
+                    <tr>
+                        <th class="black-muted-bg">Architecture</th>
+                        <td>{{vm.system.architecture}}</td>
+                    </tr>
+                    <tr>
+                        <th class="black-muted-bg">Distro</th>
+                        <td>
+                            <img ng-src="/assets/img/app/distros/{{vm.system.distro.id}}.svg" img-load-error alt="Distributor Logo">
+                            {{vm.system.distro.description}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="black-muted-bg">Uptime</th>
+                        <td>{{vm.system.uptime | amDurationFormat : 'seconds' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
-  <div class="col-xlg-3 col-lg-6 col-md-6 col-sm-12 col-xs-12"
-       ba-panel
-       ba-panel-title="Feed"
-       ba-panel-class="large-panel with-scroll feed-panel">
-    <blur-feed></blur-feed>
-  </div>
-</div>
-
-<div class="row shift-up">
-  <div class="col-xlg-3 col-lg-6 col-md-6 col-xs-12"
-       ba-panel
-       ba-panel-title="To Do List"
-       ba-panel-class="xmedium-panel feed-comply-panel with-scroll todo-panel">
-    <dashboard-todo></dashboard-todo>
-  </div>
-  <div class="col-xlg-6 col-lg-6 col-md-6 col-xs-12"
-       ba-panel
-       ba-panel-title="Calendar"
-       ba-panel-class="xmedium-panel feed-comply-panel with-scroll calendar-panel">
-    <dashboard-calendar></dashboard-calendar>
-  </div>
-</div>
-
-<!--<div class="row">
-  <div class="col-lg-4 col-sm-6 col-xs-12">
-    <div ba-panel ba-panel-title="Weather" ba-panel-class="medium-panel with-scroll">
-      <blur-weather forecast="5"></blur-weather>
+    <div class="col-md-6">
+        <div ba-panel="" ba-panel-title="Alerts" ba-panel-class="with-scroll ">
+            <p ng-if="vm.alerts.length === 0">
+                There are no alerts to display.
+            </p>
+            <div ng-if="vm.alerts.length > 0" ng-repeat="alert in vm.alerts track by $index" class="alert {{alert.class}} animated pulse">
+                <p>
+                    <i class="{{alert.icon}}"></i>
+                    {{alert.message}}
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
-</div>-->
+</div>
