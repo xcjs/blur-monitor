@@ -1,0 +1,13 @@
+<div ba-panel ba-panel-title="Loaded Processes" ba-panel-class="with-scroll">
+    <p ng-if="vm.processes.length === 0">
+        There are no loaded processes.
+    </p>
+    <ol class="ordered-process-list half-height">
+        <li ng-repeat="process in vm.processes" title="{{process.command}}">
+            <i ng-if="process.iconFont" class="list-icon ion-gear-a"></i>
+            <i ng-if="!process.iconFont" class="list-icon" style="background-image: url({{process.icon}});"></i>
+            <span class="process-name">{{process.displayName}}</span>
+            <span class="process-util">({{process.memoryUtilization}})%</span>
+        </li>
+    </ol>
+</div>

@@ -4,6 +4,7 @@
     angular.module('BlurMonitor.pages.processes', [
         'BlurMonitor.assets',
         'BlurMonitor.config',
+        'BlurMonitor.processes',
         'ngResource'
     ])
         .config(routeConfig)

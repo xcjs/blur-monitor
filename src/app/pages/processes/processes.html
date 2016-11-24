@@ -1,43 +1,15 @@
 <div class="row">
     <div class="col-md-6">
-        <div ng-if="vm.topCpuProcesses.length > 0" ba-panel ba-panel-title="Top Processor Intensive Tasks" ba-panel-class="with-scroll">
-            <ol class="ordered-process-list half-height">
-                <li ng-repeat="process in vm.topCpuProcesses" title="{{process.command}}">
-                    <i ng-if="process.iconFont" class="list-icon ion-gear-a"></i>
-                    <i ng-if="!process.iconFont" class="list-icon" style="background-image: url({{process.icon}});"></i>
-                    <span class="process-name">{{process.displayName}}</span>
-                    <span class="process-util">({{process.processorUtilization}}%)</span>
-                </li>
-            </ol>
-        </div>
+        <running-processes processes="vm.processes" icons="vm.icons"></running-processes>
     </div>
 
     <div class="col-md-6">
-        <div ng-if="vm.topMemoryProcesses.length > 0" ba-panel ba-panel-title="Top Memory Intensive Tasks" ba-panel-class="with-scroll">
-            <ol class="ordered-process-list half-height">
-                <li ng-repeat="process in vm.topMemoryProcesses" title="{{process.command}}">
-                    <i ng-if="process.iconFont" class="list-icon ion-gear-a"></i>
-                    <i ng-if="!process.iconFont" class="list-icon" style="background-image: url({{process.icon}});"></i>
-                    <span class="process-name">{{process.displayName}}</span>
-                    <span class="process-util">({{process.memoryUtilization}})%</span>
-                </li>
-            </ol>
-        </div>
+        <loaded-processes processes="vm.processes" icons="vm.icons"></loaded-processes>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12">
-        <div ng-if="vm.processes.length > 0" ba-panel ba-panel-title="Process Tree" ba-panel-class="with-scroll tree-panel">
-            <div class="row">
-                <div class="form-group col-xs-10">
-                    <input type="text" class="form-control col-xs-9" id="process-search" placeholder="Filter Processes..." ng-change="vm.filterProcesses()" ng-model="vm.searchTerm">
-                </div>
-                <div class="col-xs-2 text-right">
-                    <button type="button" class="btn btn-primary btn-icon" ng-click="vm.getProcesses(true)"><i class="ion-loop"></i></button>
-                </div>
-            </div>
-            <div js-tree="vm.treeConfig" ng-model="vm.treeProcesses" class="pre-scrollable"></div>
-        </div>
+        <process-tree processes="vm.processes" icons="vm.icons"></process-tree>
     </div>
 </div>
