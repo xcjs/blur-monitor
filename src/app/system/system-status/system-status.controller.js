@@ -11,7 +11,7 @@
                     && changes.system
                     && changes.system.currentValue) {
                 vm.system = changes.system.currentValue;
-                vm.system.uptime = moment.duration(system.uptime, 'seconds');
+                vm.system.uptime = moment.duration(vm.system.uptime, 'seconds');
             }
         }
     }
