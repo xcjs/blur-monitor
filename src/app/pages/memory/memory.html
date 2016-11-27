@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="row" ng-if="!vm.memory.swap">
+<div class="row" ng-if="vm.memory.swap === null">
     <div class="col-md-6">
         <memory-active-pie-chart memory="vm.memory"></memory-active-pie-chart>
     </div>
