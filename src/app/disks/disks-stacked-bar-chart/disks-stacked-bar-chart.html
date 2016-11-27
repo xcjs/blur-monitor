@@ -1,13 +1,17 @@
-<div ba-panel ba-panel-title="Disk Utilization" ba-panel-class="with-scroll">
+<div ba-panel ba-panel-title="Disk Utilization" ba-panel-class="with-scroll disks-stacked-bar-chart">
     <p ng-if="!vm.disks.length">
         No disks loaded.
     </p>
     <div class="row">
         <div class="col-md-3" ng-repeat="disk in vm.disks" >
             <div class="panel blur-panel">
+                <div class="panel-heading">
+                    <small class="drive">
+                        <i class="fa fa-hdd-o"></i> {{disk.drive}}
+                    </small>
+                </div>
                 <div class="panel-body">
-                    <small style="display: block; overflow-x: scroll; white-space: nowrap;" title="{{disk.drive}}">
-                        <i class="fa fa-hdd-o"></i>
+                    <small class="mountpoint" title="disk.mountpoint">
                         {{disk.mountpoint}}
                     </small>
                     <div class="horizontal-filler-wrapper">
