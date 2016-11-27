@@ -24,6 +24,10 @@
         function loadMemory() {
             MemoryResource.get(function(memory) {
                 vm.memory = memory;
+
+                if(!vm.memory.swap) {
+                    vm.memory.swap = null;
+                }
             });
         }
     }
