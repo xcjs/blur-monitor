@@ -15,7 +15,7 @@
                         {{disk.mountpoint}}
                     </small>
                     <div class="horizontal-filler-wrapper">
-                        <div class="horizontal-filler" style="width: {{(disk.usedPer * 1.5).toFixed(0)}}px;"></div>
+                        <div class="horizontal-filler" style="width: {{disk.usedPer}}%;"></div>
                     </div>
                     <small>
                         {{disk.usedPer}}% | {{disk.used}} / {{disk.total}}

@@ -1,14 +1,1 @@
 @import 'blur-monitor/disks-stacked-bar-chart';
-
-.disks-stacked-bar-chart {
-  .drive {
-    display: block;
-  }
-
-  .mountpoint {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}

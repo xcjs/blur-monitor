@@ -1,0 +1,17 @@
+.disks-stacked-bar-chart {
+  .drive {
+    display: block;
+  }
+
+  .mountpoint {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .horizontal-filler-wrapper {
+    max-width: 200px;
+    width: 200px;
+  }
+}
