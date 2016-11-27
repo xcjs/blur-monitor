@@ -55,7 +55,8 @@
     "ng-js-tree": "~0.0.7",
     "angular-resource": "1.4.8",
     "angular-moment": "^0.10.3",
-    "lodash": "^4.15.0"
+    "lodash": "^4.15.0",
+    "angular-animate": "1.5.8"
   },
   "overrides": {
     "amcharts": {
@@ -99,7 +100,7 @@
     }
   },
   "resolutions": {
-    "angular": "^1.5.8",
+    "angular": "1.5.8",
     "jquery": ">=3.1.x",
     "jquery-ui": ">=1.12.x"
   }
