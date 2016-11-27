@@ -7,7 +7,6 @@
         var vm = this;
 
         vm.title = 'Active Memory Utilization';
-        vm.memory = { };
 
         vm.memoryPercentageThreshold = memoryPercentageThreshold;
 
