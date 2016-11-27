@@ -33,7 +33,7 @@
                     }
                 });
 
-                bootstrapFactory.splitCollectionForColumns(disks, vm.diskColumns, 3);
+                bootstrapFactory.splitCollectionForColumns(disks, vm.diskColumns, 4);
             });
         }
     }
