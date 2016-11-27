@@ -1,0 +1,8 @@
+.disk-pie-chart {
+  .panel-body small {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

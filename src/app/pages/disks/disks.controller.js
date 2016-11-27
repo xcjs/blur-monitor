@@ -24,9 +24,9 @@
         function loadDisks() {
             DiskResource.query(function(disks) {
                 disks.sort(function(diskA, diskB) {
-                    if(diskA.mountpoint < diskB.mountpoint) {
+                    if(diskA.drive < diskB.drive) {
                         return -1;
-                    } else if (diskA.mountpoint > diskB.mountpoint) {
+                    } else if (diskA.drive > diskB.drive) {
                         return 1;
                     } else {
                         return 0;
