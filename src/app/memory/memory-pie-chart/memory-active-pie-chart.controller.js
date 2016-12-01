@@ -20,8 +20,12 @@
         vm.chartData = [];
         vm.chartLabels = [];
 
-        vm.$onChanges = function() {
-            updateChart(vm.memory);
+        vm.$onChanges = function(changes) {
+            if(changes
+                && changes.memory
+                && changes.memory.currentValue) {
+                updateChart(vm.memory);
+            }
         };
 
         function updateChart(memory) {
