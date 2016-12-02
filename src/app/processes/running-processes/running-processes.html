@@ -2,7 +2,7 @@
     <p ng-if="vm.processes.length === 0">
         There are no active processes.
     </p>
-    <ol ng-if="vm.processes.length > 0" class="ordered-process-list half-height">
+    <ol class="ordered-process-list half-height">
         <li ng-repeat="process in vm.processes" title="{{process.command}}">
             <i ng-if="process.iconFont" class="list-icon ion-gear-a"></i>
             <i ng-if="!process.iconFont" class="list-icon" style="background-image: url({{process.icon}});"></i>
