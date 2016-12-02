@@ -8,6 +8,7 @@
 
         function getUtilization(previousSnapshot, currentSnapshot) {
             var utilization = 0;
+            var formattedUtilization;
 
             if(previousSnapshot) {
                 var prevTicks = getTotalTicks(previousSnapshot);
@@ -16,10 +17,23 @@
                 var prevIdle = previousSnapshot.times.idle;
                 var currIdle = currentSnapshot.times.idle;
 
-                utilization = (currIdle - prevIdle) / (currTicks - prevTicks);
+                var idle = currIdle - prevIdle;
+                var ticks = currTicks - prevTicks;
+
+                if(ticks > 0) {
+                    utilization = idle / ticks;
+                } else {
+                    utilization = 0;
+                }
             }
 
-            return (100 - (utilization * 100)).toFixed(2);
+            if (utilization > 0) {
+                formattedUtilization = (100 - (utilization * 100)).toFixed(2);
+            } else {
+                formattedUtilization = '0.00'
+            }
+
+            return formattedUtilization;
         }
 
         function getTotalTicks(snapShot) {

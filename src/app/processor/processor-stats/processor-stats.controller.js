@@ -16,7 +16,7 @@
 
         function updateUtilization() {
             if(!angular.equals(previousSnapshot, vm.processor)) {
-                vm.processor.utilization = ProcessorUtilizationCalculator.getUtilization(previousSnapshot, vm.processor);
+                vm.processor.utilization = ProcessorUtilizationCalculator.getUtilization(previousSnapshot || vm.processor, vm.processor);
                 previousSnapshot = angular.copy(vm.processor);
             }
         }
