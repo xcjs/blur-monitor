@@ -35,8 +35,14 @@
                 // The first time run through this call back, the child arrays will need to be initialized for
                 // each core/processor.
                 if (!angular.isArray(vm.chartData[i])) {
-                    vm.chartData[i] = [];
-                    vm.snapshots[i] = [];
+                    vm.chartData[i] = new Array(maxSnapshots);
+                    vm.snapshots[i] = new Array(maxSnapshots);
+
+                    if(vm.chartLabels.length !== maxSnapshots) {
+                        for (var snapShotsIndex = 0; snapShotsIndex < maxSnapshots; snapShotsIndex++) {
+                            vm.chartLabels.unshift((snapShotsIndex + 1) * (refreshInterval / 1000) + 's ago')
+                        }
+                    }
                 }
 
                 var processorUtil = vm.chartData[i];
