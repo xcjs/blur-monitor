@@ -17,7 +17,7 @@ function execWrapper(command) {
     var promise = new Promise(function(resolve, reject) {
         exec(command, function(error, stdout, stderr) {
             if (error) {
-                reject('Command "' + command + '" failed. Please check for earlier errors');
+                reject('Command "' + command + '" failed. Please check for earlier errors.');
                 return;
             }
 
@@ -48,7 +48,7 @@ function spawnWrapper(command, args) {
 
         process.on('close', function(code) {
             if (code !== 0) {
-                reject('Command "' + command + '" failed. Please check for earlier errors');
+                reject('Command "' + command + '" failed. Please check for earlier errors.');
             }
         });
     });
