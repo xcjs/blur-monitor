@@ -6,7 +6,8 @@
         controller: 'ProcessorLineChartController',
         controllerAs: 'vm',
         bindings: {
-            processors: '<'
+            processors: '<',
+            memory: '<'
         }
     });
 })();

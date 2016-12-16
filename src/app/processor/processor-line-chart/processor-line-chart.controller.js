@@ -9,6 +9,7 @@
         vm.processors = [];
 
         // Historic snapshots of the full processor data up to maxSnapshots.
+        vm.lastSnapshot;
         vm.snapshots = [];
 
         vm.chartData = [];
@@ -25,10 +26,14 @@
         };
 
         vm.$onChanges = function() {
-            updateChart(vm.processors);
+            if(!angular.equals(vm.processors, vm.lastSnapshot)) {
+                updateChart(vm.processors, vm.memory);
+            }
+
+            vm.lastSnapshot = vm.processors;
         };
 
-        function updateChart(processors) {
+        function updateChart(processors, memory) {
             angular.forEach(processors, function (processor, i) {
                 var utilization = 0;
 
@@ -82,6 +87,36 @@
 
                     vm.chartLabels.unshift(label);
                 }
+            }
+
+            if(processors.length > 0 && memory) {
+                var utilization = 0;
+
+                var memoryIndex = processors.length;
+
+                if(vm.chartData.length === processors.length) {
+                    vm.chartData[memoryIndex] = new Array(maxSnapshots);
+                    vm.snapshots[memoryIndex] = new Array(maxSnapshots);
+                }
+
+                // Once we hit the maxSnapshots limit, the chart data for the memory utilization
+                // historical data needs to be spliced to recycle memory.
+                if (vm.chartData[memoryIndex].length >= maxSnapshots) {
+                    vm.chartData[memoryIndex].splice(0, 1);
+                    vm.snapshots[memoryIndex].splice(0, 1);
+                }
+
+                if (vm.chartData[memoryIndex].length > 1) {
+                    utilization = memory.used / memory.total * 100;
+                } else {
+                    // With no historical information available, assume 0% utilization.
+                    utilization = 0;
+                }
+
+                vm.chartData[memoryIndex].push(utilization);
+                // Append the current memory snapshot to the memory history.
+                vm.snapshots[memoryIndex].push(memory);
+                vm.chartSeries[memoryIndex] = 'Memory - ' + utilization.toFixed(2) + '%';
             }
         }
     }
