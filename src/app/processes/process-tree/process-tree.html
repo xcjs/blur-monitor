@@ -7,8 +7,12 @@
             <button type="button" class="btn btn-primary btn-icon" ng-click="vm.loadProcesses()"><i class="ion-loop"></i></button>
         </div>
     </div>
-    <p ng-if="vm.treeProcesses.length === 0">
-        No processes found.
-    </p>
-    <div ng-if="vm.treeProcesses.length > 0" js-tree="vm.treeConfig" ng-model="vm.treeProcesses" class="pre-scrollable"></div>
+    <div class="row">
+        <div class="col-xs-12 half-height">
+            <p ng-if="vm.treeProcesses.length === 0">
+                No processes found.
+            </p>
+            <div ng-if="vm.treeProcesses.length > 0" js-tree="vm.treeConfig" ng-model="vm.treeProcesses" class="pre-scrollable"></div>
+        </div>
+    </div>
 </div>
