@@ -47,32 +47,32 @@ Currently the tool can be used to monitor the following information:
 ## Installation
 
 1. Ensure all necessary commands are installed through your distro's package manager:
-	```bash
+	```
 	sudo apt-get install -y dnsutils traceroute
 	```
 2. Install the latest version of Node.js for your operating system.
 3. Ensure that NPM is up to date:
-	```bash
+	```
 	sudo npm install -g npm
 	```
 4. Install bower and gulp:
-	```bash
+	```
 	sudo npm install -g bower gulp
 	```
 5. Install NPM dependencies:
-	```bash
+	```
 	npm install
 	```
 6. Install Bower dependencies:
-	```bash
+	```
 	bower install
 	```
 7. Perform a build:
-	```bash
+	```
 	gulp build
 	```
 8. Serve the fully assembled project:
-	```bash
+	```
 	node ./blurmonitor
 	```
 
