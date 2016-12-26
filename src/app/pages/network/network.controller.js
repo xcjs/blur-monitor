@@ -7,9 +7,9 @@
         var vm = this;
 
         NetworkResource.get(function(response) {
-            vm.interfaces = response;
+            vm.network = response;
         }, function() {
-            vm.interfaces = null;
+            vm.network = null;
         });
 
         NetworkResource.getExternal(function(response) {

@@ -17,12 +17,12 @@ function execWrapper(command) {
     var promise = new Promise(function(resolve, reject) {
         exec(command, function(error, stdout, stderr) {
             if (error) {
-                reject('Command "' + command + '" failed. Please check for earlier errors.');
+                reject('Attempting to execute command "' + command + '" failed: ' + error);
                 return;
             }
 
             if(stderr) {
-                console.error(stderr);
+                console.error('Command: "' + command + '" executed, but failed with an error code: ' + stderr);
             }
 
             resolve(stdout);

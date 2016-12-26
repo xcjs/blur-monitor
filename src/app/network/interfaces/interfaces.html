@@ -1,5 +1,5 @@
-<div ng-if="vm.interfaces" ba-panel ba-panel-title="Interfaces" ba-panel-class="with-scroll" ng-class="{'panel-danger': vm.interfaces === null}">
-    <div class="row container-fluid" ng-repeat="(interface, bindings) in vm.interfaces">
+<div ng-if="vm.network.interfaces" ba-panel ba-panel-title="Interfaces" ba-panel-class="with-scroll" ng-class="{'panel-danger': vm.network === null}">
+    <div class="row container-fluid" ng-repeat="(interface, bindings) in vm.network.interfaces">
         <h4>{{interface}}</h4>
         <div class="col-md-6" ng-repeat="binding in bindings">
             <div class="row">

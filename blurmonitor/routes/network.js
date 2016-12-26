@@ -4,6 +4,7 @@
 
 var os = require('os');
 var spawn = require("child_process").spawn;
+var shell = require('../services/shell');
 
 module.exports = getRoutes();
 
@@ -14,7 +15,7 @@ function getRoutes() {
         method: 'GET',
         path: '/api/network',
         handler: function (request, reply) {
-            return reply(os.networkInterfaces());
+            return reply(getInterfaces());
         }
     });
 
@@ -45,6 +46,23 @@ function getRoutes() {
     });
 
     return routes;
+}
+
+function getInterfaces() {
+    var response = { };
+    response.bandwidth = { };
+    response.interfaces = os.networkInterfaces();
+
+    var promise = new Promise(function(resolve, reject) {
+        getBandwithUtilization().then(function(bandwidthString) {
+            response.bandwidth = parseIfstat(bandwidthString);
+            resolve(response);
+        }), function() {
+            reject(response);
+        };
+    });
+
+    return promise;
 }
 
 function getExternalIp() {
@@ -136,4 +154,24 @@ function stripNonHops(hops) {
     strippedHops.reverse();
 
     return strippedHops;
+}
+
+function getBandwithUtilization() {
+    return shell.spawn('ifstat', ['-a', '-n', '-b', '-q', '1', '1']);
+}
+
+function parseIfstat(stdout) {
+    var lines = stdout.toString().split(/\n/g);
+    var interfaceNames = lines[0].match(/\S+/g);
+    var bandwidthNumbers = lines[2].match(/\S+/g);
+
+    var bandwidthData = { };
+
+    interfaceNames.forEach(function(name, i) {
+        bandwidthData[name] = { };
+        bandwidthData[name].in = bandwidthNumbers[i * 2];
+        bandwidthData[name].out = bandwidthNumbers[i * 2 + 1];
+    });
+
+    return bandwidthData;
 }
