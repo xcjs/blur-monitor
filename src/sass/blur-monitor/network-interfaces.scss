@@ -1,0 +1,18 @@
+.network-interfaces {
+  .tabs-panel {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .tabs-left .tab-content {
+    margin-left: 0;
+  }
+
+  .nav.nav-tabs > li:first-of-type a {
+    border-radius: 0;
+  }
+
+  .tab-pane .table {
+    margin-bottom: 1rem;
+  }
+}

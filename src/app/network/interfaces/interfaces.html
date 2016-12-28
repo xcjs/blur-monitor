@@ -1,42 +1,44 @@
-<div ng-if="vm.network.interfaces" ba-panel ba-panel-title="Interfaces" ba-panel-class="with-scroll" ng-class="{'panel-danger': vm.network === null}">
-    <div class="row container-fluid" ng-repeat="(interface, bindings) in vm.network.interfaces">
-        <h4>{{interface}}</h4>
-        <div class="col-md-6" ng-repeat="binding in bindings">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Address</h5>
-                </div>
-                <div class="col-md-6">
-                    <p>{{binding.address}}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Netmask</h5>
-                </div>
-                <div class="col-md-6">
-                    <p>{{binding.netmask}}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Family</h5>
-                </div>
-                <div class="col-md-6">
-                    <p>
-                        {{binding.family}}
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>MAC</h5>
-                </div>
-                <div class="col-md-6">
-                    <p>{{binding.mac}}</p>
-                </div>
-            </div>
-            <hr>
-        </div>
-    </div>
+<div ng-if="vm.network" ba-panel ba-panel-title="Interfaces" ba-panel-class="network-interfaces tabs-panel with-scroll">
+    <uib-tabset class="tabs-panel tabs-left">
+        <uib-tab ng-repeat="(interface, bindings) in vm.network.interfaces" heading="{{interface}}">
+            <ng-repeat ng-repeat="binding in bindings">
+                    <table class="table table-bordered panel-body">
+                        <tbody>
+                            <tr>
+                                <th class="black-muted-bg col-xs-3">
+                                    Address
+                                </th>
+                                <td>
+                                    {{binding.address}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="black-muted-bg">
+                                    Netmask
+                                </th>
+                                <td>
+                                    {{binding.netmask}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="black-muted-bg">
+                                    Family
+                                </th>
+                                <td>
+                                    {{binding.family}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="black-muted-bg">
+                                    MAC Address
+                                </th>
+                                <td>
+                                    {{binding.mac}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </ng-repeat>
+        </uib-tab>
+    </uib-tabset>
 </div>
