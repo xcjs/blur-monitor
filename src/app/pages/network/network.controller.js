@@ -3,14 +3,22 @@
 
     angular.module('BlurMonitor.pages.network').controller('NetworkController', NetworkController);
 
-    function NetworkController(NetworkResource) {
+    function NetworkController($scope, $interval, refreshInterval, NetworkResource) {
         var vm = this;
 
-        NetworkResource.get(function(response) {
-            vm.network = response;
-        }, function() {
-            vm.network = null;
-        });
+        registerInterval();
+
+        function registerInterval() {
+            loadNetwork();
+
+            vm.interval = $interval(function() {
+                loadNetwork();
+            }, refreshInterval);
+
+            $scope.$on('$destroy', function() {
+                $interval.cancel(vm.interval);
+            });
+        }
 
         NetworkResource.getExternal(function(response) {
             vm.externalIp = response.ipAddress;
@@ -31,5 +39,13 @@
         }, function() {
             vm.traceroute = null;
         });
+
+        function loadNetwork() {
+            NetworkResource.get(function(response) {
+                vm.network = response;
+            }, function() {
+                vm.network = null;
+            });
+        }
     }
 })();

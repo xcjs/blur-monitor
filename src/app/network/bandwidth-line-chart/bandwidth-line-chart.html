@@ -1,0 +1,19 @@
+<div ba-panel ba-panel-title="{{vm.interface}} Bandwidth Utilization" ba-panel-class="with-scroll" ng-if="vm.showPanel">
+    <canvas
+            class="chart chart-line"
+            chart-legend="true"
+            chart-options="vm.chartOptions"
+            chart-data="vm.chartData"
+            chart-labels="vm.chartLabels"
+            chart-series="vm.chartSeries"
+    ></canvas>
+</div>
+<canvas
+        ng-if="!vm.showPanel"
+        class="chart chart-line"
+        chart-legend="true"
+        chart-options="vm.chartOptions"
+        chart-data="vm.chartData"
+        chart-labels="vm.chartLabels"
+        chart-series="vm.chartSeries"
+></canvas>
