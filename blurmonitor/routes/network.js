@@ -169,8 +169,8 @@ function parseIfstat(stdout) {
 
     interfaceNames.forEach(function(name, i) {
         bandwidthData[name] = { };
-        bandwidthData[name].in = bandwidthNumbers[i * 2];
-        bandwidthData[name].out = bandwidthNumbers[i * 2 + 1];
+        bandwidthData[name].in = parseFloat(bandwidthNumbers[i * 2]);
+        bandwidthData[name].out = parseFloat(bandwidthNumbers[i * 2 + 1]);
     });
 
     return bandwidthData;
