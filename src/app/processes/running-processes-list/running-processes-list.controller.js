@@ -1,9 +1,9 @@
 (function() {
     'use strict';
 
-    angular.module('BlurMonitor.processes').controller('RunningProcessesController', RunningProcessesController);
+    angular.module('BlurMonitor.processes').controller('RunningProcessesListController', RunningProcessesListController);
 
-    function RunningProcessesController() {
+    function RunningProcessesListController() {
         var vm = this;
 
         vm.processes = vm.processes || [];
