@@ -2,8 +2,8 @@
     <p ng-if="!vm.diskColumns.length">
         No disks loaded.
     </p>
-    <div class="row" ng-repeat="disks in vm.diskColumns">
-        <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="disk in disks" >
+    <div class="row" ng-repeat="row in vm.diskColumns">
+        <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="disk in row" >
             <div class="panel blur-panel" ng-if="vm.showSubPanels">
                 <div class="panel-heading">
                     <small class="drive">
