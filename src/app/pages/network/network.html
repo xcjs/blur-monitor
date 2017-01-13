@@ -1,17 +1,21 @@
 <div class="row">
-    <div class="col-md-6">
-        <external-ip external-ip="vm.externalIp"></external-ip>
-
-        <bandwidth-test></bandwidth-test>
-    </div>
-
-    <div class="col-md-6">
-        <reverse-traceroute traceroute="vm.traceroute"></reverse-traceroute>
+    <div class="col-xs-12">
+        <interfaces network="vm.network" bandwidth="vm.bandwidth"></interfaces>
     </div>
 </div>
 
 <div class="row">
     <div class="col-xs-12">
-        <interfaces network="vm.network" bandwidth="vm.bandwidth"></interfaces>
+        <external-ip external-ip="vm.externalIp"></external-ip>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <bandwidth-test></bandwidth-test>
+    </div>
+
+    <div class="col-md-6">
+        <reverse-traceroute traceroute="vm.traceroute"></reverse-traceroute>
     </div>
 </div>
