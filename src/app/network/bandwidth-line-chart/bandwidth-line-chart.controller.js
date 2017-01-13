@@ -36,8 +36,8 @@
                 vm.maxUpload = bandwidth.out;
             }
 
-            vm.chartSeries[0] = 'Download ' + bandwidth.in + ' kbps / ' + vm.maxDownload + ' kbps';
-            vm.chartSeries[1] = 'Upload ' + bandwidth.out + ' kbps / ' + vm.maxUpload + ' kbps';
+            vm.chartSeries[0] = '<i class="ion-arrow-down-a"></i> ' + bandwidth.in + ' kbps / ' + vm.maxDownload + ' kbps';
+            vm.chartSeries[1] = '<i class="ion-arrow-up-a"></i>  ' + bandwidth.out + ' kbps / ' + vm.maxUpload + ' kbps';
 
             if(!angular.isArray(vm.chartData[0])) {
                 vm.chartData[0] = [];
