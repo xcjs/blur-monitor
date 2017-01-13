@@ -25,7 +25,8 @@
                 },
                 getTraceroute: {
                     url: url + '/traceroute',
-                    method: 'GET'
+                    method: 'GET',
+                    isArray: true
                 }
             };
 

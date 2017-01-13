@@ -92,7 +92,7 @@ function getTraceRoute(origin) {
 
             hops = formatHops(hops);
 
-            resolve({ traceroute: hops });
+            resolve(hops);
         });
     });
 

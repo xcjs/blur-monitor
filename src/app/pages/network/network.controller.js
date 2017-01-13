@@ -30,14 +30,7 @@
 
         NetworkResource.getTraceroute(function(response) {
             vm.tracerouteLoading = false;
-
-            if(!angular.isDefined(vm.traceroute)) {
-                vm.traceroute = [];
-            }
-
-            angular.forEach(response.traceroute, function(hop) {
-                vm.traceroute.push(hop);
-            });
+            vm.traceroute = response;
         }, function() {
             vm.traceroute = null;
         });
