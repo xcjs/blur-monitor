@@ -7,42 +7,44 @@
                 </div>
                 <div class="col-md-6">
                     <ng-repeat ng-repeat="binding in bindings">
-                        <table class="table table-bordered panel-body">
-                            <tbody>
-                            <tr>
-                                <th class="black-muted-bg col-xs-3">
-                                    Address
-                                </th>
-                                <td>
-                                    {{binding.address}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="black-muted-bg">
-                                    Netmask
-                                </th>
-                                <td>
-                                    {{binding.netmask}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="black-muted-bg">
-                                    Family
-                                </th>
-                                <td>
-                                    {{binding.family}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="black-muted-bg">
-                                    MAC Address
-                                </th>
-                                <td>
-                                    {{binding.mac}}
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-bordered panel-body">
+                                <tbody>
+                                <tr>
+                                    <th class="black-muted-bg col-xs-3">
+                                        Address
+                                    </th>
+                                    <td>
+                                        {{binding.address}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="black-muted-bg">
+                                        Netmask
+                                    </th>
+                                    <td>
+                                        {{binding.netmask}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="black-muted-bg">
+                                        Family
+                                    </th>
+                                    <td>
+                                        {{binding.family}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="black-muted-bg">
+                                        MAC Address
+                                    </th>
+                                    <td>
+                                        {{binding.mac}}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </ng-repeat>
                 </div>
             </div>
