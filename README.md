@@ -43,6 +43,7 @@ Currently the tool can be used to monitor the following information:
 * free command
 * ps command
 * traceroute command (Not always installed by default.)
+* ifstat (Not always installed by default.)
 
 ## Installation
 
