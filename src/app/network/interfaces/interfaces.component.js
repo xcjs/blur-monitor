@@ -6,7 +6,8 @@
         controller: 'InterfacesController',
         controllerAs: 'vm',
         bindings: {
-            network: '<'
+            network: '<',
+            bandwidth: '<'
         }
     });
 })();

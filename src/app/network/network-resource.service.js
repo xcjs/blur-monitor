@@ -4,12 +4,32 @@
     angular.module('BlurMonitor.network').service('NetworkResource', NetworkResource);
 
     function NetworkResource($resource) {
-        var Network = $resource('/api/network');
-        var External = $resource('/api/network/external');
-        var Traceroute = $resource('/api/network/traceroute');
+        var resource = getResource();
 
-        this.get = Network.get;
-        this.getExternal = External.get;
-        this.getTraceroute = Traceroute.get;
+        this.get = resource.get;
+        this.getBandwidth = resource.getBandwidth;
+        this.getExternal = resource.getExternal;
+        this.getTraceroute = resource.getTraceroute;
+
+        function getResource() {
+            var url = '/api/network';
+
+            var actions = {
+                getBandwidth: {
+                    url: url + '/bandwidth',
+                    method: 'GET'
+                },
+                getExternal: {
+                    url: url + '/external',
+                    method: 'GET'
+                },
+                getTraceroute: {
+                    url: url + '/traceroute',
+                    method: 'GET'
+                }
+            };
+
+            return $resource(url, null, actions);
+        }
     }
 })();

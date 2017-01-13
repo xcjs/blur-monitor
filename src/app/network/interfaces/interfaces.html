@@ -1,9 +1,9 @@
 <div ng-if="vm.network" ba-panel ba-panel-title="Interfaces" ba-panel-class="network-interfaces tabs-panel with-scroll">
     <uib-tabset class="tabs-panel tabs-left">
-        <uib-tab ng-repeat="(interface, bindings) in vm.network.interfaces" heading="{{interface}}">
+        <uib-tab ng-repeat="(interface, bindings) in vm.network" heading="{{interface}}">
             <div class="row">
                 <div class="col-md-6">
-                    <bandwidth-line-chart interface="interface" bandwidth="vm.network.bandwidth" show-panel="false"></bandwidth-line-chart>
+                    <bandwidth-line-chart interface="interface" bandwidth="vm.bandwidth[interface]" show-panel="false"></bandwidth-line-chart>
                 </div>
                 <div class="col-md-6">
                     <ng-repeat ng-repeat="binding in bindings">

@@ -10,9 +10,11 @@
 
         function registerInterval() {
             loadNetwork();
+            loadBandwidth();
 
             vm.interval = $interval(function() {
                 loadNetwork();
+                loadBandwidth();
             }, refreshInterval);
 
             $scope.$on('$destroy', function() {
@@ -45,6 +47,14 @@
                 vm.network = response;
             }, function() {
                 vm.network = null;
+            });
+        }
+
+        function loadBandwidth() {
+            NetworkResource.getBandwidth(function(response) {
+                vm.bandwidth = response;
+            }, function() {
+                vm.bandwidth = null;
             });
         }
     }

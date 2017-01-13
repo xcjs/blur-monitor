@@ -24,7 +24,6 @@
         };
 
         vm.$onChanges = function() {
-            vm.bandwidth = vm.bandwidth[vm.interface];
             updateChart(vm.bandwidth);
         };
 

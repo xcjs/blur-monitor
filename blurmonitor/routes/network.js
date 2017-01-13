@@ -15,7 +15,7 @@ function getRoutes() {
         method: 'GET',
         path: '/api/network',
         handler: function (request, reply) {
-            return reply(getInterfaces());
+            return reply(os.networkInterfaces());
         }
     });
 
@@ -45,24 +45,15 @@ function getRoutes() {
         }
     });
 
-    return routes;
-}
-
-function getInterfaces() {
-    var response = { };
-    response.bandwidth = { };
-    response.interfaces = os.networkInterfaces();
-
-    var promise = new Promise(function(resolve, reject) {
-        getBandwithUtilization().then(function(bandwidthString) {
-            response.bandwidth = parseIfstat(bandwidthString);
-            resolve(response);
-        }), function() {
-            reject(response);
-        };
+    routes.push({
+        method: 'GET',
+        path: '/api/network/bandwidth',
+        handler: function(request, reply) {
+            return reply(getBandwithUtilization());
+        }
     });
 
-    return promise;
+    return routes;
 }
 
 function getExternalIp() {
@@ -157,7 +148,16 @@ function stripNonHops(hops) {
 }
 
 function getBandwithUtilization() {
-    return shell.spawn('ifstat', ['-a', '-n', '-b', '-q', '1', '1']);
+
+    var promise = new Promise(function(resolve, reject) {
+        shell.spawn('ifstat', ['-a', '-n', '-b', '-q', '1', '1']).then(function(out) {
+            resolve(parseIfstat(out));
+        }, function() {
+            reject();
+        });
+    });
+
+    return promise;
 }
 
 function parseIfstat(stdout) {
