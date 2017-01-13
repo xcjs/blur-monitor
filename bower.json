@@ -1,9 +1,10 @@
 {
-  "name": "blur-admin",
-  "version": "1.2.0",
+  "name": "blur-monitor",
+  "version": "1.4.0",
   "homepage": "https://github.com/1itvinka/blur-admin",
   "authors": [
-    "akveo"
+    "akveo",
+    "xcjs"
   ],
   "description": "Blur Admin HTML template",
   "license": "MIT",
