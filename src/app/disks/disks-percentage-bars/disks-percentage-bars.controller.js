@@ -1,9 +1,9 @@
 (function() {
     'use strict';
 
-    angular.module('BlurMonitor.disks').controller('DisksStackedBarChartController', DisksStackedBarChartController);
+    angular.module('BlurMonitor.disks').controller('DisksPercentageBarsController', DisksPercentageBarsController);
 
-    function DisksStackedBarChartController(bootstrapFactory) {
+    function DisksPercentageBarsController(bootstrapFactory) {
         var vm = this;
 
         vm.disks = [];
