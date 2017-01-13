@@ -38,18 +38,18 @@ Currently the tool can be used to monitor the following information:
 * Node.js with NPM
 * Gulp
 * Bower
-* cat command
-* dig command through dnsutils (Not always installed by default.)
-* free command
-* ps command
-* traceroute command (Not always installed by default.)
-* ifstat (Not always installed by default.)
+* cat
+* dig command through the dnsutils package
+* free
+* ps
+* traceroute
+* ifstat
 
 ## Installation
 
 1. Ensure all necessary commands are installed through your distro's package manager:
 	```
-	sudo apt-get install -y dnsutils traceroute
+	sudo apt-get install -y dnsutils traceroute ifstat
 	```
 2. Install the latest version of Node.js for your operating system.
 3. Ensure that NPM is up to date:
@@ -128,3 +128,7 @@ Please report issues and enhancements. This is a project seeking to change and g
 Included icons are courtesy of the former Flattr icon project: https://github.com/NitruxSA/luv-icon-theme
 
 Additional icons courtesy of KDA Web Technologies: http://icons.kdaweb.com/
+
+Original project icons used when no other subtitutue could be found. If there
+are any copyright concerns, please issue a pull request and the offending
+artwork will be removed.
