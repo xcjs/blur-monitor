@@ -4,7 +4,7 @@
     </p>
     <div class="row" ng-repeat="disks in vm.diskColumns">
         <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="disk in disks" >
-            <div class="panel blur-panel">
+            <div class="panel blur-panel" ng-if="vm.showSubPanels">
                 <div class="panel-heading">
                     <small class="drive">
                         <i class="fa fa-hdd-o"></i>
@@ -23,6 +23,25 @@
                     </small>
                 </div>
             </div>
+            <ng-if ng-if="!vm.showSubPanels">
+                <div class="panel-heading">
+                    <small class="drive">
+                        <i class="fa fa-hdd-o"></i>
+                        {{disk.drive}}
+                    </small>
+                </div>
+                <div class="panel-body">
+                    <small class="mountpoint" title="disk.mountpoint">
+                        {{disk.mountpoint}}
+                    </small>
+                    <div class="horizontal-filler-wrapper">
+                        <div class="horizontal-filler" style="width: {{disk.usedPer}}%;"></div>
+                    </div>
+                    <small>
+                        {{disk.usedPer}}% | {{disk.used}} / {{disk.total}}
+                    </small>
+                </div>
+            </ng-if>
         </div>
     </div>
 </div>
