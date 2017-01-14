@@ -1,4 +1,4 @@
-<div class="container-fluid" ng-if="vm.memory.swap">
+<div class="container-fluid">
     <div class="row" ng-if="vm.processes.length > 0">
         <div class="col-md-4">
             <memory-active-pie-chart ng-if="vm.memory" memory="vm.memory"></memory-active-pie-chart>
@@ -7,20 +7,6 @@
         </div>
         <div class="col-xs-8">
             <loaded-processes-pie-chart processes="vm.processes"></loaded-processes-pie-chart>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid" ng-if="vm.memory.swap === null">
-    <div class="row">
-        <div class="col-md-4">
-            <memory-active-pie-chart ng-if="vm.memory" memory="vm.memory"></memory-active-pie-chart>
-        </div>
-        <div class="col-md-4">
-            <memory-detailed-pie-chart mg-if="vm.memory" memory="vm.memory"></memory-detailed-pie-chart>
-        </div>
-        <div class="col-md-4">
-            <loaded-processes-pie-chart ng-if="vm.processes.length > 0" processes="vm.processes"></loaded-processes-pie-chart>
         </div>
     </div>
 </div>
