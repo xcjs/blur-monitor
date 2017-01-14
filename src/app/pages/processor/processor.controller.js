@@ -3,12 +3,13 @@
 
     angular.module('BlurMonitor.pages.processor').controller('ProcessorController', ProcessorController);
 
-        function ProcessorController($scope, $interval, refreshInterval, ProcessorResource, bootstrapFactory) {
+        function ProcessorController($scope, $interval, refreshInterval, ProcessorResource, ProcessResource, bootstrapFactory) {
             var vm = this;
 
             vm.interval = null;
 
             vm.processors = [];
+            vm.processes = [];
 
             vm.processorStats = [];
             vm.processorStatsColumns = [];
@@ -17,8 +18,11 @@
 
             function registerInterval() {
                 loadProcessors();
+                loadProcesses();
+
                 vm.interval = $interval(function() {
                     loadProcessors();
+                    loadProcesses();
                 }, refreshInterval);
 
                 $scope.$on("$destroy", function() {
@@ -36,6 +40,12 @@
                     });
 
                     bootstrapFactory.splitCollectionForColumns(vm.processorStats, vm.processorStatsColumns, 4);
+                });
+            }
+
+            function loadProcesses() {
+                ProcessResource.query(function(processes) {
+                    vm.processes = processes;
                 });
             }
         }

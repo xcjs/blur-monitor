@@ -1,0 +1,12 @@
+.running-processes-pie-chart {
+  ul.pie-legend {
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  ul.pie-legend > li {
+    flex-basis: 33%;
+  }
+}
