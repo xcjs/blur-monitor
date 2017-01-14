@@ -9,7 +9,7 @@
         vm.chartOptions = {
             animation: false,
             showTooltips: true,
-            tooltipTemplate: "<%if (label){%><%=label%><%}%>",
+            tooltipTemplate: "<%if (label){%><%=label%><%}%>"
         };
 
         vm.chartData = [];
