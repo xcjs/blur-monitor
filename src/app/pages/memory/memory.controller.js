@@ -3,7 +3,7 @@
 
     angular.module('BlurMonitor.pages.memory').controller('MemoryController', MemoryController);
 
-    function MemoryController($scope, $interval, refreshInterval, MemoryResource) {
+    function MemoryController($scope, $interval, refreshInterval, MemoryResource, ProcessResource) {
         var vm = this;
 
         vm.memory = {};
@@ -12,8 +12,12 @@
 
         function registerInterval() {
             loadMemory();
+            loadProcesses();
+
             vm.interval = $interval(function() {
                 loadMemory();
+                loadProcesses();
+
             }, refreshInterval);
 
             $scope.$on('$destroy', function() {
@@ -28,6 +32,12 @@
                 if(!vm.memory.swap) {
                     vm.memory.swap = null;
                 }
+            });
+        }
+
+        function loadProcesses() {
+            ProcessResource.query(function(processes) {
+                vm.processes = processes;
             });
         }
     }
