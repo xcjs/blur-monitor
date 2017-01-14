@@ -45,14 +45,14 @@
             });
 
             angular.forEach(processes, function(process) {
-                process.name = getIconName(process.command);
+                process.name = getProcessName(process.command);
                 process.icon = '/assets/img/app/apps/' + process.name + '.svg';
             });
 
             return processes;
         }
 
-        function getIconName(command) {
+        function getProcessName(command) {
             if (command.indexOf(' ') > -1) {
                 command = command.substr(0, command.indexOf(' '));
             }
@@ -61,9 +61,7 @@
                 command = command.substr(command.lastIndexOf('/') + 1, command.length - command.lastIndexOf('/'));
             }
 
-            // if (!vm.icons.includes(command)) {
-            //     command = 'process';
-            // }
+            // TODO: Add icon support
 
             return command;
         }
