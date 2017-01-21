@@ -48,7 +48,7 @@
             }
 
             if(vm.chartLabels.length < vm.maxSnapshots) {
-                vm.chartLabels.unshift((vm.chartLabels.length + 1) * (refreshInterval / 1000) + 's ago')
+                vm.chartLabels.unshift((vm.chartLabels.length + 1) * (refreshInterval / 1000) + 's ago');
             }
 
             if (vm.chartData[0].length >= vm.maxSnapshots) {
