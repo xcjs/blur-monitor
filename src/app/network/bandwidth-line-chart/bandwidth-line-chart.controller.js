@@ -24,7 +24,9 @@
         };
 
         vm.$onChanges = function() {
-            updateChart(vm.bandwidth);
+            if(vm.bandwidth) {
+                updateChart(vm.bandwidth);
+            }
         };
 
         function updateChart(bandwidth) {
