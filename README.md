@@ -3,6 +3,8 @@
 
 BlurMonitor is a web based performance monitoring tool for Linux systems based on the [BlurAdmin Template](https://github.com/akveo/blur-admin)
 
+![BlurMonitor Screen Shot](screenshot.png?raw=true "BlurMonitor")
+
 It may work on other POSIX systems, but this is untested.
 
 Currently the tool can be used to monitor the following information:
@@ -16,6 +18,7 @@ Currently the tool can be used to monitor the following information:
 * External IP address
 * Network interfaces and bindings
 * Client-resolvable bandwidth
+* Live server bandwidth utilizaiton
 * Reverse traceroute to client
 * The top processor hungry tasks
 * The top memory hungry tasks
