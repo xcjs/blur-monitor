@@ -3,7 +3,7 @@
 
 BlurMonitor is a web based performance monitoring tool for Linux systems based on the [BlurAdmin Template](https://github.com/akveo/blur-admin)
 
-![BlurMonitor Screen Shot](screenshot.png?raw=true "BlurMonitor")
+![BlurMonitor Screen Shot](screenshot.jpg?raw=true "BlurMonitor")
 
 It may work on other POSIX systems, but this is untested.
 
