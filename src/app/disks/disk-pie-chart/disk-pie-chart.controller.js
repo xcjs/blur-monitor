@@ -14,7 +14,7 @@
         vm.chartData = [];
         vm.chartLabels = [];
 
-        vm.$onChanges = function() {
+        vm.$doCheck = function() {
             updateChart(vm.disk);
         };
 
