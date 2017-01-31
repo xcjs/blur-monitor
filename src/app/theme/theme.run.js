@@ -10,10 +10,7 @@
 
   /** @ngInject */
   function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings) {
-    var whatToWait = [
-      preloader.loadAmCharts(),
-      $timeout(3000)
-    ];
+    var whatToWait = [];
 
     var theme = themeLayoutSettings;
     if (theme.blur) {
@@ -21,7 +18,6 @@
         whatToWait.unshift(preloader.loadImg(layoutPaths.images.root + 'blur-bg-mobile.jpg'));
       } else {
         whatToWait.unshift(preloader.loadImg(layoutPaths.images.root + 'blur-bg.jpg'));
-        whatToWait.unshift(preloader.loadImg(layoutPaths.images.root + 'blur-bg-blurred.jpg'));
       }
     }
 
