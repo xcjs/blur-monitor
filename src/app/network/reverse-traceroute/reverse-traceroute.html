@@ -1,4 +1,8 @@
-<div ba-panel ba-panel-title="Reverse Traceroute" ba-panel-class="with-scroll medium-panel" ng-class="{'panel-danger': vm.traceroute === null}">
+<div class="reverse-traceroute"
+    ng-class="{ 'panel-danger': vm.traceroute === null }"
+    ba-panel
+    ba-panel-title="Reverse Traceroute"
+    ba-panel-class="with-scroll medium-panel">
     <div ng-show="!vm.isDefined(vm.traceroute)" class="text-center">
         <i class="ion-load-c animated spinner"></i>
     </div>

@@ -1,4 +1,7 @@
-<div ng-if="vm.chartData.length" ba-panel ba-panel-title="{{vm.title}}" ba-panel-class="with-scroll loaded-processes-pie-chart">
+<div class="loaded-processes-pie-chart"
+    ng-if="vm.chartData.length"
+    ba-panel ba-panel-title="{{vm.title}}"
+    ba-panel-class="with-scroll">
     <canvas
             class="chart chart-pie"
             chart-legend="true"

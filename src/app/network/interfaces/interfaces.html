@@ -1,4 +1,8 @@
-<div ng-if="vm.network" ba-panel ba-panel-title="Interfaces" ba-panel-class="network-interfaces tabs-panel with-scroll">
+<div class="network-interfaces"
+    ng-if="vm.network"
+    ba-panel
+    ba-panel-title="Interfaces"
+    ba-panel-class="tabs-panel with-scroll">
     <uib-tabset class="tabs-panel tabs-left">
         <uib-tab ng-repeat="(interface, bindings) in vm.network" heading="{{interface}}">
             <div class="row">

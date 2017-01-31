@@ -1,4 +1,8 @@
-<div ba-panel ba-panel-title="{{vm.interface}} Bandwidth Utilization" ba-panel-class="with-scroll medium-panel" ng-if="vm.showPanel">
+<div class="bandwidth-line-chart"
+    ng-if="vm.showPanel"
+    ba-panel
+    ba-panel-title="{{vm.interface}} Bandwidth Utilization"
+    ba-panel-class="with-scroll medium-panel">
     <canvas
             class="chart chart-line"
             chart-legend="true"

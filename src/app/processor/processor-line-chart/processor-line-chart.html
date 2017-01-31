@@ -1,4 +1,8 @@
-<div ba-panel ba-panel-title="Processor Utilization" ba-panel-class="with-scroll" ng-if="vm.processors.length > 0">
+<div class="processor-line-chart"
+    ng-if="vm.processors.length > 0"
+    ba-panel
+    ba-panel-title="Processor Utilization"
+    ba-panel-class="with-scroll">
     <canvas
         class="chart chart-line"
         chart-legend="true"

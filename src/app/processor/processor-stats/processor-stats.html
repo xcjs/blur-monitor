@@ -1,7 +1,8 @@
-<div ba-panel
-     ba-panel-title="Processor {{vm.processor.index}} - {{vm.processor.utilization}}%"
-     ba-panel-class="with-scroll"
-     ng-class="{'panel-danger': vm.processor && vm.processor.utilization >= vm.processorPercentageThreshold}">
+<div class="processor-stats"
+    ng-class="{ 'panel-danger': vm.processor && vm.processor.utilization >= vm.processorPercentageThreshold }"
+    ba-panel
+    ba-panel-title="Processor {{vm.processor.index}} - {{vm.processor.utilization}}%"
+    ba-panel-class="with-scroll">
     <p>
         {{vm.processor.model}}
     </p>
