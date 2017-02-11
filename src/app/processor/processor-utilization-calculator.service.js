@@ -7,7 +7,7 @@
         this.getUtilization = getUtilization;
 
         function getUtilization(previousSnapshot, currentSnapshot) {
-            var utilization = 0;
+            var idleness = 0;
             var formattedUtilization;
 
             if(previousSnapshot) {
@@ -20,19 +20,15 @@
                 var idle = currIdle - prevIdle;
                 var ticks = currTicks - prevTicks;
 
-                if(ticks > 0) {
-                    utilization = idle / ticks;
+                if(ticks > 0 && idle > 0) {
+                    idleness = idle / ticks;
                 } else {
-                    utilization = 0;
+                    idleness = 0;
                 }
             }
 
-            if (utilization > 0) {
-                formattedUtilization = (100 - (utilization * 100)).toFixed(2);
-            } else {
-                formattedUtilization = '0.00'
-            }
-
+            formattedUtilization = (100 - (idleness * 100)).toFixed(2);
+            
             return formattedUtilization;
         }
 
