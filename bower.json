@@ -35,9 +35,9 @@
     "angular-bootstrap": "~0.14.3",
     "ng-js-tree": "~0.0.7",
     "angular-resource": "1.5.8",
-    "angular-moment": "^0.10.3",
     "lodash": "^4.15.0",
-    "angular-animate": "1.5.8"
+    "angular-animate": "1.5.8",
+    "angular-moment": "^1.0.1"
   },
   "overrides": {
     "bootstrap": {
