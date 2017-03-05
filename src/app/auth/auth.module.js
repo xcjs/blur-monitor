@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('BlurMonitor.auth', [
-        'ngResource'
+        'ngResource',
+        'LocalStorageModule'
     ]);
 })();

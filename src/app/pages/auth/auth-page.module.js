@@ -2,8 +2,7 @@
     'use strict';
 
     angular.module('BlurMonitor.pages.auth', [
-        'BlurMonitor.auth',
-        'LocalStorageModule'
+        'BlurMonitor.auth'
     ]).config(routeConfig);
 
     /** @ngInject */
