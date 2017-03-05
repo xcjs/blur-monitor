@@ -7,6 +7,7 @@
 
   angular.module('BlurAdmin.pages', [
     'ui.router',
+    'BlurMonitor.pages.auth',
     'BlurMonitor.pages.dashboard',
     'BlurMonitor.pages.processor',
     'BlurMonitor.pages.memory',
