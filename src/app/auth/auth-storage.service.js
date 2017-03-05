@@ -5,6 +5,9 @@
 
     function AuthStorage(localStorageService) {
 
+        this.get = get;
+        this.set = set;
+
         var key = 'blur-monitor-token';
 
         function get() {
@@ -12,7 +15,7 @@
         }
 
         function set(token) {
-            localStorageService.set(key, token);
+            return localStorageService.set(key, token);
         }
     }
 })();
