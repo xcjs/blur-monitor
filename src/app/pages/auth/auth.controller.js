@@ -3,7 +3,7 @@
 
     angular.module('BlurMonitor.pages.auth').controller('AuthController', AuthController);
 
-    function AuthController($scope, AuthResource) {
+    function AuthController($state, AuthResource, AuthStorage) {
         var vm = this;
 
         vm.error = null;
@@ -13,8 +13,9 @@
         function authenticate() {
             vm.error = null;
 
-            AuthResource.authenticate({ username: vm.username, password: vm.password}, function() {
-
+            AuthResource.authenticate({ username: vm.username, password: vm.password}, function(token) {
+                AuthStorage.set(token);
+                $state.go('dashboard');
             }, function() {
                 vm.error = 'Authentication failed.';
             });

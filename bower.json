@@ -35,7 +35,8 @@
     "angular-resource": "1.5.8",
     "lodash": "^4.15.0",
     "angular-animate": "1.5.8",
-    "angular-moment": "^1.0.1"
+    "angular-moment": "^1.0.1",
+    "angular-local-storage": "^0.5.2"
   },
   "overrides": {
     "bootstrap": {
