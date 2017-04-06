@@ -22,7 +22,7 @@ gulp.task('partials', function () {
             quotes: true
         }))
         .pipe($.angularTemplatecache('templateCacheHtml.js', {
-            module: 'BlurAdmin',
+            module: 'BlurMonitor',
             root: 'app'
         }))
         .pipe(gulp.dest(conf.paths.tmp + '/partials/'));
