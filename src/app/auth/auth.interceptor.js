@@ -12,12 +12,9 @@
 
                 }
 
-                console.log(config);
-
                 return config;
             },
             response: function(response) {
-                console.log(response);
 
                 return response;
             }
