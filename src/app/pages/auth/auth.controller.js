@@ -13,12 +13,11 @@
         function authenticate() {
             vm.error = null;
 
-            AuthResource.authenticate({ username: vm.username, password: vm.password}, function(token) {
-                AuthStorage.set(token);
+            AuthResource.authenticate({ username: vm.username, password: vm.password}, function() {
                 $state.go('dashboard');
             }, function() {
                 vm.error = 'Authentication failed.';
             });
         }
-    }
+    }5
 })();
