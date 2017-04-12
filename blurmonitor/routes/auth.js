@@ -17,16 +17,19 @@ function getRoutes() {
             var username = request.payload.username;
             var password = request.payload.password;
 
-            var response = authProvider.authenticate(username, password).then(function(token) {
+            var promise = authProvider.authenticate(username, password).then(function(token) {
                 var response = request.generateResponse();
                 response.headers.Authorization = 'Bearer ' + token;
+                response.payload = null;
 
                 return reply(response);
             }, function(err) {
-                return reply(request.generateResponse({ error: err }).code(401));
+                var response = request.generateResponse({ error: err }).code(401);
+
+                return reply(response);
             });
 
-            return response;
+            return promise;
         }
     });
 
