@@ -12,8 +12,11 @@ function getRoutes() {
     routes.push({
         method: 'GET',
         path: '/api/processor',
-        handler: function (request, reply) {
-            return reply(os.cpus());
+        config: {
+            auth: 'pamToken',
+            handler: function (request, reply) {
+                return reply(os.cpus());
+            }
         }
     });
 

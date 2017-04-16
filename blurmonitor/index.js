@@ -28,9 +28,9 @@ server.connection({
 server.register(Inert);
 
 server.register(AuthBearer, function(err) {
-    server.auth.strategy('simple', 'bearer-access-token', {
+    server.auth.strategy('pamToken', 'bearer-access-token', {
         validateFunc: function (token, cb) {
-            authProvider.get(token).then(function () {
+            authProvider.getTokenValue(token).then(function () {
                 return cb(null, true, {token: token});
             }, function () {
                 return cb(null, false, {token: token});
