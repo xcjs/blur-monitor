@@ -47,12 +47,13 @@ Currently the tool can be used to monitor the following information:
 * ps
 * traceroute
 * ifstat
+* libpam0g-dev (for PAM authentication)
 
 ## Installation
 
 1. Ensure all necessary commands are installed through your distro's package manager:
 	```
-	sudo apt-get install -y dnsutils traceroute ifstat
+	Debian/Ubuntu: sudo apt-get install -y dnsutils traceroute ifstat libpam0g-dev
 	```
 2. Install the latest version of Node.js for your operating system.
 3. Ensure that NPM is up to date:
