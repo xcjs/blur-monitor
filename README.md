@@ -9,6 +9,7 @@ It may work on other POSIX systems, but this is untested.
 
 Currently the tool can be used to monitor the following information:
 
+* PAM authentication
 * Processor model
 * Processor clock speed on variable clock speed models
 * Processor utilization
