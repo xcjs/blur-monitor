@@ -36,7 +36,7 @@ function authenticate(username, password) {
 function getTokenValue(token) {
     var promise = new Promise(function(resolve, reject) {
         tokenCache.get(token, function(err, value) {
-            if(!err) {
+            if(!err && !!value) {
                 resolve(value);
             } else {
                 reject(err);

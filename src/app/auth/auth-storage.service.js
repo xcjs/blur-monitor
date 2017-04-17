@@ -7,6 +7,7 @@
 
         this.get = get;
         this.set = set;
+        this.remove = remove;
 
         var key = 'blur-monitor-token';
 
@@ -16,6 +17,10 @@
 
         function set(token) {
             return localStorageService.set(key, token);
+        }
+
+        function remove() {
+            return localStorageService.removeItem(key);
         }
     }
 })();
