@@ -14,23 +14,26 @@ function getRoutes() {
     routes.push({
         method: 'GET',
         path: '/api/system',
-        handler: function (request, reply) {
-            var response = {
-                architecture: os.arch(),
-                host: os.hostname(),
-                platform: os.platform(),
-                release: os.release(),
-                uptime: os.uptime()
-            };
+        config: {
+            auth: 'pamToken',
+            handler: function (request, reply) {
+                var response = {
+                    architecture: os.arch(),
+                    host: os.hostname(),
+                    platform: os.platform(),
+                    release: os.release(),
+                    uptime: os.uptime()
+                };
 
-            var promise = new Promise(function (resolve) {
-                lsbRelease.getRelease.then(function (release) {
-                    response.distro = lsbRelease.parse(release);
-                    resolve(response);
+                var promise = new Promise(function (resolve) {
+                    lsbRelease.getRelease.then(function (release) {
+                        response.distro = lsbRelease.parse(release);
+                        resolve(response);
+                    });
                 });
-            });
 
-            return reply(promise);
+                return reply(promise);
+            }
         }
     });
 
