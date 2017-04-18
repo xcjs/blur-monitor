@@ -3,7 +3,7 @@
 'use strict';
 
 var os = require('os');
-var spawn = require("child_process").spawn;
+var spawn = require('child_process').spawn;
 
 module.exports = getRoutes();
 
@@ -13,8 +13,11 @@ function getRoutes() {
     routes.push({
         method: 'GET',
         path: '/api/memory',
-        handler: function (request, reply) {
-            return reply(getMemoryStats());
+        config: {
+            auth: 'pamToken',
+            handler: function (request, reply) {
+                return reply(getMemoryStats());
+            }
         }
     });
 

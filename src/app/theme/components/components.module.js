@@ -9,6 +9,8 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.theme.components', []);
+  angular.module('BlurAdmin.theme.components', [
+      'BlurMonitor.auth'
+  ]);
 
 })();

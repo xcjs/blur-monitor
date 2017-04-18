@@ -14,42 +14,57 @@ function getRoutes() {
     routes.push({
         method: 'GET',
         path: '/api/network',
-        handler: function (request, reply) {
-            return reply(os.networkInterfaces());
+        config: {
+            auth: 'pamToken',
+            handler: function (request, reply) {
+                return reply(os.networkInterfaces());
+            }
         }
     });
 
     routes.push({
         method: 'GET',
         path: '/api/network/{interface}',
-        handler: function (request, reply) {
-            return reply(os.networkInterfaces()[request.params.interface]);
+        config: {
+            auth: 'pamToken',
+            handler: function (request, reply) {
+                return reply(os.networkInterfaces()[request.params.interface]);
+            }
         }
     });
 
     routes.push({
         method: 'GET',
         path: '/api/network/external',
-        handler: function(request, reply) {
-            return reply(getExternalIp());
+        config: {
+            auth: 'pamToken',
+            handler: function(request, reply) {
+                return reply(getExternalIp());
+            }
         }
     });
 
     routes.push({
         method: 'GET',
         path: '/api/network/traceroute',
-        handler: function(request, reply) {
-            var origin = request.headers['x-forwarded-for'] || request.info.remoteAddress;
+        config: {
+            auth: 'pamToken',
+            handler: function(request, reply) {
+                var origin = request.headers['x-forwarded-for'] || request.info.remoteAddress;
 
-            return reply(getTraceRoute(origin.trim()));
+                return reply(getTraceRoute(origin.trim()));
+            }
         }
     });
 
     routes.push({
         method: 'GET',
         path: '/api/network/bandwidth',
-        handler: function(request, reply) {
-            return reply(getBandwithUtilization());
+        config: {
+            auth: 'pamToken',
+            handler: function(request, reply) {
+                return reply(getBandwithUtilization());
+            }
         }
     });
 

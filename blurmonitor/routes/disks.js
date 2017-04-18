@@ -13,16 +13,22 @@ function getRoutes() {
     routes.push({
         method: 'GET',
         path: '/api/disks',
-        handler: function (request, reply) {
-            return reply(getDisks());
+        config: {
+            auth: 'pamToken',
+            handler: function (request, reply) {
+                return reply(getDisks());
+            }
         }
     });
 
     routes.push({
         method: 'GET',
         path: '/api/disks/{id}',
-        handler: function (request, reply) {
-            return reply(getDisk(request.params.id));
+        config: {
+            auth: 'pamToken',
+            handler: function (request, reply) {
+                return reply(getDisk(request.params.id));
+            }
         }
     });
 

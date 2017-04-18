@@ -10,6 +10,10 @@
 
         vm.authenticate = authenticate;
 
+        if(AuthStorage.get()) {
+            $state.go('dashboard');
+        }
+
         function authenticate() {
             vm.error = null;
 

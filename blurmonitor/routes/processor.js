@@ -23,16 +23,22 @@ function getRoutes() {
     routes.push({
         method: 'GET',
         path: '/api/processor/{core}',
-        handler: function (request, reply) {
-            return reply(os.cpus()[request.params.core]);
+        config: {
+            auth: 'pamToken',
+            handler: function (request, reply) {
+                return reply(os.cpus()[request.params.core]);
+            }
         }
     });
 
     routes.push({
         method: 'GET',
         path: '/api/processor/utilization',
-        handler: function (request, reply) {
-            return reply(os.loadavg());
+        config: {
+            auth: 'pamToken',
+            handler: function (request, reply) {
+                return reply(os.loadavg());
+            }
         }
     });
 

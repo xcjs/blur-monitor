@@ -20,7 +20,7 @@
         }
 
         function remove() {
-            return localStorageService.removeItem(key);
+            return localStorageService.remove(key);
         }
     }
 })();

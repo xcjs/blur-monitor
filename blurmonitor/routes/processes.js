@@ -13,16 +13,22 @@ function getRoutes() {
     routes.push({
         method: 'GET',
         path: '/api/processes',
-        handler: function (request, reply) {
-            return reply(getAllProcesses());
+        config: {
+            auth: 'pamToken',
+            handler: function (request, reply) {
+                return reply(getAllProcesses());
+            }
         }
     });
 
     routes.push({
         method: 'GET',
         path: '/api/processes/{id}',
-        handler: function(request, reply) {
-            return reply(getProcessById(request.params.id));
+        config: {
+            auth: 'pamToken',
+            handler: function(request, reply) {
+                return reply(getProcessById(request.params.id));
+            }
         }
     });
 

@@ -24,19 +24,21 @@
   <!-- endinject -->
   <!-- endbuild -->
 </head>
-<body>
+<body ng-controller="IndexController as vm">
 <div class="body-bg"></div>
 <main ng-if="$pageFinishedLoading" ng-class="{ 'menu-collapsed': $baSidebarService.isMenuCollapsed() }">
 
-  <ba-sidebar></ba-sidebar>
-  <page-top></page-top>
+  <ba-sidebar ng-if="vm.isAuthenticated()"></ba-sidebar>
+  <page-top ng-if="vm.isAuthenticated()"></page-top>
 
-  <div class="al-main">
+  <div ng-if="vm.isAuthenticated()" class="al-main">
     <div class="al-content">
       <content-top></content-top>
       <div ui-view></div>
     </div>
   </div>
+
+  <div ui-view ng-if="!vm.isAuthenticated()"></div>
 
   <footer class="al-footer clearfix">
     <div class="al-footer-right">Created with <i class="ion-heart"></i></div>
