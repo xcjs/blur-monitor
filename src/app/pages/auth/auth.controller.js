@@ -17,7 +17,10 @@
         function authenticate() {
             vm.error = null;
 
-            AuthResource.authenticate({ username: vm.username, password: vm.password}, function() {
+            AuthResource.authenticate({ username: vm.username, password: vm.password}, function(data, headers) {
+                var token = headers().authorization.split(' ')[1];
+
+                AuthStorage.set(token);
                 $state.go('dashboard');
             }, function() {
                 vm.error = 'Authentication failed.';
