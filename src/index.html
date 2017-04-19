@@ -40,7 +40,7 @@
 
   <div ui-view ng-if="!vm.isAuthenticated()"></div>
 
-  <footer class="al-footer clearfix">
+  <footer ng-if="vm.isAuthenticated()" class="al-footer clearfix animated fadeIn">
     <div class="al-footer-right">Created with <i class="ion-heart"></i></div>
     <div class="al-footer-main clearfix">
       <div class="al-copy">Blur Admin / Blur Monitor 2016</div>
