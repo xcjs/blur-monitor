@@ -28,8 +28,8 @@
 <div class="body-bg"></div>
 <main ng-if="$pageFinishedLoading" ng-class="{ 'menu-collapsed': $baSidebarService.isMenuCollapsed() }">
 
-  <ba-sidebar ng-if="vm.isAuthenticated()" class="animated fadeIn"></ba-sidebar>
-  <page-top ng-if="vm.isAuthenticated()" class="animated fadeIn"></page-top>
+  <ba-sidebar ng-if="vm.isAuthenticated()"></ba-sidebar>
+  <page-top ng-if="vm.isAuthenticated()"></page-top>
 
   <div ng-if="vm.isAuthenticated()" class="al-main">
     <div class="al-content">
@@ -40,7 +40,7 @@
 
   <div ui-view ng-if="!vm.isAuthenticated()"></div>
 
-  <footer ng-if="vm.isAuthenticated()" class="al-footer clearfix animated fadeIn">
+  <footer ng-if="vm.isAuthenticated()" class="al-footer clearfix">
     <div class="al-footer-right">Created with <i class="ion-heart"></i></div>
     <div class="al-footer-main clearfix">
       <div class="al-copy">Blur Admin / Blur Monitor 2016</div>
