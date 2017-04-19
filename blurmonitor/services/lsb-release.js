@@ -11,7 +11,7 @@ module.exports = {
 };
 
 function getRelease() {
-    return shell.spawn('cat', ['/etc/lsb-release']);
+    return shell.spawn('lsb_release', ['-a']);
 }
 
 function parseRelease(stdout) {
@@ -19,8 +19,8 @@ function parseRelease(stdout) {
     var lsbRelease = {};
 
     lines.forEach(function(line) {
-        var key = line.substr(0, line.indexOf('='));
-        var value = line.substr(line.indexOf('=') + 1, line.length -1);
+        var key = line.substr(0, line.indexOf(':')).trim();
+        var value = line.substr(line.indexOf(':') + 1, line.length -1).trim();
 
         if(key && value) {
             while(value.indexOf('"') > -1) {
@@ -32,10 +32,10 @@ function parseRelease(stdout) {
     });
 
     var parsedRelease = {
-        id: lsbRelease.DISTRIB_ID,
-        release: lsbRelease.DISTRIB_RELEASE,
-        codeName: lsbRelease.DISTRIB_CODENAME,
-        description: lsbRelease.DISTRIB_DESCRIPTION
+        id: lsbRelease['Distributor ID'],
+        release: lsbRelease['Release'],
+        codeName: lsbRelease['Codename'],
+        description: lsbRelease['Description']
     };
 
     return parsedRelease;

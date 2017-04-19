@@ -43,6 +43,7 @@ Currently the tool can be used to monitor the following information:
 * Gulp
 * Bower
 * cat
+* lsb_release
 * dig command through the dnsutils package
 * free
 * ps
