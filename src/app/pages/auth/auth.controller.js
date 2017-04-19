@@ -26,5 +26,5 @@
                 vm.error = 'Authentication failed.';
             });
         }
-    }5
+    }
 })();
