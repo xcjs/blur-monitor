@@ -28,8 +28,8 @@
 <div class="body-bg"></div>
 <main ng-if="$pageFinishedLoading" ng-class="{ 'menu-collapsed': $baSidebarService.isMenuCollapsed() }">
 
-  <ba-sidebar ng-if="vm.isAuthenticated()"></ba-sidebar>
-  <page-top ng-if="vm.isAuthenticated()"></page-top>
+  <ba-sidebar ng-if="vm.isAuthenticated()" class="animated fadeIn"></ba-sidebar>
+  <page-top ng-if="vm.isAuthenticated()" class="animated fadeIn"></page-top>
 
   <div ng-if="vm.isAuthenticated()" class="al-main">
     <div class="al-content">
