@@ -20,7 +20,7 @@
             if (request.readyState === XMLHttpRequest.DONE) {
                 self.response = request.responseText;
             }
-        }
+        };
 
         function addProgressCallback(callback) {
             request.addEventListener('progress', callback);
