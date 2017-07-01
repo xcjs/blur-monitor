@@ -45,9 +45,6 @@
         "js/dropdown.js"
       ]
     },
-    "slimScroll": {
-      "main": "./jquery.slimscroll.js"
-    },
     "font-awesome": {
       "main": [
         "css/font-awesome.css",
