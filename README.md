@@ -135,6 +135,6 @@ Included icons are courtesy of the former Flattr icon project: https://github.co
 
 Additional icons courtesy of KDA Web Technologies: http://icons.kdaweb.com/
 
-Original project icons used when no other subtitutue could be found. If there
+Original project icons used when no other substitute could be found. If there
 are any copyright concerns, please issue a pull request and the offending
 artwork will be removed.
