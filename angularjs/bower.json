@@ -58,6 +58,7 @@
     }
   },
   "resolutions": {
-    "angular": "1.5.8"
+    "angular": "1.5.8",
+    "moment": ">=2.19.3 <3.0.0"
   }
 }
