@@ -4,8 +4,8 @@
 'use strict';
 
 var pam = require('authenticate-pam');
-var NodeCache = require( "node-cache" );
-var randomstring = require('randomstring');
+var NodeCache = require("node-cache");
+var randomString = require('crypto-random-string');
 
 var tokenCache = new NodeCache({
     stdTTL: 60 * 60 * 24,
@@ -49,7 +49,7 @@ function getTokenValue(token) {
 
 function setToken(username) {
     var promise = new Promise(function(resolve, reject) {
-        var token = randomstring.generate(24);
+        var token = randomString(24);
 
         tokenCache.set(token, { username: username }, function(err) {
             if(!err) {
