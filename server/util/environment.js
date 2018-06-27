@@ -3,7 +3,7 @@
 'use strict';
 
 var argv = require('yargs').argv;
-var conf = require('../../gulp/conf');
+var conf = require('../../.angular-cli.json');
 var path = require('path');
 
 var environments = {
