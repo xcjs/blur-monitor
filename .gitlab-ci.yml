@@ -1,7 +1,7 @@
 build:
     tags:
         - linux
-        - node
+        - nodejs
         - bower
         - dnsutils
         - ifstat
