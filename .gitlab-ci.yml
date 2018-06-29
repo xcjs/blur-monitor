@@ -1,4 +1,12 @@
 build:
+    tags:
+        - linux
+        - node
+        - bower
+        - dnsutils
+        - ifstat
+        - traceroute
+        - libpam0g-dev
     script:
         - npm install
         - bower install
