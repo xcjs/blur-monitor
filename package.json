@@ -1,6 +1,11 @@
 {
   "name": "blur_monitor",
   "version": "1.6.2",
+  "main": "./blurmonitor/index.js",
+  "scripts": {
+    "postinstall": "bower install",
+    "build": "npx gulp clean && npx gulp build && mkdir -p ./bin && npx nexe --build -o ./bin/blur-monitor -r './release/**/*' ./blurmonitor/"
+  },
   "devDependencies": {
     "browser-sync": "~2.9.11",
     "browser-sync-spa": "~1.0.3",
@@ -45,13 +50,11 @@
     "karma-phantomjs-launcher": "~0.2.1",
     "lodash": "~3.10.1",
     "main-bower-files": "~2.9.0",
+    "nexe": "^2.0.0-rc.30",
     "phantomjs": "~1.9.18",
     "uglify-save-license": "~0.4.1",
     "wiredep": "~2.2.2",
     "wrench": "~1.5.8"
-  },
-  "scripts": {
-    "postinstall": "bower install"
   },
   "dependencies": {
     "array-includes": "^3.0.2",
