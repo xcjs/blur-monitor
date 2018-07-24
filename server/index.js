@@ -3,6 +3,10 @@
 
 'use strict';
 
+process.chdir(__dirname);
+process.chdir('../');
+console.info('Using ' + process.cwd() + ' as the present working directory...');
+
 var Hapi = require('hapi');
 var Inert = require('inert');
 var path = require('path');
@@ -10,6 +14,8 @@ var AuthBearer = require('hapi-auth-bearer-token');
 var authProvider = require('./services/auth/pam-auth-provider');
 
 var env = require('./util/environment');
+
+console.info('Using ' + env.current + ' as the current environment...');
 
 var server = new Hapi.Server({
     connections: {
