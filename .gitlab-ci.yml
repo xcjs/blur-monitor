@@ -1,0 +1,15 @@
+build:
+    tags:
+        - linux
+        - nodejs
+        - bower
+        - dnsutils
+        - ifstat
+        - traceroute
+        - libpam0g-dev
+        - ng
+    script:
+        - npm run lint
+        - npm test
+        - npm run build
+
