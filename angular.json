@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "blurmonitor": {
+    "blur-monitor": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -48,18 +48,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "blurmonitor:build"
+            "browserTarget": "blur-monitor:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "blurmonitor:build:production"
+              "browserTarget": "blur-monitor:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "blurmonitor:build"
+            "browserTarget": "blur-monitor:build"
           }
         },
         "test": {
@@ -93,7 +93,7 @@
         }
       }
     },
-    "blurmonitor-e2e": {
+    "blur-monitor-e2e": {
       "root": "",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -119,7 +119,7 @@
       }
     }
   },
-  "defaultProject": "blurmonitor",
+  "defaultProject": "blur-monitor",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

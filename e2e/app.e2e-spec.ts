@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('blurmonitor App', () => {
+describe('blur-monitor App', () => {
   let page: AppPage;
 
   beforeEach(() => {

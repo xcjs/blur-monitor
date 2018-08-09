@@ -3,12 +3,12 @@
 'use strict';
 
 var argv = require('yargs').argv;
-var conf = require('../../.angular-cli.json');
+var conf = require('../../angular.json');
 var path = require('path');
 
 var environments = {
-    dev: 'dev',
-    prod: 'prod'
+  dev: 'dev',
+  prod: 'prod'
 };
 
 var currentEnvironment = getCurrentEnvironment();
@@ -16,39 +16,35 @@ var currentEnvironment = getCurrentEnvironment();
 module.exports = getEnvironment();
 
 function getEnvironment() {
-    var env = {
-        conf: conf,
-        environments: environments,
-        current: getCurrentEnvironment(),
-        port: getPort(),
-        staticRoot: getStaticRoot()
-    };
+  var env = {
+    conf: conf,
+    environments: environments,
+    current: getCurrentEnvironment(),
+    port: getPort(),
+    staticRoot: getStaticRoot()
+  };
 
     return env;
 }
 
 function getCurrentEnvironment() {
-    if(argv.e === environments.dev) {
-        return environments.dev;
-    } else {
-        return environments.prod;
-    }
+  if(argv.e === environments.dev) {
+      return environments.dev;
+  } else {
+      return environments.prod;
+  }
 }
 
 function getPort() {
-    return argv.p || 3000;
+  return argv.p || 3000;
 }
 
 function getStaticRoot() {
-    var staticRoot = null;
+  var staticRoot = null;
 
-    if(currentEnvironment === environments.prod) {
-        staticRoot = conf.paths.dist;
-    } else {
-        staticRoot = [path.join(conf.paths.tmp, 'serve'), conf.paths.src];
-    }
+  staticRoot = conf.projects['blur-monitor'].architect.build.options.outputPath;
 
-    return staticRoot;
+  return staticRoot;
 }
 
 
