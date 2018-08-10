@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100vh;
+  min-width: 320px;
+}
+
+body {
+  background: #31606B url('assets/img/styles/blur-bg.jpg') center center no-repeat;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  font: 14px/16px Roboto, sans-serif
+}
