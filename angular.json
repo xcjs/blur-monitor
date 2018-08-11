@@ -102,7 +102,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "blurmonitor:serve"
+            "devServerTarget": "blur-monitor:serve"
           }
         },
         "lint": {
