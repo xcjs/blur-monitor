@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SystemStatusComponent } from './system-status.component';
+import { AuthPageComponent } from './auth-page.component';
 
-describe('SystemStatusComponent', () => {
-  let component: SystemStatusComponent;
-  let fixture: ComponentFixture<SystemStatusComponent>;
+describe('AuthPageComponent', () => {
+  let component: AuthPageComponent;
+  let fixture: ComponentFixture<AuthPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SystemStatusComponent ]
+      declarations: [ AuthPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SystemStatusComponent);
+    fixture = TestBed.createComponent(AuthPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
