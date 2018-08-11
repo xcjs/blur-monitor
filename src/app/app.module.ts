@@ -20,6 +20,8 @@ import { RunningProcessesPieChartComponent } from './running-processes-pie-chart
 import { ProcessorLineChartComponent } from './processor-line-chart/processor-line-chart.component';
 import { ProcessorStatsComponent } from './processor-stats/processor-stats.component';
 import { SystemStatusComponent } from './system-status/system-status.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { SystemStatusComponent } from './system-status/system-status.component';
     RunningProcessesPieChartComponent,
     ProcessorLineChartComponent,
     ProcessorStatsComponent,
-    SystemStatusComponent
+    SystemStatusComponent,
+    NavigationComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule
