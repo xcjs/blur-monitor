@@ -10,32 +10,46 @@ import { ProcessesPageComponent } from './processes/processes-page/processes-pag
 import { ProcessorPageComponent } from './processor/processor-page/processor-page.component';
 
 const appRoutes: Routes = [
-  [
-    {
-      path: '/'
-    },
-    {
-      path: '/login'
-    },
-    {
-      path: 'processor'
-    },
-    {
-      path: 'memory'
-    },
-    {
-      path: 'disks'
-    },
-    {
-      path: 'network'
-    },
-    {
-      path: 'processes'
-    }
-  ]
+  {
+    path: '',
+    component: DashboardPageComponent
+  },
+  {
+    path: 'login',
+    component: AuthPageComponent
+  },
+  {
+    path: 'processor',
+    component: ProcessorPageComponent
+  },
+  {
+    path: 'memory',
+    component: MemoryPageComponent
+  },
+  {
+    path: 'disks',
+    component: DisksPageComponent
+  },
+  {
+    path: 'network',
+    component: NetworkPageComponent
+  },
+  {
+    path: 'processes',
+    component: ProcessesPageComponent
+  }
 ];
 
 @NgModule({
+  declarations: [
+    AuthPageComponent,
+    DashboardPageComponent,
+    DisksPageComponent,
+    MemoryPageComponent,
+    NetworkPageComponent,
+    ProcessesPageComponent,
+    ProcessorPageComponent
+  ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
