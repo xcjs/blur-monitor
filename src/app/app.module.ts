@@ -24,7 +24,6 @@ import { SystemInfoComponent } from './system/system-info/system-info.component'
 import { NavigationComponent } from './ui/navigation/navigation.component';
 import { HeaderComponent } from './ui/header/header.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
-import { AuthorizedPageComponent } from './ui/authorized-page/authorized-page.component';
 import { SpinnerComponent } from './ui/spinner/spinner.component';
 
 @NgModule({
