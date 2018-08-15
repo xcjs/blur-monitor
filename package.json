@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^6.1.2",
     "@angular/platform-browser-dynamic": "^6.1.2",
     "@angular/router": "^6.1.2",
+    "@ng-bootstrap/ng-bootstrap": "^3.0.0",
     "ajv": "^6.5.2",
     "array-includes": "^3.0.2",
     "authenticate-pam": "^1.0.2",
