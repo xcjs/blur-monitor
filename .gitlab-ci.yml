@@ -9,6 +9,7 @@ build:
         - libpam0g-dev
         - ng
     script:
+        - npm install
         - npm run lint
         - npm test
         - npm run build
