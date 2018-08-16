@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthPageComponent } from './auth/auth-page/auth-page.component';
 import { DashboardPageComponent } from './dashboard/dashboard-page/dashboard-page.component';
 import { DisksPageComponent } from './disks/disks-page/disks-page.component';
 import { MemoryPageComponent } from './memory/memory-page/memory-page.component';
@@ -12,6 +13,10 @@ const appRoutes: Routes = [
   {
     path: '',
     component: DashboardPageComponent
+  },
+  {
+    path: 'login',
+    component: AuthPageComponent
   },
   {
     path: 'processor',
@@ -37,6 +42,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
+    AuthPageComponent,
     DashboardPageComponent,
     DisksPageComponent,
     MemoryPageComponent,
