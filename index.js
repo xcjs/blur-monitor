@@ -3,15 +3,15 @@
 
 'use strict';
 
+const AuthBearer = require('hapi-auth-bearer-token');
+const Hapi = require('hapi');
+const Inert = require('inert');
+
+const authProvider = require('./server/services/auth/pam-auth-provider');
+const env = require('./server/util/environment');
+
 process.chdir(__dirname);
 console.info('Using ' + process.cwd() + ' as the present working directory...');
-
-var Hapi = require('hapi');
-var Inert = require('inert');
-var AuthBearer = require('hapi-auth-bearer-token');
-var authProvider = require('./server/services/auth/pam-auth-provider');
-
-var env = require('./server/util/environment');
 
 console.info('Using ' + env.current + ' as the current environment...');
 
