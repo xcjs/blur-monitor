@@ -2,7 +2,6 @@ build:
     tags:
         - linux
         - nodejs
-        - bower
         - dnsutils
         - ifstat
         - traceroute
