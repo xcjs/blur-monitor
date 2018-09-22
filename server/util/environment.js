@@ -50,7 +50,3 @@ function getStaticRoot() {
 
     return staticRoot;
 }
-
-
-
-

@@ -4,16 +4,14 @@
 'use strict';
 
 process.chdir(__dirname);
-process.chdir('../');
 console.info('Using ' + process.cwd() + ' as the present working directory...');
 
 var Hapi = require('hapi');
 var Inert = require('inert');
-var path = require('path');
 var AuthBearer = require('hapi-auth-bearer-token');
-var authProvider = require('./services/auth/pam-auth-provider');
+var authProvider = require('./server/services/auth/pam-auth-provider');
 
-var env = require('./util/environment');
+var env = require('./server/util/environment');
 
 console.info('Using ' + env.current + ' as the current environment...');
 
@@ -21,7 +19,7 @@ var server = new Hapi.Server({
     connections: {
         routes: {
             files: {
-                relativeTo: path.join(__dirname, '../')
+                relativeTo: __dirname
             }
         }
     }
@@ -33,29 +31,35 @@ server.connection({
 
 server.register(Inert);
 
-server.register(AuthBearer, function(err) {
+server.register(AuthBearer, function(error) {
     server.auth.strategy('pamToken', 'bearer-access-token', {
         validateFunc: function (token, cb) {
             authProvider.getTokenValue(token).then(function () {
-                return cb(null, true, {token: token});
+                return cb(null, true, { token: token });
             }, function () {
-                return cb(null, false, {token: token});
+                if (error) {
+                    console.error('Authentication failed.');
+                } else {
+                    console.error('Authentication failed with an error: ' + error);
+                }
+
+                return cb(null, false, { token: token });
             });
         }
     });
 });
 
 var routers = [
-    require('./routes/static'),
-    require('./routes/auth'),
-    require('./routes/system'),
-    require('./routes/processor'),
-    require('./routes/memory'),
-    require('./routes/disks'),
-    require('./routes/network'),
-    require('./routes/processes'),
-    require('./routes/bandwidth'),
-    require('./routes/assets')
+    require('./server/routes/static'),
+    require('./server/routes/auth'),
+    require('./server/routes/system'),
+    require('./server/routes/processor'),
+    require('./server/routes/memory'),
+    require('./server/routes/disks'),
+    require('./server/routes/network'),
+    require('./server/routes/processes'),
+    require('./server/routes/bandwidth'),
+    require('./server/routes/assets')
 ];
 
 routers.forEach(function (router) {

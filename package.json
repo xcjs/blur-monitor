@@ -8,9 +8,10 @@
   },
   "scripts": {
     "postinstall": "npx bower install",
-    "start": "npx gulp build && node server",
+    "start": "npx gulp build && node index.js",
     "start:dev": "npx gulp build && npx gulp serve",
     "build": "npx gulp build",
+    "build:binary": "npm run build && npx nexe --build -r \"./release/**/*\" index.js -o bin/blur-monitor",
     "clean": "npx gulp clean"
   },
   "dependencies": {
@@ -73,6 +74,7 @@
     "karma-phantomjs-launcher": "~0.2.1",
     "lodash": "~3.10.1",
     "main-bower-files": "~2.9.0",
+    "nexe": "^2.0.0-rc.34",
     "phantomjs": "~1.9.18",
     "uglify-save-license": "~0.4.1",
     "wiredep": "~2.2.2",
