@@ -1,16 +1,17 @@
 {
   "name": "blur-monitor",
   "version": "1.6.2",
-  "license" : "MIT",
+  "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/xcjs/blur-monitor.git"
+    "type": "git",
+    "url": "https://github.com/xcjs/blur-monitor.git"
   },
   "scripts": {
-    "start": "npx gulp build && npx gulp",
+    "postinstall": "npx bower install",
+    "start": "npx gulp build && node server",
+    "start:dev": "npx gulp build && npx gulp serve",
     "build": "npx gulp build",
-    "clean": "npx gulp clean",
-    "postinstall": "bower install"
+    "clean": "npx gulp clean"
   },
   "dependencies": {
     "array-includes": "^3.0.2",
