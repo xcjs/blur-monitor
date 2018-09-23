@@ -11,14 +11,14 @@ module.exports = getRoutes();
 function getRoutes() {
     var routes = [];
 
-    var handlerDirectories = [];
+    var handlerPaths = [];
 
     if (Array.isArray(env.staticRoot)) {
         env.staticRoot.forEach(function (dir) {
-            handlerDirectories.push(path.join(__dirname, dir));
+            handlerPaths.push(path.join(__dirname, '../../' + dir));
         });
     } else {
-        handlerDirectories.push(path.join(env.staticRoot));
+        handlerPaths.push(path.join(__dirname, '../../' + env.staticRoot));
     }
 
     routes.push({
@@ -26,7 +26,7 @@ function getRoutes() {
         path: '/{param*}',
         handler: {
             directory: {
-                path: path.join(__dirname, '../../release'),
+                path: handlerPaths,
                 redirectToSlash: true,
                 index: true
             }

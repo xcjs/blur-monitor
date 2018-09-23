@@ -43,7 +43,7 @@ function getStaticRoot() {
     var staticRoot = null;
 
     if(currentEnvironment === environments.prod) {
-        staticRoot = path.join(__dirname, conf.paths.dist);
+        staticRoot = conf.paths.dist;
     } else {
         staticRoot = [path.join(conf.paths.tmp, 'serve'), conf.paths.src];
     }
