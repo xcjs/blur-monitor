@@ -2,19 +2,31 @@
 
 'use strict';
 
-var env = require('../util/environment');
+const path = require('path');
+
+const env = require('../util/environment');
 
 module.exports = getRoutes();
 
 function getRoutes() {
     var routes = [];
 
+    var handlerDirectories = [];
+
+    if (Array.isArray(env.staticRoot)) {
+        env.staticRoot.forEach(function (dir) {
+            handlerDirectories.push(path.join(__dirname, dir));
+        });
+    } else {
+        handlerDirectories.push(path.join(env.staticRoot));
+    }
+
     routes.push({
         method: 'GET',
         path: '/{param*}',
         handler: {
             directory: {
-                path: env.staticRoot,
+                path: path.join(__dirname, '../../release'),
                 redirectToSlash: true,
                 index: true
             }
@@ -28,7 +40,7 @@ function getRoutes() {
             path: '/bower_components/{param*}',
             handler: {
                 directory: {
-                    path: './bower_components',
+                    path: path.join(__dirname, '../../bower_components'),
                     redirectToSlash: true,
                     index: true
                 }

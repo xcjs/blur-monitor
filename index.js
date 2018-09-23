@@ -6,11 +6,11 @@
 const AuthBearer = require('hapi-auth-bearer-token');
 const Hapi = require('hapi');
 const Inert = require('inert');
+const path = require('path');
 
 const authProvider = require('./server/services/auth/pam-auth-provider');
 const env = require('./server/util/environment');
 
-process.chdir(__dirname);
 console.info('Using ' + process.cwd() + ' as the present working directory...');
 
 console.info('Using ' + env.current + ' as the current environment...');
@@ -19,7 +19,7 @@ var server = new Hapi.Server({
     connections: {
         routes: {
             files: {
-                relativeTo: __dirname
+                relativeTo: path.join(__dirname, '.')
             }
         }
     }

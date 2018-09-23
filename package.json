@@ -1,5 +1,6 @@
 {
   "name": "blur-monitor",
+  "main": "index.js",
   "version": "1.6.2",
   "license": "MIT",
   "repository": {
@@ -11,7 +12,7 @@
     "start": "npx gulp build && node index.js",
     "start:dev": "npx gulp build && npx gulp serve",
     "build": "npx gulp build",
-    "build:binary": "npm run build && npx nexe --build -r \"./release/**/*\" index.js -o bin/blur-monitor",
+    "build:binary": "npm run build && npx pkg --debug --targets node8-linux-x64 --output bin/blur-monitor package.json && cp -f node_modules/authenticate-pam/build/Release/authenticate_pam.node bin/authenticate_pam.node",
     "clean": "npx gulp clean"
   },
   "dependencies": {
@@ -76,8 +77,13 @@
     "main-bower-files": "~2.9.0",
     "nexe": "^2.0.0-rc.34",
     "phantomjs": "~1.9.18",
+    "pkg": "^4.3.4",
     "uglify-save-license": "~0.4.1",
     "wiredep": "~2.2.2",
     "wrench": "~1.5.8"
+  },
+  "bin": "index.js",
+  "pkg": {
+    "assets": "release/**/*"
   }
 }

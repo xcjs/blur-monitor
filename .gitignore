@@ -57,3 +57,4 @@ build
 *.log
 
 /bin/blur-monitor
+/bin/*.node
