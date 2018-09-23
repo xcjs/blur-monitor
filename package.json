@@ -12,7 +12,9 @@
     "start": "npx gulp build && node index.js",
     "start:dev": "npx gulp build && npx gulp serve",
     "build": "npx gulp build",
-    "build:binary": "npm run build && npx pkg --debug --targets node8-linux-x64 --output bin/blur-monitor package.json && cp -f node_modules/authenticate-pam/build/Release/authenticate_pam.node bin/authenticate_pam.node",
+    "build:binary": "npm run build:pkg",
+    "build:nexe": "npm run build && npx nexe --build -r \"release/**/*\" -o bin/blur-monitor index.js",
+    "build:pkg": "npm run build && npx pkg --debug --targets node8-linux-x64 --output bin/blur-monitor package.json && cp -f node_modules/authenticate-pam/build/Release/authenticate_pam.node bin/authenticate_pam.node",
     "clean": "npx gulp clean"
   },
   "dependencies": {
