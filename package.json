@@ -10,7 +10,7 @@
   "scripts": {
     "postinstall": "npx bower install",
     "start": "npx gulp build && node index.js",
-    "start:dev": "npx gulp build && npx gulp serve",
+    "start:dev": "npx gulp serve",
     "build": "npx gulp build",
     "build:binary": "npm run build:pkg",
     "build:nexe": "npm run build && npx nexe --build -r \"release/**/*\" -o bin/blur-monitor index.js",
