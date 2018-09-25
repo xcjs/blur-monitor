@@ -1,1 +1,4 @@
 #!/bin/bash
+
+deluser blur-monitor
+delgroup blur-monitor
