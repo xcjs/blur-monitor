@@ -1,0 +1,8 @@
+#!/bin/bash
+
+adduser --system --no-create-home blur-monitor
+usermod -aG shadow blur-monitor
+
+systemctl daemon-reload
+systemctl enable blur-monitor
+systemctl start blur-monitor
