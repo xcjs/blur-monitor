@@ -2,8 +2,3 @@
 
 systemctl stop blur-monitor
 systemctl disable blur-monitor
-
-rm /etc/systemd/system/blur-monitor.service
-
-rm -r /opt/blur-monitor
-rm /usr/bin/blur-monitor
