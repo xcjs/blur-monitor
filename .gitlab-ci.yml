@@ -7,5 +7,5 @@ build:
         - traceroute
         - libpam0g-dev
     script:
-        - npm install
-        - npm run installer:ubuntu-18.04_amd64
+        - vagrant up
+        - vagrant destroy --force
