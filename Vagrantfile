@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
       sudo apt-get -qq full-upgrade
       sudo apt-get -qq autoremove
 
-      sudo apt-get -qq install curl python build-essential libpam0g-dev
+      sudo apt-get -qq install curl python build-essential libpam0g-dev gdebi-core
 
       curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
       sudo apt-get -qq install nodejs
@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
       npm install
       npm run installer:ubuntu-18.04_amd64
 
-      sudo apt-get -f install installers/blur-monitor_ubuntu-18.04_amd64.deb
+      sudo gdebi installers/blur-monitor_ubuntu-18.04_amd64.deb
     SHELL
   end
 
