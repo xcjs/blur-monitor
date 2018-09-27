@@ -62,3 +62,5 @@ build
 /installers/blur-monitor_ubuntu-18.04_amd64/opt/blur-monitor/blur-monitor
 /installers/**/*.node
 /installers/*.deb
+
+/.vagrant/
