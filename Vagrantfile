@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
       npm install
       npm run installer:ubuntu-18.04_amd64
 
-      sudo gdebi installers/blur-monitor_ubuntu-18.04_amd64.deb
+      sudo gdebi --non-interactive installers/blur-monitor_ubuntu-18.04_amd64.deb
     SHELL
   end
 
