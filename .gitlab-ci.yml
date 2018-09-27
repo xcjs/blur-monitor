@@ -1,11 +1,13 @@
 build:
     tags:
-        - linux
-        - nodejs
         - dnsutils
         - ifstat
-        - traceroute
+        - linux
         - libpam0g-dev
+        - nodejs
+        - traceroute
+        - vagrant
+        - virtualbox
     script:
         - vagrant up
         - vagrant destroy --force
