@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
     bionic.vm.network "forwarded_port", guest: 3000, host: 3000
     bionic.vm.synced_folder "./", "/vagrant"
 
-    bionic.vm.provision "shell", inline: <<-SHELL
+    bionic.vm.provision "shell", privileged: false, inline: <<-SHELL
       sudo apt-get -qq update
       sudo apt-get -qq full-upgrade
       sudo apt-get -qq autoremove
