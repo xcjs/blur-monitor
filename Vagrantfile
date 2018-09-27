@@ -24,7 +24,6 @@ Vagrant.configure("2") do |config|
       sudo apt-get -qq install nodejs
 
       sudo npm install -g npm
-      hash -d npm
 
       cd /vagrant
 
