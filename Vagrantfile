@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
       sudo apt-get -qq full-upgrade
       sudo apt-get -qq autoremove
 
-      sudo apt-get -qq install curl python build-essential
+      sudo apt-get -qq install curl python build-essential libpam0g-dev
 
       curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
       sudo apt-get -qq install nodejs
