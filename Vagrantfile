@@ -16,6 +16,7 @@ Vagrant.configure("2") do |config|
     bionic.vm.provision "shell", inline: <<-SHELL
       sudo apt-get -qq update
       sudo apt-get -qq full-upgrade
+      sudo apt-get -qq autoremove
 
       sudo apt-get -qq install curl python build-essential
 
