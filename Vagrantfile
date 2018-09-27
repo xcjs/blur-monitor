@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "bionic" do |bionic|
     bionic.vm.box = "ubuntu/bionic64"
     bionic.vm.hostname = "bionic"
-    bionic.vm.network "forwarded_port", guest: 3000, host: 3000
+    bionic.vm.network "forwarded_port", guest: 3000, host: 3201
     bionic.vm.synced_folder "./", "/vagrant"
 
     bionic.vm.provision "shell", privileged: false, inline: <<-SHELL
