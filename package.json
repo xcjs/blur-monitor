@@ -15,7 +15,7 @@
     "build:binary": "npm run build && npm run build:pkg",
     "build:nexe": "npx nexe --build -r \"release/**/*\" -o bin/blur-monitor index.js",
     "build:pkg": "npx pkg --debug --targets node8-linux-x64 --output bin/blur-monitor package.json && cp -f node_modules/authenticate-pam/build/Release/authenticate_pam.node bin/authenticate_pam.node",
-    "installer:ubuntu-18.04_amd64": "npm run build:binary && cp -f bin/blur-monitor installers/blur-monitor_ubuntu-18.04_amd64/opt/blur-monitor/blur-monitor && cp -f bin/authenticate_pam.node installers/blur-monitor_ubuntu-18.04_amd64/opt/blur-monitor/authenticate_pam.node && cd installers && dpkg-deb --build blur-monitor_ubuntu-18.04_amd64 && mv installers/blur-monitor_ubuntu-18.04_amd64/blur-monitor_%npm_package_version%-ubuntu-18.04_amd64.deb",
+    "installer:ubuntu-18.04_amd64": "npm run build:binary && cp -f bin/blur-monitor installers/blur-monitor_ubuntu-18.04_amd64/opt/blur-monitor/blur-monitor && cp -f bin/authenticate_pam.node installers/blur-monitor_ubuntu-18.04_amd64/opt/blur-monitor/authenticate_pam.node && cd installers && dpkg-deb --build blur-monitor_ubuntu-18.04_amd64 && mv installers/blur-monitor_ubuntu-18.04_amd64/blur-monitor_\"${npm_package_version}\"-ubuntu-18.04_amd64.deb",
     "clean": "npx gulp clean"
   },
   "dependencies": {
