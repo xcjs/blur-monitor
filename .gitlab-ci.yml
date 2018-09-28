@@ -9,5 +9,6 @@ build:
         - vagrant
         - virtualbox
     script:
-        - vagrant up
+        - vagrant box update
+        - vagrant up        
         - vagrant destroy --force
