@@ -12,6 +12,7 @@ Vagrant.configure("2") do |config|
     bionic.vm.hostname = "bionic"
     bionic.vm.network "forwarded_port", guest: 3000, host: 3201
     bionic.vm.synced_folder "./", "/vagrant"
+    bionic.vm.provider "virtualbox"
 
     bionic.vm.provision "shell", privileged: false, inline: <<-SHELL
       sudo apt-get -qq update
