@@ -12,9 +12,11 @@
     "start": "npx gulp build && node index.js",
     "start:dev": "npx gulp serve",
     "build": "npx gulp build",
-    "build:binary": "npm run build && npm run build:pkg",
-    "build:pkg": "npx pkg --debug --targets node8-linux-x64 --output bin/blur-monitor package.json && cp -f node_modules/authenticate-pam/build/Release/authenticate_pam.node bin/authenticate_pam.node",
+    "build:pkg": "npm run build && npm run build:pkg:node8-linux-x64",
+    "build:pkg:node8-linux-x64": "npx pkg --debug --targets node8-linux-x64 --output bin/blur-monitor package.json && cp -f node_modules/authenticate-pam/build/Release/authenticate_pam.node bin/authenticate_pam.node",
+    "build:binary": "npm run build:pkg",
     "installer:ubuntu-18.04_amd64": "npm run build:binary && cp -f bin/blur-monitor installers/blur-monitor_ubuntu-18.04_amd64/opt/blur-monitor/blur-monitor && cp -f bin/authenticate_pam.node installers/blur-monitor_ubuntu-18.04_amd64/opt/blur-monitor/authenticate_pam.node && cd installers && dpkg-deb --build blur-monitor_ubuntu-18.04_amd64",
+    "installer": "npm run installer:ubuntu-18.04_amd64",
     "clean": "npx gulp clean"
   },
   "dependencies": {
