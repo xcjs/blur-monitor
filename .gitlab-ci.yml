@@ -10,8 +10,8 @@ build:
         - virtualbox
     script:
         - vagrant box update
-        - vagrant up        
-        - vagrant destroy --force
+        - vagrant up bionic
+        - vagrant destroy --force bionic
     artifacts:
         paths:
             - installers/blur-monitor_ubuntu-18.04_amd64.deb
