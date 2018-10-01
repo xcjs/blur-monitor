@@ -7,7 +7,7 @@ Type=simple
 User=blur-monitor
 Group=blur-monitor
 WorkingDirectory=/opt/blur-monitor
-ExecStart=/opt/blur-monitor/blur-monitor -p 3000
+ExecStart=/opt/blur-monitor/blur-monitor -p 3201
 Restart=on-failure
 
 [Install]

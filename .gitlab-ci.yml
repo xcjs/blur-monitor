@@ -10,9 +10,12 @@ build:
         - virtualbox
     script:
         - vagrant box update
-        - vagrant up bionic
-        - vagrant destroy --force bionic
+        - vagrant up bionic64
+        - vagrant destroy --force bionic64
+        - vagrant up stretch64
+        - vagrant destroy --force stretch64
     artifacts:
         paths:
             - installers/blur-monitor_ubuntu-18.04_amd64.deb
+            - installers/blur-monitor_debian-9_amd64.deb
         expire_in: 1 week

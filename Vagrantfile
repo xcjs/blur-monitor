@@ -7,14 +7,14 @@
 # you're doing.
 Vagrant.configure("2") do |config|
 
-  config.vm.define "bionic" do |bionic|
-    bionic.vm.box = "ubuntu/bionic64"
-    bionic.vm.hostname = "bionic"
-    bionic.vm.network "forwarded_port", guest: 3000, host: 3201
-    bionic.vm.synced_folder "./", "/vagrant"
-    bionic.vm.provider "virtualbox"
+  config.vm.define "bionic64" do |bionic64|
+    bionic64.vm.box = "ubuntu/bionic64"
+    bionic64.vm.hostname = "bionic64"
+    bionic64.vm.network "forwarded_port", guest: 3201, host: 3202
+    bionic64.vm.synced_folder "./", "/vagrant"
+    bionic64.vm.provider "virtualbox"
 
-    bionic.vm.provision "shell", privileged: false, inline: <<-SHELL
+    bionic64.vm.provision "shell", privileged: false, inline: <<-SHELL
       sudo apt-get -qq update
       sudo apt-get -qq full-upgrade
       sudo apt-get -qq autoremove
@@ -30,6 +30,34 @@ Vagrant.configure("2") do |config|
 
       npm install
       npm run installer:ubuntu-18.04_amd64
+
+      sudo gdebi --non-interactive installers/blur-monitor_ubuntu-18.04_amd64.deb
+    SHELL
+  end
+
+  config.vm.define "stretch64" do |stretch64|
+    stretch64.vm.box = "debian/stretch64"
+    stretch64.vm.hostname = "stretch64"
+    stretch64.vm.network "forwarded_port", guest: 3201, host: 3202
+    stretch64.vm.synced_folder "./", "/vagrant"
+    stretch64.vm.provider "virtualbox"
+
+    stretch64.vm.provision "shell", privileged: false, inline: <<-SHELL
+      sudo apt-get -qq update
+      sudo apt-get -qq full-upgrade
+      sudo apt-get -qq autoremove
+
+      sudo apt-get -qq install curl python build-essential libpam0g-dev gdebi-core
+
+      curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+      sudo apt-get -qq install nodejs
+
+      sudo npm install -g npm
+
+      cd /vagrant
+
+      npm install
+      npm run installer:debian-9_amd64
 
       sudo gdebi --non-interactive installers/blur-monitor_ubuntu-18.04_amd64.deb
     SHELL
