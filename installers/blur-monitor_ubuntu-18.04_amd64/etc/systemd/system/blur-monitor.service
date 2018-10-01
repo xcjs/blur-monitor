@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=blur-monitor
+Group=blur-monitor
 WorkingDirectory=/opt/blur-monitor
 ExecStart=/opt/blur-monitor/blur-monitor -p 3000
 Restart=on-failure
