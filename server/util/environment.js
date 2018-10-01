@@ -36,7 +36,7 @@ function getCurrentEnvironment() {
 }
 
 function getPort() {
-    return argv.p || 3000;
+    return argv.p || 3201;
 }
 
 function getStaticRoot() {
