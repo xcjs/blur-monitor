@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
       npm install
       npm run installer:debian-9_amd64
 
-      sudo gdebi --non-interactive installers/blur-monitor_ubuntu-18.04_amd64.deb
+      sudo gdebi --non-interactive installers/blur-monitor_debian-9_amd64.deb
 
       netstat -tulpn | grep 3201
     SHELL
