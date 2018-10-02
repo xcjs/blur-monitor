@@ -1,4 +1,4 @@
-build:
+Build ubuntu-18.04_amd64:
     tags:
         - dnsutils
         - ifstat
@@ -9,15 +9,32 @@ build:
         - vagrant
         - virtualbox
     script:
-        - vagrant destroy --force
         - vagrant plugin install vagrant-vbguest
         - vagrant box update
         - vagrant up bionic64
         - vagrant destroy --force bionic64
+    artifacts:
+        paths:
+            - installers/blur-monitor_ubuntu-18.04_amd64.deb
+        expire_in: 1 week
+
+Build debian-9_amd64:
+    tags:
+        - dnsutils
+        - ifstat
+        - linux
+        - libpam0g-dev
+        - nodejs
+        - traceroute
+        - vagrant
+        - virtualbox
+    script:
+        - vagrant plugin install vagrant-vbguest
+        - vagrant box update
         - vagrant up stretch64
         - vagrant destroy --force stretch64
     artifacts:
         paths:
-            - installers/blur-monitor_ubuntu-18.04_amd64.deb
             - installers/blur-monitor_debian-9_amd64.deb
         expire_in: 1 week
+
