@@ -9,6 +9,7 @@ build:
         - vagrant
         - virtualbox
     script:
+        - vagrant plugin install vagrant-vbguest
         - vagrant box update
         - vagrant up bionic64
         - vagrant destroy --force bionic64
