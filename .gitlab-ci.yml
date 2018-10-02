@@ -1,4 +1,8 @@
-Build ubuntu-18.04_amd64:
+stages:
+    - Build
+
+ubuntu-18.04_amd64:
+    stage: Build
     tags:
         - dnsutils
         - ifstat
@@ -18,7 +22,8 @@ Build ubuntu-18.04_amd64:
             - installers/blur-monitor_ubuntu-18.04_amd64.deb
         expire_in: 1 week
 
-Build debian-9_amd64:
+debian-9_amd64:
+    stage: Build
     tags:
         - dnsutils
         - ifstat
