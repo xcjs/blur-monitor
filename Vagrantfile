@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
 
       sudo gdebi --non-interactive installers/blur-monitor_ubuntu-18.04_amd64.deb
 
-      netstat -tulpn | grep 3201
+      sudo netstat -tulpn | grep 3201
     SHELL
   end
 
@@ -63,7 +63,7 @@ Vagrant.configure("2") do |config|
 
       sudo gdebi --non-interactive installers/blur-monitor_debian-9_amd64.deb
 
-      netstat -tulpn | grep 3201
+      sudo netstat -tulpn | grep 3201
     SHELL
   end
 
