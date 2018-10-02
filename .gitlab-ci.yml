@@ -12,10 +12,12 @@ ubuntu-18.04_amd64:
         - traceroute
         - vagrant
         - virtualbox
-    script:
+    before_script:
         - vagrant plugin install vagrant-vbguest
         - vagrant box update
-        - vagrant up bionic64
+    script:        
+        - vagrant up bionic64    
+    after_script:
         - vagrant destroy --force bionic64
     artifacts:
         paths:
@@ -33,13 +35,14 @@ debian-9_amd64:
         - traceroute
         - vagrant
         - virtualbox
-    script:
+    before_script:
         - vagrant plugin install vagrant-vbguest
         - vagrant box update
+    script:        
         - vagrant up stretch64
+    after_script:
         - vagrant destroy --force stretch64
     artifacts:
         paths:
             - installers/blur-monitor_debian-9_amd64.deb
         expire_in: 1 week
-
