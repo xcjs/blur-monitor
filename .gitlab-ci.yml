@@ -4,19 +4,14 @@ stages:
 ubuntu-18.04_amd64:
     stage: Build
     tags:
-        - dnsutils
-        - ifstat
-        - linux
-        - libpam0g-dev
-        - nodejs
-        - traceroute
         - vagrant
         - virtualbox
+        - x86_64
     before_script:
         - vagrant plugin install vagrant-vbguest
         - vagrant box update
-    script:        
-        - vagrant up bionic64    
+    script:
+        - vagrant up bionic64
     after_script:
         - vagrant destroy --force bionic64
     artifacts:
@@ -27,18 +22,13 @@ ubuntu-18.04_amd64:
 debian-9_amd64:
     stage: Build
     tags:
-        - dnsutils
-        - ifstat
-        - linux
-        - libpam0g-dev
-        - nodejs
-        - traceroute
         - vagrant
         - virtualbox
+        - x86_64
     before_script:
         - vagrant plugin install vagrant-vbguest
         - vagrant box update
-    script:        
+    script:
         - vagrant up stretch64
     after_script:
         - vagrant destroy --force stretch64
