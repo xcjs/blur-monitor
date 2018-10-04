@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
     bionic64.vm.box = "ubuntu/bionic64"
     bionic64.vm.hostname = "bionic64"
     bionic64.vm.network "forwarded_port", guest: 3201, host: 3202
-    bionic64.vm.synced_folder "./", "/vagrant"
+    bionic64.vm.synced_folder "./", "/vagrant", type: "virtualbox"
     bionic64.vm.provider "virtualbox"
 
     bionic64.vm.provision "shell", privileged: false, inline: <<-SHELL
@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
     stretch64.vm.box = "debian/stretch64"
     stretch64.vm.hostname = "stretch64"
     stretch64.vm.network "forwarded_port", guest: 3201, host: 3202
-    stretch64.vm.synced_folder "./", "/vagrant"
+    stretch64.vm.synced_folder "./", "/vagrant", type: "virtualbox"
     stretch64.vm.provider "virtualbox"
 
     stretch64.vm.provision "shell", privileged: false, inline: <<-SHELL
