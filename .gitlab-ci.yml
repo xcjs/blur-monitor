@@ -11,6 +11,24 @@ ubuntu-18.04_amd64:
         - vagrant plugin install vagrant-vbguest
         - vagrant box update
     script:
+        - vagrant up xenial64
+    after_script:
+        - vagrant destroy --force xenial64
+    artifacts:
+        paths:
+            - installers/blur-monitor_ubuntu-16.04_amd64.deb
+        expire_in: 1 week
+
+ubuntu-18.04_amd64:
+    stage: Build
+    tags:
+        - vagrant
+        - virtualbox
+        - x86_64
+    before_script:
+        - vagrant plugin install vagrant-vbguest
+        - vagrant box update
+    script:
         - vagrant up bionic64
     after_script:
         - vagrant destroy --force bionic64
