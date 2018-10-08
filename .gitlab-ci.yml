@@ -1,7 +1,7 @@
 stages:
     - Build
 
-ubuntu-18.04_amd64:
+ubuntu-16.04_amd64:
     stage: Build
     tags:
         - vagrant
