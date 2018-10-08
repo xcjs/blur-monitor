@@ -38,7 +38,6 @@ Vagrant.configure("2") do |config|
     SHELL
   end
 
-
   config.vm.define "bionic64" do |bionic64|
     bionic64.vm.box = "ubuntu/bionic64"
     bionic64.vm.hostname = "bionic64"
