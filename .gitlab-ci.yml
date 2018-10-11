@@ -16,6 +16,7 @@ ubuntu-16.04_amd64:
         - vagrant destroy --force xenial64
     artifacts:
         paths:
+            - bin/blur-monitor_linux_amd64.tar.gz
             - installers/blur-monitor_ubuntu-16.04_amd64.deb
         expire_in: 1 week
 

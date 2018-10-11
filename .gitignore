@@ -58,6 +58,7 @@ build
 
 /bin/blur-monitor
 /bin/*.node
+/bin/*.tar.gz
 
 /installers/**/opt/blur-monitor/blur-monitor
 /installers/**/*.node
