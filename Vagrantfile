@@ -29,7 +29,6 @@ Vagrant.configure("2") do |config|
 
       npm install
       npm rebuild
-      npm run build:tarball
       npm run installer:ubuntu-16.04_amd64
 
       sudo gdebi --non-interactive installers/blur-monitor_ubuntu-16.04_amd64.deb
@@ -63,6 +62,7 @@ Vagrant.configure("2") do |config|
 
       npm install
       npm rebuild
+      npm run build:tarball
       npm run installer:ubuntu-18.04_amd64
 
       sudo gdebi --non-interactive installers/blur-monitor_ubuntu-18.04_amd64.deb
