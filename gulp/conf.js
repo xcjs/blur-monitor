@@ -8,6 +8,8 @@
  *  of the tasks
  */
 
+const path = require('path');
+
 var gutil = require('gulp-util');
 
 /**
@@ -28,7 +30,7 @@ exports.paths = {
 exports.wiredep = {
     exclude: [/\/bootstrap\.js$/, /\/bootstrap-sass\/.*\.js/,
         /\/require\.js/],
-    directory: 'bower_components'
+    directory: path.join(__dirname, '../bower_components')
 };
 
 /**

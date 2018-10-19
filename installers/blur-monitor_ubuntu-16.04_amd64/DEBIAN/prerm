@@ -1,0 +1,4 @@
+#!/bin/bash
+
+systemctl stop blur-monitor
+systemctl disable blur-monitor

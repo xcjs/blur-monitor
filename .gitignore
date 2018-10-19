@@ -55,3 +55,13 @@ build
 /bower_components
 
 *.log
+
+/bin/blur-monitor
+/bin/*.node
+/bin/*.tar.gz
+
+/installers/**/opt/blur-monitor/blur-monitor
+/installers/**/*.node
+/installers/*.deb
+
+/.vagrant/

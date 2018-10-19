@@ -19,7 +19,7 @@ function browserSyncInit(environment, browser) {
     browser = browser === undefined ? 'default' : browser;
 
     nodemon({
-        script: './blurmonitor',
+        script: './index.js',
         args: ['-e', environment],
         ext: 'js'
     }).on('start', function() {
