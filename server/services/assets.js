@@ -11,13 +11,10 @@ module.exports = {
 };
 
 function getAssets(type) {
-    var assetPath = Array.isArray(env.staticRoot) ?
-        path.join('./', env.staticRoot[1], 'assets/img/app') :
-        path.join('./', env.staticRoot, 'assets/img/app');
+    var assetPath = path.join(__dirname, '../../' + env.staticRoot, 'assets/img/app');
 
     switch(type) {
         case 'apps':
-            return listDirectory(path.join(assetPath, type));
         case 'distros':
             return listDirectory(path.join(assetPath, type));
     }

@@ -1,0 +1,14 @@
+[Unit]
+Description=BlurMonitor
+After=network.target
+
+[Service]
+Type=simple
+User=blur-monitor
+Group=blur-monitor
+WorkingDirectory=/opt/blur-monitor
+ExecStart=/opt/blur-monitor/blur-monitor -p 3201
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

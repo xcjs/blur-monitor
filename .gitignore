@@ -5,6 +5,14 @@
 /tmp
 /out-tsc
 
+/bin/blur-monitor
+/bin/*.node
+/bin/*.tar.gz
+
+/installers/**/opt/blur-monitor/blur-monitor
+/installers/**/*.node
+/installers/*.deb
+
 # dependencies
 /node_modules
 
@@ -23,6 +31,33 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion
+
+*.iml
+
+## Directory-based project format:
+.idea/*
+
+## File-based project format:
+*.ipr
+*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties 
 
 # misc
 /.sass-cache
