@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "license": "MIT",
   "private": true,
+  "main": "index.js",
   "bin": "index.js",
   "pkg": {
     "assets": "dist/**/*"
@@ -12,7 +13,7 @@
     "start": "ng serve --proxy-config proxy.conf.json",
     "test": "ng test",
     "build": "ng build --prod",
-    "server": "node server/index.js",
+    "server": "npm run build && npx nodemon --config nodemon.json",
     "build:pkg": "npm run build && npm run build:pkg:node8-linux-x64",
     "build:pkg:node8-linux-x64": "npx pkg --debug --targets node8-linux-x64 --output bin/blur-monitor package.json && cp -f node_modules/authenticate-pam/build/Release/authenticate_pam.node bin/authenticate_pam.node",
     "build:binary": "npm run build:pkg",
@@ -75,6 +76,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "nodemon": "^1.18.4",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",

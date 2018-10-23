@@ -33,20 +33,5 @@ function getRoutes() {
         }
     });
 
-    // In development, provide mappings for Bower files not minified into the source.
-    if(env.current === env.environments.dev) {
-        routes.push({
-            method: 'GET',
-            path: '/bower_components/{param*}',
-            handler: {
-                directory: {
-                    path: path.join(__dirname, '../../bower_components'),
-                    redirectToSlash: true,
-                    index: true
-                }
-            }
-        });
-    }
-
     return routes;
 }

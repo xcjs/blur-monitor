@@ -13,8 +13,6 @@ const env = require('./server/util/environment');
 
 console.info('Using ' + process.cwd() + ' as the present working directory...');
 
-console.info('Using ' + env.current + ' as the current environment...');
-
 var server = new Hapi.Server({
     connections: {
         routes: {
