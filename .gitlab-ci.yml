@@ -1,6 +1,14 @@
 stages:
     - Build
 
+ubuntu-18.04_amd64-docker:
+    stage: Build
+    tags:
+        - docker
+        - x86_64
+    script:
+        - docker run --name blur-monitor-build-ubuntu-18.04 --rm blur-monitor-build-ubuntu-18.04
+
 ubuntu-16.04_amd64:
     stage: Build
     tags:
