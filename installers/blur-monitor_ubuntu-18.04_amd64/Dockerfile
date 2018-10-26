@@ -16,7 +16,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install -g npm
 
-RUN npm install
+RUN npm install --unsafe-perm
 RUN npm run build:tarball
 RUN npm run installer:ubuntu-18.04_amd64
 
