@@ -4,7 +4,7 @@ LABEL maintainer="zlowery@xcjs.com"
 RUN mkdir -p /tmp/blur-monitor
 WORKDIR /tmp/blur-monitor
 
-COPY ../../* .
+COPY ../../ .
 
 RUN apt-get update
 RUN apt-get -qq full-upgrade
