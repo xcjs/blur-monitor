@@ -1,7 +1,10 @@
 FROM ubuntu:18.04 AS blur-monitor-build-ubuntu-18.04
-MAINTAINER Zackary Lowery <zlowery@xcjs.com>
+LABEL maintainer="zlowery@xcjs.com"
 
-WORKDIR ../../
+RUN mkdir -p /tmp/blur-monitor
+COPY ../../* /tmp/blur-monitor
+
+WORKDIR /tmp/blur-monitor
 
 RUN apt-get update
 RUN apt-get -qq full-upgrade
@@ -11,5 +14,3 @@ RUN apt-get -qq install install build-essential curl gdebi-core git libpam0g-dev
 
 RUN wget -qO- https://deb.nodesource.com/setup_8.x | bash
 RUN apt-get install -y nodejs
-
-
