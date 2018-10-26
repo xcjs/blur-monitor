@@ -7,7 +7,7 @@ ubuntu-18.04_amd64-docker:
     - docker
     - x86_64
   script:
-    - docker build -t blur-monitor-build-ubuntu-18.04 installers/blur-monitor_ubuntu-18.04_amd64/Dockerfile
+    - docker build -t blur-monitor-build-ubuntu-18.04 installers/blur-monitor_ubuntu-18.04_amd64/
   after_script:
     - docker rm blur-monitor-build-ubuntu-18.04
 
