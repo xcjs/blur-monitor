@@ -14,3 +14,13 @@ RUN apt-get -qq install build-essential curl gdebi-core git libpam0g-dev python
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
+RUN npm install -g npm
+
+RUN npm install
+RUN npm run installer:ubuntu-16.04_amd64
+
+RUN gdebi --non-interactive installers/blur-monitor_ubuntu-16.04_amd64.deb
+
+RUN sleep 10
+
+RUN netstat -tulpn | grep 3201
