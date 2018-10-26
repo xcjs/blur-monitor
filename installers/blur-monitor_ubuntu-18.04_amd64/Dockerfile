@@ -2,9 +2,9 @@ FROM ubuntu:18.04 AS blur-monitor-build-ubuntu-18.04
 LABEL maintainer="zlowery@xcjs.com"
 
 RUN mkdir -p /tmp/blur-monitor
-COPY ../../* /tmp/blur-monitor
-
 WORKDIR /tmp/blur-monitor
+
+COPY ../../* .
 
 RUN apt-get update
 RUN apt-get -qq full-upgrade
