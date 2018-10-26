@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 AS blur-monitor-build-ubuntu-18.04
+FROM ubuntu:16.04 AS blur-monitor-build-ubuntu-16.04
 LABEL maintainer="zlowery@xcjs.com"
 
 RUN mkdir -p /tmp/blur-monitor
@@ -19,10 +19,9 @@ RUN npm install -g npm
 RUN echo "{ \"allow_root\": true }" > /root/.bowerrc
 
 RUN npm install --unsafe-perm
-RUN npm run build:tarball
-RUN npm run installer:ubuntu-18.04_amd64
+RUN npm run installer:ubuntu-16.04_amd64
 
-RUN gdebi --non-interactive installers/blur-monitor_ubuntu-18.04_amd64.deb
+RUN gdebi --non-interactive installers/blur-monitor_ubuntu-16.04_amd64.deb
 
 RUN sleep 10
 
