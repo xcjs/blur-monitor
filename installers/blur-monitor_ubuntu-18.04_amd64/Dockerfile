@@ -17,7 +17,8 @@ RUN apt-get install -y nodejs
 RUN npm install -g npm
 
 RUN npm install
-RUN npm run installer:ubuntu-16.04_amd64
+RUN npm run build:tarball
+RUN npm run installer:ubuntu-18.04_amd64
 
 RUN gdebi --non-interactive installers/blur-monitor_ubuntu-16.04_amd64.deb
 
