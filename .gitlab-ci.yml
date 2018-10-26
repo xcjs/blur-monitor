@@ -1,65 +1,66 @@
 stages:
-    - Build
+  - Build
 
 ubuntu-18.04_amd64-docker:
-    stage: Build
-    tags:
-        - docker
-        - x86_64
-    script:
-        - docker run --name blur-monitor-build-ubuntu-18.04 --rm blur-monitor-build-ubuntu-18.04
+  stage: Build
+  tags:
+    - docker
+    - x86_64
+  script:
+    - cd installers/blur-monitor_ubuntu-18.04_amd64
+    - docker run --rm blur-monitor-build-ubuntu-18.04
 
 ubuntu-16.04_amd64:
-    stage: Build
-    tags:
-        - vagrant
-        - virtualbox
-        - x86_64
-    before_script:
-        - vagrant plugin install vagrant-vbguest
-        - vagrant box update
-    script:
-        - vagrant up xenial64
-    after_script:
-        - vagrant destroy --force xenial64
-    artifacts:
-        paths:
-            - installers/blur-monitor_ubuntu-16.04_amd64.deb
-        expire_in: 1 week
+  stage: Build
+  tags:
+    - vagrant
+    - virtualbox
+    - x86_64
+  before_script:
+    - vagrant plugin install vagrant-vbguest
+    - vagrant box update
+  script:
+    - vagrant up xenial64
+  after_script:
+    - vagrant destroy --force xenial64
+  artifacts:
+    paths:
+      - installers/blur-monitor_ubuntu-16.04_amd64.deb
+    expire_in: 1 week
 
 ubuntu-18.04_amd64:
-    stage: Build
-    tags:
-        - vagrant
-        - virtualbox
-        - x86_64
-    before_script:
-        - vagrant plugin install vagrant-vbguest
-        - vagrant box update
-    script:
-        - vagrant up bionic64
-    after_script:
-        - vagrant destroy --force bionic64
-    artifacts:
-        paths:
-            - bin/blur-monitor_linux_amd64.tar.gz
-            - installers/blur-monitor_ubuntu-18.04_amd64.deb
-        expire_in: 1 week
+  stage: Build
+  tags:
+    - vagrant
+    - virtualbox
+    - x86_64
+  before_script:
+    - vagrant plugin install vagrant-vbguest
+    - vagrant box update
+  script:
+    - vagrant up bionic64
+  after_script:
+    - vagrant destroy --force bionic64
+  artifacts:
+    paths:
+      - bin/blur-monitor_linux_amd64.tar.gz
+      - installers/blur-monitor_ubuntu-18.04_amd64.deb
+    expire_in: 1 week
 
 debian-9_amd64:
-    stage: Build
-    tags:
-        - vagrant
-        - virtualbox
-        - x86_64
-    before_script:
-        - vagrant plugin install vagrant-vbguest
-        - vagrant box update
-    script:
-        - vagrant up stretch64
-    after_script:
-        - vagrant destroy --force stretch64
-    artifacts:
-        paths:
-            - installers/blur-monitor_debian-9_amd64.deb
-        expire_in: 1 week
+  stage: Build
+  tags:
+    - vagrant
+    - virtualbox
+    - x86_64
+  before_script:
+    - vagrant plugin install vagrant-vbguest
+    - vagrant box update
+  script:
+    - vagrant up stretch64
+  after_script:
+    - vagrant destroy --force stretch64
+  artifacts:
+    paths:
+      - installers/blur-monitor_debian-9_amd64.deb
+    expire_in: 1 week

@@ -1,7 +1,7 @@
-FROM ubuntu:18.04
+FROM ubuntu:18.04 AS blur-monitor-build-ubuntu-18.04
 MAINTAINER Zackary Lowery <zlowery@xcjs.com>
 
-WORKDIR .
+WORKDIR ../../
 
 RUN apt-get update
 RUN apt-get -qq full-upgrade
