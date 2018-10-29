@@ -1,7 +1,7 @@
 stages:
   - Build
 
-ubuntu-18.04_amd64-docker:
+ubuntu-18.04_amd64:
   stage: Build
   tags:
     - docker
@@ -18,7 +18,7 @@ ubuntu-18.04_amd64-docker:
       - bin/blur-monitor_linux_amd64.tar.gz
     expire_in: 1 week
 
-debian-9_amd64-docker:
+debian-9_amd64:
   stage: Build
   tags:
     - docker
@@ -33,7 +33,7 @@ debian-9_amd64-docker:
       - installers/installers/blur-monitor_debian-9_amd64/blur-monitor_debian-9_amd64.deb
     expire_in: 1 week
 
-ubuntu-16.04_amd64-docker:
+ubuntu-16.04_amd64:
   stage: Build
   tags:
     - docker
