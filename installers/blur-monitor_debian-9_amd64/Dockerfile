@@ -21,7 +21,7 @@ RUN echo "{ \"allow_root\": true }" > /root/.bowerrc
 RUN npm install --unsafe-perm
 RUN npm run installer:debian-9_amd64
 
-RUN gdebi --non-interactive installers/blur-monitor_debian-9_amd64.deb
+RUN gdebi --non-interactive installers/blur-monitor_debian-9/blur-monitor_debian-9_amd64.deb
 
 RUN sleep 10
 

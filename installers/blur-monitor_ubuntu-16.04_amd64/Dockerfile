@@ -21,7 +21,7 @@ RUN echo "{ \"allow_root\": true }" > /root/.bowerrc
 RUN npm install --unsafe-perm
 RUN npm run installer:ubuntu-16.04_amd64
 
-RUN gdebi --non-interactive installers/blur-monitor_ubuntu-16.04_amd64.deb
+RUN gdebi --non-interactive installers/blur-monitor_ubuntu-16.04_amd64/blur-monitor_ubuntu-16.04_amd64.deb
 
 RUN sleep 10
 
