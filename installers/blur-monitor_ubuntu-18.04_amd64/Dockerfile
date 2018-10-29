@@ -10,7 +10,7 @@ RUN apt-get update
 RUN apt-get -qq full-upgrade
 RUN apt-get -qq autoremove
 
-RUN apt-get -qq install build-essential curl gdebi-core git libpam0g-dev python
+RUN apt-get -qq install build-essential curl gdebi-core git libpam0g-dev python systemd
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
