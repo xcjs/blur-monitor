@@ -10,7 +10,7 @@ RUN apt-get update
 RUN apt-get -qq full-upgrade
 RUN apt-get -qq autoremove
 
-RUN apt-get -qq install build-essential curl gdebi-core git libpam0g-dev python systemd
+RUN apt-get -qq install build-essential curl gdebi-core git libpam0g-dev python
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
@@ -22,8 +22,8 @@ RUN npm install --unsafe-perm
 RUN npm run build:tarball
 RUN npm run installer:ubuntu-18.04_amd64
 
-RUN gdebi --non-interactive installers/blur-monitor_ubuntu-18.04_amd64/blur-monitor_ubuntu-18.04_amd64.deb
+# RUN gdebi --non-interactive installers/blur-monitor_ubuntu-18.04_amd64/blur-monitor_ubuntu-18.04_amd64.deb
 
-RUN sleep 10
+# RUN sleep 10
 
-RUN netstat -tulpn | grep 3201
+# RUN netstat -tulpn | grep 3201
