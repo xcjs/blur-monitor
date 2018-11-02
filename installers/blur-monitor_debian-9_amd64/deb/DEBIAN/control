@@ -5,3 +5,4 @@ Homepage: https://xcjs.com/products/blur-monitor
 Maintainer: Zackary Lowery
 Architecture: amd64
 Depends: dnsutils, ifstat, libpam0g, lsb-release, traceroute
+Recommends: systemd
