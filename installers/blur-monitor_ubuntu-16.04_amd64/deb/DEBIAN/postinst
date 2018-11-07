@@ -6,7 +6,7 @@ addgroup blur-monitor
 usermod -aG blur-monitor blur-monitor
 usermod -aG shadow blur-monitor
 
-if hash systemctl 2>/dev/null; then
+if pidof systemd 2>/dev/null; then
     systemctl daemon-reload
     systemctl enable blur-monitor
     systemctl start blur-monitor
