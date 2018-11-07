@@ -5,7 +5,6 @@ addgroup blur-monitor
 
 usermod -aG blur-monitor blur-monitor
 usermod -aG shadow blur-monitor
-gpasswd -d blur-monitor nogroup
 
 if hash systemctl 2>/dev/null; then
     systemctl daemon-reload
