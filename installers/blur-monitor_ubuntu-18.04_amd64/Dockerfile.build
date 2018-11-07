@@ -23,4 +23,5 @@ RUN npm run build:tarball
 RUN npm run installer:ubuntu-18.04_amd64
 
 RUN gdebi --non-interactive installers/blur-monitor_ubuntu-18.04_amd64/blur-monitor_ubuntu-18.04_amd64.deb
+
 RUN nohup bash -c "/opt/blur-monitor/blur-monitor &" && sleep 10 && netstat -tulpn | grep 3201

@@ -22,8 +22,5 @@ RUN npm install --unsafe-perm
 RUN npm run installer:ubuntu-16.04_amd64
 
 RUN gdebi --non-interactive installers/blur-monitor_ubuntu-16.04_amd64/blur-monitor_ubuntu-16.04_amd64.deb
-RUN /opt/blur-monitor/blur-monitor &
 
-RUN sleep 10
-
-RUN netstat -tulpn | grep 3201
+RUN nohup bash -c "/opt/blur-monitor/blur-monitor &" && sleep 10 && netstat -tulpn | grep 3201
