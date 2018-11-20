@@ -13,7 +13,7 @@ ubuntu-18.04_amd64:
     - docker cp blur-monitor-build-ubuntu-18.04:/tmp/blur-monitor/bin/blur-monitor_linux_amd64.tar.gz bin/
   after_script:
     - docker rm blur-monitor-build-ubuntu-18.04
-    - docker image prune
+    - docker image prune -f
   artifacts:
     paths:
       - installers/blur-monitor_ubuntu-18.04_amd64/blur-monitor_ubuntu-18.04_amd64.deb
@@ -31,7 +31,7 @@ debian-9_amd64:
     - docker cp blur-monitor-build-debian-9:/tmp/blur-monitor/installers/blur-monitor_debian-9_amd64/blur-monitor_debian-9_amd64.deb installers/blur-monitor_debian-9_amd64/
   after_script:
     - docker rm blur-monitor-build-debian-9
-    - docker image prune
+    - docker image prune -f
   artifacts:
     paths:
       - installers/blur-monitor_debian-9_amd64/blur-monitor_debian-9_amd64.deb
@@ -48,7 +48,7 @@ ubuntu-16.04_amd64:
     - docker cp blur-monitor-build-ubuntu-16.04:/tmp/blur-monitor/installers/blur-monitor_ubuntu-16.04_amd64/blur-monitor_ubuntu-16.04_amd64.deb installers/blur-monitor_ubuntu-16.04_amd64/
   after_script:
     - docker rm blur-monitor-build-ubuntu-16.04
-    - docker image prune
+    - docker image prune -f
   artifacts:
     paths:
       - installers/blur-monitor_ubuntu-16.04_amd64/blur-monitor_ubuntu-16.04_amd64.deb
