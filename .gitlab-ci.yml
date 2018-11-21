@@ -6,19 +6,16 @@ ubuntu-18.04_amd64:
   tags:
     - docker
     - x86_64
-  variables:
-    - buildContainer: "blur-monitor-build-ubuntu-18.04"
-    - buildName: "${buildContainer}_amd64"
   script:
-    - docker build --force-rm -t "${buildContainer}" -f "installers/${buildName}/Dockerfile.build" .
-    - docker create --name blur-monitor-build-ubuntu-18.04-writable "${buildContainer}"
-    - docker cp "${buildContainer}:/tmp/blur-monitor/installers/${buildName}/${buildName}.deb" "installers/${buildName}/"
-    - docker cp "${buildContainer}:/tmp/blur-monitor/bin/blur-monitor_linux_amd64.tar.gz" bin/
+    - docker build --force-rm -t blur-monitor-build-ubuntu-18.04 -f installers/blur-monitor_ubuntu-18.04_amd64/Dockerfile.build .
+    - docker create --name blur-monitor-build-ubuntu-18.04-writable blur-monitor-build-ubuntu-18.04
+    - docker cp blur-monitor-build-ubuntu-18.04:/tmp/blur-monitor/installers/blur-monitor_ubuntu-18.04_amd64/blur-monitor_ubuntu-18.04_amd64.deb installers/blur-monitor_ubuntu-18.04_amd64/
+    - docker cp blur-monitor-build-ubuntu-18.04:/tmp/blur-monitor/bin/blur-monitor_linux_amd64.tar.gz bin/
   after_script:
-    - docker image rm -f "${buildContainer}"
+    - docker image rm -f blur-monitor-build-ubuntu-18.04
   artifacts:
     paths:
-      - "installers/${buildName}/${buildName}.deb"
+      - installers/blur-monitor_ubuntu-18.04_amd64/blur-monitor_ubuntu-18.04_amd64.deb
       - bin/blur-monitor_linux_amd64.tar.gz
     expire_in: 1 week
 
