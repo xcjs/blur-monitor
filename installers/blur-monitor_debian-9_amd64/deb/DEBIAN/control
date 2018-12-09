@@ -1,7 +1,8 @@
 Package: blur-monitor
 Description: Web-based system monitoring using the blur-admin template.
-Version: 1.7.0
+Version: 1.7.2
 Homepage: https://xcjs.com/products/blur-monitor
 Maintainer: Zackary Lowery
 Architecture: amd64
 Depends: dnsutils, ifstat, libpam0g, lsb-release, traceroute
+Recommends: systemd

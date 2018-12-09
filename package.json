@@ -1,12 +1,16 @@
 {
   "name": "blur-monitor",
-  "version": "2.0.0",
-  "license": "MIT",
-  "private": true,
   "main": "index.js",
   "bin": "index.js",
   "pkg": {
     "assets": "dist/**/*"
+  },
+  "version": "2.0.0",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xcjs/blur-monitor.git"
   },
   "scripts": {
     "ng": "ng",
@@ -18,9 +22,9 @@
     "build:pkg:node8-linux-x64": "npx pkg --debug --targets node8-linux-x64 --output bin/blur-monitor package.json && cp -f node_modules/authenticate-pam/build/Release/authenticate_pam.node bin/authenticate_pam.node",
     "build:binary": "npm run build:pkg",
     "build:tarball": "npm run build:binary && cd bin/ && tar -zcvf blur-monitor_linux_amd64.tar.gz blur-monitor authenticate_pam.node",
-    "installer:ubuntu-16.04_amd64": "npm run build:binary && cp -f bin/blur-monitor installers/blur-monitor_ubuntu-16.04_amd64/opt/blur-monitor/blur-monitor && cp -f bin/authenticate_pam.node installers/blur-monitor_ubuntu-16.04_amd64/opt/blur-monitor/authenticate_pam.node && cd installers && dpkg-deb --build blur-monitor_ubuntu-16.04_amd64",
-    "installer:ubuntu-18.04_amd64": "npm run build:binary && cp -f bin/blur-monitor installers/blur-monitor_ubuntu-18.04_amd64/opt/blur-monitor/blur-monitor && cp -f bin/authenticate_pam.node installers/blur-monitor_ubuntu-18.04_amd64/opt/blur-monitor/authenticate_pam.node && cd installers && dpkg-deb --build blur-monitor_ubuntu-18.04_amd64",
-    "installer:debian-9_amd64": "npm run build:binary && cp -f bin/blur-monitor installers/blur-monitor_debian-9_amd64/opt/blur-monitor/blur-monitor && cp -f bin/authenticate_pam.node installers/blur-monitor_debian-9_amd64/opt/blur-monitor/authenticate_pam.node && cd installers && dpkg-deb --build blur-monitor_debian-9_amd64",
+    "installer:ubuntu-16.04_amd64": "npm run build:binary && cp -f bin/blur-monitor installers/blur-monitor_ubuntu-16.04_amd64/deb/opt/blur-monitor/blur-monitor && cp -f bin/authenticate_pam.node installers/blur-monitor_ubuntu-16.04_amd64/deb/opt/blur-monitor/authenticate_pam.node && cd installers/blur-monitor_ubuntu-16.04_amd64 && dpkg-deb --build deb blur-monitor_ubuntu-16.04_amd64.deb",
+    "installer:ubuntu-18.04_amd64": "npm run build:binary && cp -f bin/blur-monitor installers/blur-monitor_ubuntu-18.04_amd64/deb/opt/blur-monitor/blur-monitor && cp -f bin/authenticate_pam.node installers/blur-monitor_ubuntu-18.04_amd64/deb/opt/blur-monitor/authenticate_pam.node && cd installers/blur-monitor_ubuntu-18.04_amd64 && dpkg-deb --build deb blur-monitor_ubuntu-18.04_amd64.deb",
+    "installer:debian-9_amd64": "npm run build:binary && cp -f bin/blur-monitor installers/blur-monitor_debian-9_amd64/deb/opt/blur-monitor/blur-monitor && cp -f bin/authenticate_pam.node installers/blur-monitor_debian-9_amd64/deb/opt/blur-monitor/authenticate_pam.node && cd installers/blur-monitor_debian-9_amd64 && dpkg-deb --build deb blur-monitor_debian-9_amd64.deb",
     "installer": "npm run installer:ubuntu-18.04_amd64",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -48,7 +52,6 @@
     "lodash": "^3.10.1",
     "node-cache": "^4.1.1",
     "node-json-transform": "^1.0.6",
-    "nodejs-disks": "^0.2.1",
     "ps-node": "^0.1.1",
     "psjson": "^0.1.0",
     "randomstring": "^1.1.5",
@@ -57,7 +60,8 @@
     "zone.js": "^0.8.14"
   },
   "optionalDependencies": {
-    "authenticate-pam": "^1.0.2"
+    "authenticate-pam": "^1.0.2",
+    "nodejs-disks": "^0.2.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.8",

@@ -1,0 +1,26 @@
+FROM debian:stretch AS blur-monitor-build-debian-9
+LABEL maintainer="zlowery@xcjs.com"
+
+RUN mkdir -p /tmp/blur-monitor
+WORKDIR /tmp/blur-monitor
+
+COPY ./ .
+
+RUN apt-get update
+RUN apt-get -qq full-upgrade
+RUN apt-get -qq autoremove
+
+RUN apt-get -qq install build-essential curl gdebi-core git libpam0g-dev net-tools python
+
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install -g npm
+
+RUN echo "{ \"allow_root\": true }" > /root/.bowerrc
+
+RUN npm install --unsafe-perm
+RUN npm run installer:debian-9_amd64
+
+RUN gdebi --non-interactive installers/blur-monitor_debian-9_amd64/blur-monitor_debian-9_amd64.deb
+
+RUN nohup bash -c "/opt/blur-monitor/blur-monitor &" && sleep 10 && netstat -tulpn | grep 3201

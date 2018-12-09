@@ -1,57 +1,55 @@
 stages:
-    - Build
-
-ubuntu-16.04_amd64:
-    stage: Build
-    tags:
-        - vagrant
-        - virtualbox
-        - x86_64
-    before_script:
-        - vagrant plugin install vagrant-vbguest
-        - vagrant box update
-    script:
-        - vagrant up xenial64
-    after_script:
-        - vagrant destroy --force xenial64
-    artifacts:
-        paths:
-            - installers/blur-monitor_ubuntu-16.04_amd64.deb
-        expire_in: 1 week
+  - Build
 
 ubuntu-18.04_amd64:
-    stage: Build
-    tags:
-        - vagrant
-        - virtualbox
-        - x86_64
-    before_script:
-        - vagrant plugin install vagrant-vbguest
-        - vagrant box update
-    script:
-        - vagrant up bionic64
-    after_script:
-        - vagrant destroy --force bionic64
-    artifacts:
-        paths:
-            - bin/blur-monitor_linux_amd64.tar.gz
-            - installers/blur-monitor_ubuntu-18.04_amd64.deb
-        expire_in: 1 week
+  stage: Build
+  tags:
+    - docker
+    - x86_64
+  script:
+    - docker build --force-rm -t blur-monitor-build-ubuntu-18.04 -f installers/blur-monitor_ubuntu-18.04_amd64/Dockerfile.build .
+    - docker create --name blur-monitor-build-ubuntu-18.04-writable blur-monitor-build-ubuntu-18.04
+    - docker cp blur-monitor-build-ubuntu-18.04-writable:/tmp/blur-monitor/installers/blur-monitor_ubuntu-18.04_amd64/blur-monitor_ubuntu-18.04_amd64.deb installers/blur-monitor_ubuntu-18.04_amd64/
+    - docker cp blur-monitor-build-ubuntu-18.04-writable:/tmp/blur-monitor/bin/blur-monitor_linux_amd64.tar.gz bin/
+  after_script:
+    - docker container rm -fv blur-monitor-build-ubuntu-18.04-writable
+    - docker image rm -f blur-monitor-build-ubuntu-18.04
+  artifacts:
+    paths:
+      - installers/blur-monitor_ubuntu-18.04_amd64/blur-monitor_ubuntu-18.04_amd64.deb
+      - bin/blur-monitor_linux_amd64.tar.gz
+    expire_in: 1 week
 
 debian-9_amd64:
-    stage: Build
-    tags:
-        - vagrant
-        - virtualbox
-        - x86_64
-    before_script:
-        - vagrant plugin install vagrant-vbguest
-        - vagrant box update
-    script:
-        - vagrant up stretch64
-    after_script:
-        - vagrant destroy --force stretch64
-    artifacts:
-        paths:
-            - installers/blur-monitor_debian-9_amd64.deb
-        expire_in: 1 week
+  stage: Build
+  tags:
+    - docker
+    - x86_64
+  script:
+    - docker build --force-rm -t blur-monitor-build-debian-9 -f installers/blur-monitor_debian-9_amd64/Dockerfile.build .
+    - docker create --name blur-monitor-build-debian-9-writable blur-monitor-build-debian-9
+    - docker cp blur-monitor-build-debian-9-writable:/tmp/blur-monitor/installers/blur-monitor_debian-9_amd64/blur-monitor_debian-9_amd64.deb installers/blur-monitor_debian-9_amd64/
+  after_script:
+    - docker container rm -fv blur-monitor-build-debian-9-writable
+    - docker image rm -f blur-monitor-build-debian-9
+  artifacts:
+    paths:
+      - installers/blur-monitor_debian-9_amd64/blur-monitor_debian-9_amd64.deb
+    expire_in: 1 week
+
+ubuntu-16.04_amd64:
+  stage: Build
+  tags:
+    - docker
+    - x86_64
+  script:
+    - docker build --force-rm -t blur-monitor-build-ubuntu-16.04 -f installers/blur-monitor_ubuntu-16.04_amd64/Dockerfile.build .
+    - docker create --name blur-monitor-build-ubuntu-16.04-writable blur-monitor-build-ubuntu-16.04
+    - docker cp blur-monitor-build-ubuntu-16.04-writable:/tmp/blur-monitor/installers/blur-monitor_ubuntu-16.04_amd64/blur-monitor_ubuntu-16.04_amd64.deb installers/blur-monitor_ubuntu-16.04_amd64/
+  after_script:
+    - docker container rm -fv blur-monitor-build-ubuntu-16.04-writable
+    - docker image rm -f blur-monitor-build-ubuntu-16.04
+  artifacts:
+    paths:
+      - installers/blur-monitor_ubuntu-16.04_amd64/blur-monitor_ubuntu-16.04_amd64.deb
+    expire_in: 1 week
