@@ -3,7 +3,7 @@
   "main": "index.js",
   "bin": "index.js",
   "pkg": {
-    "assets": "dist/**/*"
+    "assets": "release/**/*"
   },
   "version": "2.0.0",
   "license": "MIT",
@@ -18,8 +18,8 @@
     "test": "ng test",
     "build": "ng build --prod",
     "server": "npm run build && npx nodemon --config nodemon.json",
-    "build:pkg": "npm run build && npm run build:pkg:node8-linux-x64",
-    "build:pkg:node8-linux-x64": "npx pkg --debug --targets node8-linux-x64 --output bin/blur-monitor package.json && cp -f node_modules/authenticate-pam/build/Release/authenticate_pam.node bin/authenticate_pam.node",
+    "build:pkg": "npm run build && npm run build:pkg:node10-linux-x64",
+    "build:pkg:node10-linux-x64": "npx pkg --debug --targets node10-linux-x64 --output bin/blur-monitor package.json && cp -f node_modules/authenticate-pam/build/Release/authenticate_pam.node bin/authenticate_pam.node",
     "build:binary": "npm run build:pkg",
     "build:tarball": "npm run build:binary && cd bin/ && tar -zcvf blur-monitor_linux_amd64.tar.gz blur-monitor authenticate_pam.node",
     "installer:ubuntu-16.04_amd64": "npm run build:binary && cp -f bin/blur-monitor installers/blur-monitor_ubuntu-16.04_amd64/deb/opt/blur-monitor/blur-monitor && cp -f bin/authenticate_pam.node installers/blur-monitor_ubuntu-16.04_amd64/deb/opt/blur-monitor/authenticate_pam.node && cd installers/blur-monitor_ubuntu-16.04_amd64 && dpkg-deb --build deb blur-monitor_ubuntu-16.04_amd64.deb",
@@ -30,7 +30,7 @@
     "e2e": "ng e2e"
   },
   "dependencies": {
-    "@angular-devkit/core": "0.0.29",
+    "@angular-devkit/core": "7.1.4",
     "@angular/animations": "^7.1.4",
     "@angular/common": "^7.1.4",
     "@angular/compiler": "^7.1.4",
