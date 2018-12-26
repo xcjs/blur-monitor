@@ -14,7 +14,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "npx parallelshell \"ng serve --proxy-config proxy.conf.json\" \"npx nodemon --config nodemon.json\"",
     "test": "ng test",
     "build": "ng build --prod",
     "server": "npm run build && npx nodemon --config nodemon.json",
@@ -81,6 +81,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "nodemon": "^1.18.4",
+    "parallelshell": "3.0.1",
     "protractor": "^5.4.1",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
