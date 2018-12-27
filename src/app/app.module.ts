@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StorageServiceModule } from 'ngx-webstorage-service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -50,11 +51,8 @@ import { SpinnerComponent } from './ui/spinner/spinner.component';
     AuthFormComponent,
     SpinnerComponent
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule
-  ],
+  imports: [AppRoutingModule, BrowserModule, StorageServiceModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
